@@ -1,0 +1,15 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ui } from '../../i18n/ui';
+
+const t = ui['en'];
+---
+<Layout
+  lang="en"
+  title={`Garpe — ${t['hero.title']}`}
+  description={t['hero.subtitle']}
+  h1="Development, Consulting & <span>Automation</span> for SMBs"
+  subtitle={t['hero.subtitle']}
+  cta={t['hero.cta']}
+  services={t['hero.services']}
+/>

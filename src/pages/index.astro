@@ -1,17 +1,15 @@
 ---
+import Layout from '../layouts/Layout.astro';
+import { ui, defaultLang } from '../i18n/ui';
 
+const t = ui[defaultLang];
 ---
-
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  lang="es"
+  title={`Garpe — ${t['hero.title']}`}
+  description={t['hero.subtitle']}
+  h1="Desarrollo, Consultoría y <span>Automatización</span> para Pymes"
+  subtitle={t['hero.subtitle']}
+  cta={t['hero.cta']}
+  services={t['hero.services']}
+/>
