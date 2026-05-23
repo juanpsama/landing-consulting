@@ -1,0 +1,26 @@
+---
+import { languages } from '../i18n/ui';
+import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+
+const basePath = "";
+const lang = getLangFromUrl(Astro.url);
+const toggleLang = lang === 'es' ? 'en' : 'es';
+
+const fullPath = Astro.url.pathname;
+const path = lang === 'en'
+  ? fullPath.slice(3 + basePath.length)
+  : fullPath.slice(basePath.length);
+
+const translatePath = useTranslatedPath(toggleLang);
+
+function useBasePath(p: string) {
+  return `${basePath}${translatePath(p)}`;
+}
+---
+
+<div class="fixed top-5 right-6 z-100">
+  <!-- TODO: Modify the style of this button i want to add icon instead of a button with text -->
+  <a href={useBasePath(path)} class="inline-flex items-center gap-1.5 bg-canvas text-ink font-inter text-sm font-medium px-5 py-[10px] rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface">
+    <span>{languages[toggleLang]}</span>
+  </a>
+</div>
