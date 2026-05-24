@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import LanguageToggle from '../components/LanguageToggle.astro';
+import NavBar from '../components/NavBar.astro';
 
 export interface Props {
   lang: string;
@@ -27,8 +27,8 @@ const { lang, title, description, h1, subtitle, cta, services } = Astro.props;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <LanguageToggle />
-    <section class="bg-gradient-to-b from-hero-sky-from to-hero-sky-to px-8 py-[120px] flex flex-col items-center text-center">
+    <NavBar />
+    <section class="pt-[184px] pb-[120px] px-8 bg-gradient-to-b from-hero-sky-from to-hero-sky-to flex flex-col items-center text-center">
       <div class="w-full max-w-[1280px] px-8">
         <h1 class="text-[clamp(2.25rem,5vw,72px)] font-semibold leading-[1.05] tracking-[-2px] max-w-[16ch] mx-auto text-ink" set:html={h1} />
         <p class="mt-6 text-lg font-normal leading-[1.5] text-charcoal max-w-[48ch] mx-auto">{subtitle}</p>
