@@ -2,8 +2,10 @@
 
 @theme {
   --color-primary: #0a0a0a;
-  --color-brand-green: #00d4a4;
+  --color-brand-green: #5cdbb8;
   --color-brand-green-deep: #00b48a;
+  --color-brand-tag: #3772cf;
+  --color-testimonial-orange: #f0967e;
   --color-canvas: #ffffff;
   --color-surface: #f7f7f7;
   --color-ink: #0a0a0a;

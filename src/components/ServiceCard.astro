@@ -1,0 +1,27 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  icon: string;
+  accentVar: string;
+  variant: 'light' | 'colored';
+}
+
+const { title, description, icon, accentVar, variant } = Astro.props;
+---
+
+{
+  variant === 'light' ? (
+    <div class="group bg-canvas rounded-lg p-8 flex flex-col gap-4 border border-hairline shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+      <span style={`background-color: var(${accentVar})`} class="inline-flex items-center justify-center w-12 h-12 rounded-full text-white shrink-0" set:html={icon} />
+      <h3 class="text-lg font-semibold text-ink leading-snug">{title}</h3>
+      <p class="text-sm text-steel leading-relaxed">{description}</p>
+    </div>
+  ) : (
+    <div style={`background-color: var(${accentVar})`} class="group rounded-lg p-8 flex flex-col gap-4 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200">
+      <span style={`color: var(${accentVar})`} class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-white shrink-0" set:html={icon} />
+      <h3 class="text-lg font-semibold text-primary leading-snug">{title}</h3>
+      <p class="text-sm text-primary/70 leading-relaxed">{description}</p>
+    </div>
+  )
+}

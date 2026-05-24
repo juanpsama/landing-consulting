@@ -1,6 +1,8 @@
 ---
 import '../styles/global.css';
 import NavBar from '../components/NavBar.astro';
+import ServicesSection from '../components/ServicesSection.astro';
+import Footer from '../components/Footer.astro';
 
 export interface Props {
   lang: string;
@@ -38,5 +40,7 @@ const { lang, title, description, h1, subtitle, cta, services } = Astro.props;
         </div>
       </div>
     </section>
+    <ServicesSection />
+    <Footer />
   </body>
 </html>

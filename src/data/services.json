@@ -1,0 +1,104 @@
+{
+  "es": {
+    "heading": "Soluciones",
+    "subtitle": "Transformamos tu negocio con tecnología inteligente — desde el desarrollo de software a medida hasta la automatización integral de procesos.",
+    "services": [
+      {
+        "icon": "monitor",
+        "title": "Aplicaciones a medida y automatización",
+        "description": "Desarrollamos software personalizado para automatizar procesos clave de tu empresa, eliminando tareas manuales y reduciendo errores."
+      },
+      {
+        "icon": "globe",
+        "title": "Presencia digital y páginas web",
+        "description": "Creamos sitios web profesionales y estrategias de presencia digital que reflejan la identidad de tu marca y atraen a tus clientes."
+      },
+      {
+        "icon": "link",
+        "title": "Integraciones de software",
+        "description": "Conectamos tus herramientas y plataformas favoritas para que trabajen en conjunto, optimizando tu flujo de trabajo sin fricciones."
+      },
+      {
+        "icon": "refresh",
+        "title": "Modernización de procesos empresariales",
+        "description": "Transformamos procesos obsoletos con tecnología moderna, mejorando la eficiencia operativa y preparando tu negocio para el futuro."
+      },
+      {
+        "icon": "database",
+        "title": "Implementación ERP (Odoo) y módulos a medida",
+        "description": "Implementamos Odoo y desarrollamos módulos personalizados para gestionar integralmente tu empresa: ventas, inventario, contabilidad y más."
+      },
+      {
+        "icon": "lightbulb",
+        "title": "Consultoría tecnológica estratégica",
+        "description": "Asesoramos a tu empresa en la toma de decisiones tecnológicas, ayudándote a elegir las herramientas y estrategias adecuadas para crecer."
+      },
+      {
+        "icon": "cloud",
+        "title": "Migración a la nube y DevOps",
+        "description": "Migramos tu infraestructura a la nube e implementamos prácticas DevOps para lograr despliegues más rápidos, seguros y confiables."
+      },
+      {
+        "icon": "chart",
+        "title": "Analítica de datos e inteligencia de negocio",
+        "description": "Convertimos tus datos en información accionable con dashboards, reportes y herramientas de BI que impulsan decisiones estratégicas."
+      },
+      {
+        "icon": "book",
+        "title": "Capacitación y soporte técnico",
+        "description": "Brindamos capacitación a tu equipo y soporte técnico continuo para garantizar que aprovechen al máximo las herramientas implementadas."
+      }
+    ]
+  },
+  "en": {
+    "heading": "Solutions",
+    "subtitle": "We transform your business with smart technology — from custom software development to end-to-end process automation.",
+    "services": [
+      {
+        "icon": "monitor",
+        "title": "Custom applications & automation",
+        "description": "We build custom software to automate your key business processes, eliminating manual tasks and reducing errors."
+      },
+      {
+        "icon": "globe",
+        "title": "Web presence & digital identity",
+        "description": "We create professional websites and digital presence strategies that reflect your brand identity and attract customers."
+      },
+      {
+        "icon": "link",
+        "title": "Software integrations",
+        "description": "We connect your favorite tools and platforms so they work together, streamlining your workflow without friction."
+      },
+      {
+        "icon": "refresh",
+        "title": "Enterprise process modernization",
+        "description": "We transform outdated processes with modern technology, improving operational efficiency and future-proofing your business."
+      },
+      {
+        "icon": "database",
+        "title": "ERP (Odoo) implementation & custom modules",
+        "description": "We implement Odoo and develop custom modules to manage your entire business: sales, inventory, accounting, and more."
+      },
+      {
+        "icon": "lightbulb",
+        "title": "Strategic technology consulting",
+        "description": "We advise your business on technology decisions, helping you choose the right tools and strategies to grow."
+      },
+      {
+        "icon": "cloud",
+        "title": "Cloud migration & DevOps",
+        "description": "We migrate your infrastructure to the cloud and implement DevOps practices for faster, safer, and more reliable deployments."
+      },
+      {
+        "icon": "chart",
+        "title": "Data analytics & business intelligence",
+        "description": "We turn your data into actionable insights with dashboards, reports, and BI tools that drive strategic decisions."
+      },
+      {
+        "icon": "book",
+        "title": "Training & technical support",
+        "description": "We provide team training and ongoing technical support to ensure you get the most out of your implemented tools."
+      }
+    ]
+  }
+}

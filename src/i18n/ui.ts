@@ -16,6 +16,11 @@ export const ui = {
     'nav.blog': 'Blog',
     'nav.contact': 'Contacto',
     'nav.customers': 'Clientes',
+    'footer.tagline': 'Garpe — Desarrollo, Consultoría y Automatización',
+    'footer.desc': 'Ayudamos a las empresas a crecer con tecnología moderna, automatización inteligente y asesoría estratégica.',
+    'footer.solutions': 'Soluciones',
+    'footer.about': 'Empresa',
+    'footer.copyright': '© {year} Garpe. Todos los derechos reservados.',
   },
   en: {
     'hero.title': 'Development, Consulting & Automation for SMBs',
@@ -26,6 +31,11 @@ export const ui = {
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
     'nav.customers': 'Customers',
+    'footer.tagline': 'Garpe — Development, Consulting & Automation',
+    'footer.desc': 'We help businesses grow with modern technology, smart automation, and strategic consulting.',
+    'footer.solutions': 'Solutions',
+    'footer.about': 'Company',
+    'footer.copyright': '© {year} Garpe. All rights reserved.',
   },
 } as const;
 

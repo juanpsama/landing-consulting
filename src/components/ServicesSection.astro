@@ -1,0 +1,63 @@
+---
+import ServiceCard from './ServiceCard.astro';
+import servicesData from '../data/services.json';
+import { getLangFromUrl } from '../i18n/utils';
+import monitorIcon from '../assets/icons/monitor.svg?raw';
+import globeIcon from '../assets/icons/globe.svg?raw';
+import linkIcon from '../assets/icons/link.svg?raw';
+import refreshIcon from '../assets/icons/refresh.svg?raw';
+import databaseIcon from '../assets/icons/database.svg?raw';
+import lightbulbIcon from '../assets/icons/lightbulb.svg?raw';
+import cloudIcon from '../assets/icons/cloud.svg?raw';
+import chartIcon from '../assets/icons/chart.svg?raw';
+import bookIcon from '../assets/icons/book.svg?raw';
+
+const iconMap: Record<string, string> = {
+  monitor: monitorIcon,
+  globe: globeIcon,
+  link: linkIcon,
+  refresh: refreshIcon,
+  database: databaseIcon,
+  lightbulb: lightbulbIcon,
+  cloud: cloudIcon,
+  chart: chartIcon,
+  book: bookIcon,
+};
+
+const lang = getLangFromUrl(Astro.url);
+const data = servicesData[lang as keyof typeof servicesData];
+
+const accentVars = [
+  '--color-brand-green',
+  '--color-brand-tag',
+  '--color-testimonial-orange',
+];
+---
+
+<section id="services" class="py-16 lg:py-24 bg-canvas">
+  <div class="max-w-[1280px] mx-auto px-8">
+    <h2 class="text-[28px] lg:text-[36px] font-semibold text-ink text-center leading-tight">
+      {data.heading}
+    </h2>
+    <p class="mt-4 text-lg text-charcoal text-center max-w-[48ch] mx-auto leading-relaxed">
+      {data.subtitle}
+    </p>
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {
+        data.services.map((service, index) => {
+          const accentVar = accentVars[index % accentVars.length];
+          const variant = index % 2 === 0 ? 'light' : 'colored';
+          return (
+            <ServiceCard
+              title={service.title}
+              description={service.description}
+              icon={iconMap[service.icon]}
+              accentVar={accentVar}
+              variant={variant}
+            />
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
