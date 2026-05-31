@@ -1,0 +1,139 @@
+---
+
+---
+
+<div class="absolute inset-0 overflow-hidden gradient-bg" aria-hidden="true">
+  <svg class="absolute top-0 left-0 w-0 h-0" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -8" result="goo" />
+        <feBlend in="SourceGraphic" in2="goo" />
+      </filter>
+    </defs>
+  </svg>
+  <div class="gradients-container">
+    <div class="g1"></div>
+    <div class="g2"></div>
+    <div class="g3"></div>
+    <div class="g4"></div>
+    <div class="g5"></div>
+    <div class="interactive"></div>
+  </div>
+</div>
+
+<style is:global>
+  .gradient-bg {
+    background: linear-gradient(40deg, #87a8c8, #f5e9d8);
+  }
+
+  .gradient-bg .gradients-container {
+    filter: url(#goo) blur(40px);
+    width: 100%;
+    height: 100%;
+  }
+
+  .gradient-bg .g1,
+  .gradient-bg .g2,
+  .gradient-bg .g3,
+  .gradient-bg .g4,
+  .gradient-bg .g5 {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 50%;
+    mix-blend-mode: hard-light;
+    opacity: 0.5;
+  }
+
+  .gradient-bg .g1 {
+    background: radial-gradient(circle at center, rgba(215, 188, 106, 0.45) 0, rgba(135, 168, 200, 0) 50%);
+    animation: g-move-vertical 30s ease infinite;
+  }
+
+  .gradient-bg .g2 {
+    background: radial-gradient(circle at center, rgba(92, 219, 184, 0.4) 0, rgba(92, 219, 184, 0) 50%);
+    transform-origin: calc(50% - 400px);
+    animation: g-move-in-circle 20s reverse infinite;
+  }
+
+  .gradient-bg .g3 {
+    background: radial-gradient(circle at center, rgba(55, 114, 207, 0.4) 0, rgba(55, 114, 207, 0) 50%);
+    top: calc(10% + 200px);
+    left: calc(10% - 500px);
+    transform-origin: calc(50% + 400px);
+    animation: g-move-in-circle 40s linear infinite;
+  }
+
+  .gradient-bg .g4 {
+    background: radial-gradient(circle at center, rgba(240, 150, 126, 0.4) 0, rgba(240, 150, 126, 0) 50%);
+    transform-origin: calc(50% - 200px);
+    animation: g-move-horizontal 40s ease infinite;
+    opacity: 0.45;
+  }
+
+  .gradient-bg .g5 {
+    background: radial-gradient(circle at center, rgba(245, 233, 216, 0.45) 0, rgba(245, 233, 216, 0) 50%);
+    width: 160%;
+    height: 160%;
+    top: -30%;
+    left: -30%;
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: g-move-in-circle 20s ease infinite;
+  }
+
+  .gradient-bg .interactive {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -50%;
+    left: -50%;
+    background: radial-gradient(circle at center, rgba(250, 245, 240, 0.65) 0, rgba(250, 245, 240, 0) 50%);
+    mix-blend-mode: hard-light;
+    opacity: 0.85;
+  }
+
+  @keyframes g-move-in-circle {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  @keyframes g-move-vertical {
+    0% { transform: translateY(-50%); }
+    50% { transform: translateY(50%); }
+    100% { transform: translateY(-50%); }
+  }
+
+  @keyframes g-move-horizontal {
+    0% { transform: translateX(-50%) translateY(-10%); }
+    50% { transform: translateX(50%) translateY(10%); }
+    100% { transform: translateX(-50%) translateY(-10%); }
+  }
+</style>
+
+<script>
+  const container = document.querySelector('.gradient-bg');
+  const bubble = container?.querySelector('.interactive');
+  if (!container || !bubble) { /* noop */ } else {
+    let curX = 0, curY = 0;
+    let tgX = 0, tgY = 0;
+
+    function loop() {
+      curX += (tgX - curX) / 20;
+      curY += (tgY - curY) / 20;
+      bubble.style.transform = `translate(${Math.round(curX)}px, ${Math.round(curY)}px)`;
+      requestAnimationFrame(loop);
+    }
+
+    window.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      tgX = e.clientX - rect.left;
+      tgY = e.clientY - rect.top;
+    }, { passive: true });
+
+    loop();
+  }
+</script>
