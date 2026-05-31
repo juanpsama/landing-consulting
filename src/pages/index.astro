@@ -1,6 +1,6 @@
 ---
-import { getRelativeLocaleUrl } from 'astro:i18n';
-const redirectUrl = getRelativeLocaleUrl('es', '/');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const redirectUrl = `${base}/es/`;
 ---
 
 <!doctype html>
