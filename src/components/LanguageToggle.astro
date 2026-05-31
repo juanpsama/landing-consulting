@@ -1,10 +1,10 @@
 ---
 import { languages } from '../i18n/ui';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const currentLang = (Astro.currentLocale ?? 'es') as keyof typeof languages;
 const toggleLang = currentLang === 'es' ? 'en' : 'es';
-const toggleUrl = getRelativeLocaleUrl(toggleLang, '/');
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const toggleUrl = `${base}/${toggleLang}/`;
 ---
 
 <a href={toggleUrl} class="inline-flex items-center gap-1.5 bg-transparent text-ink text-sm font-medium px-4 py-[6px] rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface">

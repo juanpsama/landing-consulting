@@ -4,10 +4,13 @@ import LanguageToggle from './LanguageToggle.astro';
 
 const lang = (Astro.currentLocale ?? 'es') as keyof typeof ui;
 const t = ui[lang];
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const homeUrl = `${base}/${lang}/`;
 ---
 
 <nav id="navbar" class="nav-hidden fixed top-0 left-0 right-0 z-50 h-16 bg-canvas border-b border-hairline flex items-center px-6">
-  <a href={lang === 'es' ? '/es/' : '/en/'} class="text-ink font-semibold text-lg no-underline mr-10">Home</a>
+  <a href={homeUrl} class="text-ink font-semibold text-lg no-underline mr-10">Home</a>
   <div class="hidden sm:flex items-center gap-8">
     <a href="#services" class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors">{t['nav.solutions']}</a>
     <a href="#" class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors">{t['nav.blog']}</a>
