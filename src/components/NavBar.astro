@@ -1,26 +1,13 @@
 ---
-import { languages, ui } from '../i18n/ui';
-import { getLangFromUrl, useTranslatedPath } from '../i18n/utils';
+import { ui } from '../i18n/ui';
+import LanguageToggle from './LanguageToggle.astro';
 
-const basePath = "";
-const lang = getLangFromUrl(Astro.url);
+const lang = (Astro.currentLocale ?? 'es') as keyof typeof ui;
 const t = ui[lang];
-const toggleLang = lang === 'es' ? 'en' : 'es';
-
-const fullPath = Astro.url.pathname;
-const path = lang === 'en'
-  ? fullPath.slice(3 + basePath.length)
-  : fullPath.slice(basePath.length);
-
-const translatePath = useTranslatedPath(toggleLang);
-
-function useBasePath(p: string) {
-  return `${basePath}${translatePath(p)}`;
-}
 ---
 
 <nav class="fixed top-0 left-0 right-0 z-50 h-16 bg-canvas border-b border-hairline flex items-center px-6">
-  <a href="/" class="text-ink font-semibold text-lg no-underline mr-10">Home</a>
+  <a href={lang === 'es' ? '/es/' : '/en/'} class="text-ink font-semibold text-lg no-underline mr-10">Home</a>
   <div class="hidden sm:flex items-center gap-8">
     <a href="#services" class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors">{t['nav.solutions']}</a>
     <a href="#" class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors">{t['nav.blog']}</a>
@@ -28,8 +15,6 @@ function useBasePath(p: string) {
     <a href="#" class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors">{t['nav.customers']}</a>
   </div>
   <div class="ml-auto">
-    <a href={useBasePath(path)} class="inline-flex items-center gap-1.5 bg-transparent text-ink text-sm font-medium px-4 py-[6px] rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface">
-      <span>{languages[toggleLang]}</span>
-    </a>
+    <LanguageToggle />
   </div>
 </nav>

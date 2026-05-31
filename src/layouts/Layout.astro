@@ -23,6 +23,9 @@ const { lang, title, description, h1, subtitle, cta, services } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
+    <link rel="alternate" hreflang="es" href={Astro.site!.origin + '/es/'} />
+    <link rel="alternate" hreflang="en" href={Astro.site!.origin + '/en/'} />
+    <link rel="alternate" hreflang="x-default" href={Astro.site!.origin + '/es/'} />
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

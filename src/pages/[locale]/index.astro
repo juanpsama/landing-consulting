@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ui } from '../../i18n/ui';
+
+export async function getStaticPaths() {
+  return [
+    { params: { locale: 'es' } },
+    { params: { locale: 'en' } },
+  ];
+}
+
+const lang = (Astro.currentLocale ?? 'es') as keyof typeof ui;
+const t = ui[lang];
+const h1 = lang === 'en'
+  ? "Development, Consulting & <span>Automation</span> for SMBs"
+  : "Desarrollo, Consultoría y <span>Automatización</span> para empresas";
+---
+
+<Layout
+  lang={lang}
+  title={t['hero.title']}
+  description={t['hero.subtitle']}
+  h1={h1}
+  subtitle={t['hero.subtitle']}
+  cta={t['hero.cta']}
+  services={t['hero.services']}
+/>

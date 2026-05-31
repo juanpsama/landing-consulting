@@ -1,8 +1,7 @@
 ---
 import { ui } from '../i18n/ui';
-import { getLangFromUrl } from '../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = (Astro.currentLocale ?? 'es') as keyof typeof ui;
 const t = ui[lang];
 const year = new Date().getFullYear();
 ---

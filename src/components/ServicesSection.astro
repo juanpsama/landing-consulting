@@ -1,7 +1,6 @@
 ---
 import ServiceCard from './ServiceCard.astro';
 import servicesData from '../data/services.json';
-import { getLangFromUrl } from '../i18n/utils';
 import monitorIcon from '../assets/icons/monitor.svg?raw';
 import globeIcon from '../assets/icons/globe.svg?raw';
 import linkIcon from '../assets/icons/link.svg?raw';
@@ -24,8 +23,8 @@ const iconMap: Record<string, string> = {
   book: bookIcon,
 };
 
-const lang = getLangFromUrl(Astro.url);
-const data = servicesData[lang as keyof typeof servicesData];
+const lang = (Astro.currentLocale ?? 'es') as keyof typeof servicesData;
+const data = servicesData[lang];
 
 const accentVars = [
   '--color-brand-green',
