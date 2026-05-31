@@ -8,7 +8,7 @@ export const defaultLang = 'es';
 
 export const ui = {
   es: {
-    'hero.title': 'Desarrollo, Consultoría y Automatización para empresas',
+    'hero.title': 'Desarrollo, Consultoría y Automatización digital para empresas',
     'hero.subtitle': 'Creamos software a medida, brindamos asesoría tecnológica estratégica y automatizamos flujos de trabajo — para que las pequeñas y medianas empresas se enfoquen en lo que importa.',
     'hero.cta': 'Empezar',
     'hero.services': 'Ver servicios',

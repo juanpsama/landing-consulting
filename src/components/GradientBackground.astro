@@ -24,7 +24,9 @@
 
 <style is:global>
   .gradient-bg {
-    background: linear-gradient(40deg, #87a8c8, #f5e9d8);
+    background: linear-gradient(40deg, var(--color-hero-sky-from), var(--color-hero-sky-to));
+    mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
   }
 
   .gradient-bg .gradients-container {
@@ -49,18 +51,18 @@
   }
 
   .gradient-bg .g1 {
-    background: radial-gradient(circle at center, rgba(215, 188, 106, 0.45) 0, rgba(135, 168, 200, 0) 50%);
+    background: radial-gradient(circle at center, rgba(var(--brand-gold-rgb), 0.45) 0, rgba(var(--hero-sky-from-rgb), 0) 50%);
     animation: g-move-vertical 30s ease infinite;
   }
 
   .gradient-bg .g2 {
-    background: radial-gradient(circle at center, rgba(92, 219, 184, 0.4) 0, rgba(92, 219, 184, 0) 50%);
+    background: radial-gradient(circle at center, rgba(var(--brand-green-rgb), 0.4) 0, rgba(var(--brand-green-rgb), 0) 50%);
     transform-origin: calc(50% - 400px);
     animation: g-move-in-circle 20s reverse infinite;
   }
 
   .gradient-bg .g3 {
-    background: radial-gradient(circle at center, rgba(55, 114, 207, 0.4) 0, rgba(55, 114, 207, 0) 50%);
+    background: radial-gradient(circle at center, rgba(var(--brand-tag-rgb), 0.4) 0, rgba(var(--brand-tag-rgb), 0) 50%);
     top: calc(10% + 200px);
     left: calc(10% - 500px);
     transform-origin: calc(50% + 400px);
@@ -68,14 +70,14 @@
   }
 
   .gradient-bg .g4 {
-    background: radial-gradient(circle at center, rgba(240, 150, 126, 0.4) 0, rgba(240, 150, 126, 0) 50%);
+    background: radial-gradient(circle at center, rgba(var(--testimonial-orange-rgb), 0.4) 0, rgba(var(--testimonial-orange-rgb), 0) 50%);
     transform-origin: calc(50% - 200px);
     animation: g-move-horizontal 40s ease infinite;
     opacity: 0.45;
   }
 
   .gradient-bg .g5 {
-    background: radial-gradient(circle at center, rgba(245, 233, 216, 0.45) 0, rgba(245, 233, 216, 0) 50%);
+    background: radial-gradient(circle at center, rgba(var(--hero-sky-to-rgb), 0.45) 0, rgba(var(--hero-sky-to-rgb), 0) 50%);
     width: 160%;
     height: 160%;
     top: -30%;
@@ -90,7 +92,7 @@
     height: 100%;
     top: -50%;
     left: -50%;
-    background: radial-gradient(circle at center, rgba(250, 245, 240, 0.65) 0, rgba(250, 245, 240, 0) 50%);
+    background: radial-gradient(circle at center, rgba(var(--warm-white-rgb), 0.65) 0, rgba(var(--warm-white-rgb), 0) 50%);
     mix-blend-mode: hard-light;
     opacity: 0.85;
   }
