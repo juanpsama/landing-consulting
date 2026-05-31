@@ -1,14 +1,17 @@
 ---
+import { getRelativeLocaleUrl } from 'astro:i18n';
+const redirectUrl = getRelativeLocaleUrl('es', '/');
 ---
+
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; url=/es/" />
-    <link rel="canonical" href="/es/" />
+    <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
+    <link rel="canonical" href={redirectUrl} />
     <title>Garpe</title>
   </head>
   <body>
-    <script>window.location.href = '/es/';</script>
+    <a href={redirectUrl}>Ir a la página</a>
   </body>
 </html>
