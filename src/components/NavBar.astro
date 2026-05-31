@@ -6,7 +6,7 @@ const lang = (Astro.currentLocale ?? 'es') as keyof typeof ui;
 const t = ui[lang];
 ---
 
-<nav class="fixed top-0 left-0 right-0 z-50 h-16 bg-canvas border-b border-hairline flex items-center px-6">
+<nav id="navbar" class="nav-hidden fixed top-0 left-0 right-0 z-50 h-16 bg-canvas border-b border-hairline flex items-center px-6">
   <a href={lang === 'es' ? '/es/' : '/en/'} class="text-ink font-semibold text-lg no-underline mr-10">Home</a>
   <div class="hidden sm:flex items-center gap-8">
     <a href="#services" class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors">{t['nav.solutions']}</a>
@@ -18,3 +18,29 @@ const t = ui[lang];
     <LanguageToggle />
   </div>
 </nav>
+
+<style is:global>
+  #navbar {
+    transition: transform 1s ease, opacity 0.3s ease;
+  }
+  #navbar.nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+</style>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  let hideTimer;
+
+  function onScroll() {
+    navbar.classList.remove('nav-hidden');
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+      navbar.classList.add('nav-hidden');
+    }, 2500);
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
