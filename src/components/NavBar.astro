@@ -43,4 +43,14 @@ const t = ui[lang];
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
+
+  window.addEventListener('mousemove', (e) => {
+    if (e.clientY < 150) {
+      navbar.classList.remove('nav-hidden');
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        navbar.classList.add('nav-hidden');
+      }, 2500);
+    }
+  }, { passive: true });
 </script>
