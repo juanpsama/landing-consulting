@@ -20,7 +20,7 @@ export const ui = {
     'footer.desc': 'Ayudamos a las empresas a crecer con tecnología moderna, automatización inteligente y asesoría estratégica.',
     'footer.solutions': 'Soluciones',
     'footer.about': 'Empresa',
-    'footer.copyright': '© {year} Garpe. Todos los derechos reservados.',
+    'footer.copyright': '© {year} Grupo Garpe. Todos los derechos reservados.',
   },
   en: {
     'hero.title': 'Development, Consulting & Automation for SMBs',
@@ -35,7 +35,7 @@ export const ui = {
     'footer.desc': 'We help businesses grow with modern technology, smart automation, and strategic consulting.',
     'footer.solutions': 'Solutions',
     'footer.about': 'Company',
-    'footer.copyright': '© {year} Garpe. All rights reserved.',
+    'footer.copyright': '© {year} Grupo Garpe. All rights reserved.',
   },
 } as const;
 
