@@ -7,7 +7,7 @@ const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
 export default defineConfig({
   site: isGithubPages ? 'https://juanpsama.github.io' : 'https://grupogarpe.com',
   base: isGithubPages ? '/landing-consulting' : '/',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   vite: {
     plugins: [tailwindcss()]
   },
