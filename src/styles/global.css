@@ -1,38 +1,45 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary: #0a0a0a;
-  --color-brand-green: #5cdbb8;
-  --color-brand-green-deep: #00b48a;
-  --color-brand-tag: #3772cf;
-  --color-brand-gold: #d7bc6a;
-  --color-testimonial-orange: #f0967e;
-  --color-canvas: #ffffff;
-  --color-surface: #f7f7f7;
-  --color-ink: #0a0a0a;
-  --color-charcoal: #3a3a3c;
-  --color-steel: #5a5a5c;
-  --color-hairline: #e5e5e5;
-  --color-hero-sky-from: #87a8c8;
-  --color-hero-sky-to: #f5e9d8;
-  --color-warm-white: #faf5f0;
-  --font-family-inter: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --radius-pill: 9999px;
+	--color-primary: #0a0a0a;
+	--color-brand-green: #5cdbb8;
+	--color-brand-green-deep: #00b48a;
+	--color-brand-tag: #3772cf;
+	--color-brand-gold: #d7bc6a;
+	--color-testimonial-orange: #f0967e;
+	--color-canvas: #ffffff;
+	--color-surface: #f7f7f7;
+	--color-ink: #0a0a0a;
+	--color-charcoal: #3a3a3c;
+	--color-steel: #5a5a5c;
+	--color-hairline: #e5e5e5;
+	--color-hero-sky-from: #87a8c8;
+	--color-hero-sky-to: #f5e9d8;
+	--color-warm-white: #faf5f0;
+	--font-family-inter:
+		Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--radius-pill: 9999px;
 }
 
 :root {
-  --brand-green-rgb: 92, 219, 184;
-  --brand-tag-rgb: 55, 114, 207;
-  --brand-gold-rgb: 215, 188, 106;
-  --testimonial-orange-rgb: 240, 150, 126;
-  --hero-sky-from-rgb: 135, 168, 200;
-  --hero-sky-to-rgb: 245, 233, 216;
-  --warm-white-rgb: 250, 245, 240;
+	--brand-green-rgb: 92, 219, 184;
+	--brand-tag-rgb: 55, 114, 207;
+	--brand-gold-rgb: 215, 188, 106;
+	--testimonial-orange-rgb: 240, 150, 126;
+	--hero-sky-from-rgb: 135, 168, 200;
+	--hero-sky-to-rgb: 245, 233, 216;
+	--warm-white-rgb: 250, 245, 240;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
 }
 
 body {
-  font-family: var(--font-family-inter);
-  background: var(--color-canvas);
-  color: var(--color-ink);
-  line-height: 1.6;
+	font-family: var(--font-family-inter);
+	background: var(--color-canvas);
+	color: var(--color-ink);
+	line-height: 1.6;
 }
