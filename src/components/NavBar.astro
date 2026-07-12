@@ -58,7 +58,7 @@ const homeUrl = `${base}/${lang}/`;
 
 <script>
 	const navbar = document.getElementById("navbar") as HTMLElement | null;
-	let hideTimer: number | undefined;
+	let hideTimer: ReturnType<typeof setTimeout> | undefined;
 
 	function onScroll() {
 		navbar?.classList.remove("nav-hidden");

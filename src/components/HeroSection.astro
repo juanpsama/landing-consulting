@@ -25,17 +25,20 @@ const { h1, subtitle, cta, services } = Astro.props;
 		>
 			{subtitle}
 		</p>
-		<div class="mt-8 flex gap-3 flex-wrap justify-center">
+		<div class="mt-8 flex gap-4 flex-wrap justify-center">
 			<a
 				href="#contact"
-				class="inline-block bg-brand-green text-primary text-sm font-medium leading-[1.3] px-5 py-2.5 rounded-pill no-underline transition-colors duration-150 hover:bg-brand-green-deep"
-				>{cta}</a
+				class="inline-flex items-center justify-center bg-brand-green text-primary text-base font-semibold px-7 py-3.5 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-brand-green-deep transition-all duration-200 active:scale-95"
 			>
+				{cta}
+			</a>
+
 			<a
 				href="#services"
-				class="inline-block bg-transparent text-ink text-sm font-medium leading-[1.3] px-5 py-2.5 rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface"
-				>{services}</a
+				class="inline-flex items-center justify-center bg-transparent text-ink text-base font-medium px-7 py-3.5 rounded-lg border border-steel/30 shadow-sm hover:border-steel hover:bg-surface transition-all duration-200 active:scale-95 backdrop-blur-sm"
 			>
+				{services}
+			</a>
 		</div>
 	</div>
 </section>
