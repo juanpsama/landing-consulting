@@ -24,5 +24,15 @@ export default defineConfig({
     },
   },
 
-  integrations: [sitemap()],
+  integrations: [sitemap(
+    {
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          en: 'en-US',
+          es: 'es-MX',
+        },
+      },
+    }
+  )],
 });
