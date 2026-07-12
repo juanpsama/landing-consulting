@@ -1,24 +1,41 @@
 ---
-import GradientBackground from './GradientBackground.astro';
+import GradientBackground from "./GradientBackground.astro";
 
 export interface Props {
-  h1: string;
-  subtitle: string;
-  cta: string;
-  services: string;
+	h1: string;
+	subtitle: string;
+	cta: string;
+	services: string;
 }
 
 const { h1, subtitle, cta, services } = Astro.props;
 ---
 
-<section class="relative pt-[184px] pb-[320px] px-8 flex flex-col items-center text-center overflow-hidden">
-  <GradientBackground />
-  <div class="relative z-10 w-full max-w-[1280px] px-8">
-    <h1 class="text-[clamp(2.25rem,5vw,72px)] font-semibold leading-[1.05] tracking-[-2px] max-w-[16ch] mx-auto text-ink" set:html={h1} />
-    <p class="mt-6 text-lg font-normal leading-[1.5] text-charcoal max-w-[48ch] mx-auto">{subtitle}</p>
-    <div class="mt-8 flex gap-3 flex-wrap justify-center">
-      <a href="#contact" class="inline-block bg-brand-green text-primary text-sm font-medium leading-[1.3] px-5 py-[10px] rounded-pill no-underline transition-colors duration-150 hover:bg-brand-green-deep">{cta}</a>
-      <a href="#services" class="inline-block bg-transparent text-ink text-sm font-medium leading-[1.3] px-5 py-[10px] rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface">{services}</a>
-    </div>
-  </div>
+<section
+	class="relative pt-46 pb-80 px-8 flex flex-col items-center text-center overflow-hidden"
+>
+	<GradientBackground />
+	<div class="relative z-10 w-full max-w-7xl px-8">
+		<h1
+			class="text-[clamp(2.25rem,5vw,72px)] font-semibold leading-[1.05] tracking-[-2px] max-w-[16ch] mx-auto text-ink"
+			set:html={h1}
+		/>
+		<p
+			class="mt-6 text-lg font-normal leading-normal text-charcoal max-w-[48ch] mx-auto"
+		>
+			{subtitle}
+		</p>
+		<div class="mt-8 flex gap-3 flex-wrap justify-center">
+			<a
+				href="#contact"
+				class="inline-block bg-brand-green text-primary text-sm font-medium leading-[1.3] px-5 py-2.5 rounded-pill no-underline transition-colors duration-150 hover:bg-brand-green-deep"
+				>{cta}</a
+			>
+			<a
+				href="#services"
+				class="inline-block bg-transparent text-ink text-sm font-medium leading-[1.3] px-5 py-2.5 rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface"
+				>{services}</a
+			>
+		</div>
+	</div>
 </section>
