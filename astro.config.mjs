@@ -2,9 +2,12 @@
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
+const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
+
 export default defineConfig({
-  site: 'https://juanpsama.github.io',
-  base: '/landing-consulting',
+  site: isGithubPages ? 'https://juanpsama.github.io' : 'https://grupogarpe.com',
+  base: isGithubPages ? '/landing-consulting' : '/',
+  trailingSlash: 'never',
   vite: {
     plugins: [tailwindcss()]
   },

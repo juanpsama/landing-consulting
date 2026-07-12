@@ -18,8 +18,13 @@ export interface Props {
 
 const { lang, title, description, h1, subtitle, cta, services } = Astro.props;
 const origin = Astro.site!.origin.replace(/\/$/, "");
-const esUrl = `${origin}/landing-consulting/es/`;
-const enUrl = `${origin}/landing-consulting/en/`;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const esUrl = `${origin}${base}/es`;
+const enUrl = `${origin}${base}/en`;
+
+const cleanPathname =
+	Astro.url.pathname === "/" ? "/" : Astro.url.pathname.replace(/\/$/, "");
+const canonicalURL = new URL(cleanPathname, Astro.site);
 ---
 
 <html lang={lang}>
@@ -28,6 +33,7 @@ const enUrl = `${origin}/landing-consulting/en/`;
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
+		<link rel="canonical" href={canonicalURL} />
 		<link rel="alternate" hreflang="es" href={esUrl} />
 		<link rel="alternate" hreflang="en" href={enUrl} />
 		<link rel="alternate" hreflang="x-default" href={esUrl} />
