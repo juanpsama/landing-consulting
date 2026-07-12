@@ -9,7 +9,7 @@ export const defaultLang = 'es';
 export const ui = {
   es: {
     'hero.title': 'Desarrollo, Consultoría y Automatización digital para empresas',
-    'hero.subtitle': 'Creamos software a medida, brindamos asesoría tecnológica estratégica y automatizamos flujos de trabajo — para que las pequeñas y medianas empresas se enfoquen en lo que importa.',
+    'hero.subtitle': 'Impulsa tu PyME con software a medida, automatización de procesos y consultoría tecnológica. Optimizamos tu operación para que te enfoques en crecer.',
     'hero.cta': 'Empezar',
     'hero.services': 'Ver servicios',
     'nav.solutions': 'Soluciones',
@@ -24,7 +24,7 @@ export const ui = {
   },
   en: {
     'hero.title': 'Development, Consulting & Automation for SMBs',
-    'hero.subtitle': 'We build custom software, give strategic tech advice, and automate workflows — so small and medium businesses can focus on what matters.',
+    'hero.subtitle': 'Scale your SME with custom software, workflow automation, and strategic tech consulting. We optimize your operations so you can focus on growth.',
     'hero.cta': 'Get started',
     'hero.services': 'See services',
     'nav.solutions': 'Solutions',
