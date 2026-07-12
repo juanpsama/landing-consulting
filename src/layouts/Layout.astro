@@ -1,9 +1,10 @@
 ---
-import '../styles/global.css';
-import NavBar from '../components/NavBar.astro';
-import HeroSection from '../components/HeroSection.astro';
-import ServicesSection from '../components/ServicesSection.astro';
-import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+import HeroSection from "../components/HeroSection.astro";
+import ServicesSection from "../components/ServicesSection.astro";
+import Footer from "../components/Footer.astro";
+import SolutionsSection from "../components/SolutionsSection.astro";
 
 export interface Props {
   lang: string;
@@ -16,7 +17,7 @@ export interface Props {
 }
 
 const { lang, title, description, h1, subtitle, cta, services } = Astro.props;
-const origin = Astro.site!.origin.replace(/\/$/, '');
+const origin = Astro.site!.origin.replace(/\/$/, "");
 const esUrl = `${origin}/landing-consulting/es/`;
 const enUrl = `${origin}/landing-consulting/en/`;
 ---
@@ -33,11 +34,15 @@ const enUrl = `${origin}/landing-consulting/en/`;
     <title>{title}</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <NavBar />
-    <HeroSection {h1} {subtitle} {cta} {services} />
+    <HeroSection h1={h1} subtitle={subtitle} cta={cta} services={services} />
+    <SolutionsSection />
     <ServicesSection />
     <Footer />
   </body>

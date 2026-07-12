@@ -1,0 +1,74 @@
+{
+  "es": {
+    "heading": "Soluciones",
+    "subtitle": "Cada proyecto es una oportunidad para transformar la manera en que tu negocio opera, se comunica y crece.",
+    "solutions": [
+      {
+        "image": "document_manager.webp",
+        "title": "Gestión documental inteligente",
+        "description": "Digitalizamos y organizamos tus procesos documentales para que tu equipo encuentre lo que necesita en segundos, no en horas.",
+        "tags": ["Automatización", "Documentos", "Productividad"]
+      },
+      {
+        "image": "document_manager_2.webp",
+        "title": "Flujos de trabajo automatizados",
+        "description": "Diseñamos sistemas que eliminan tareas repetitivas y conectan tus herramientas para que todo funcione en sincronía.",
+        "tags": ["Integración", "Eficiencia", "Software"]
+      },
+      {
+        "image": "jpicourl_1.webp",
+        "title": "Presencia digital de alto impacto",
+        "description": "Creamos experiencias web que no solo se ven bien — convierten visitantes en clientes y fortalecen tu marca.",
+        "tags": ["Web", "Diseño", "Marca"]
+      },
+      {
+        "image": "odoo_1.webp",
+        "title": "Implementación ERP con Odoo",
+        "description": "Unificamos ventas, inventario, contabilidad y más en una sola plataforma adaptada a las necesidades reales de tu empresa.",
+        "tags": ["Odoo", "ERP", "Gestión"]
+      },
+      {
+        "image": "odoo_2.webp",
+        "title": "Módulos a medida para tu negocio",
+        "description": "Desarrollamos extensiones personalizadas que se integran perfectamente con tu ecosistema tecnológico existente.",
+        "tags": ["Desarrollo", "Personalizado", "Integración"]
+      }
+    ]
+  },
+  "en": {
+    "heading": "Solutions",
+    "subtitle": "Every project is an opportunity to transform the way your business operates, communicates, and grows.",
+    "solutions": [
+      {
+        "image": "document_manager.webp",
+        "title": "Smart document management",
+        "description": "We digitize and organize your document workflows so your team finds what they need in seconds, not hours.",
+        "tags": ["Automation", "Documents", "Productivity"]
+      },
+      {
+        "image": "document_manager_2.webp",
+        "title": "Automated workflows",
+        "description": "We design systems that eliminate repetitive tasks and connect your tools so everything works in sync.",
+        "tags": ["Integration", "Efficiency", "Software"]
+      },
+      {
+        "image": "jpicourl_1.webp",
+        "title": "High-impact web presence",
+        "description": "We create web experiences that don't just look good — they turn visitors into customers and strengthen your brand.",
+        "tags": ["Web", "Design", "Branding"]
+      },
+      {
+        "image": "odoo_1.webp",
+        "title": "Odoo ERP implementation",
+        "description": "We unify sales, inventory, accounting, and more into a single platform tailored to your company's real needs.",
+        "tags": ["Odoo", "ERP", "Management"]
+      },
+      {
+        "image": "odoo_2.webp",
+        "title": "Custom business modules",
+        "description": "We develop bespoke extensions that integrate seamlessly with your existing technology ecosystem.",
+        "tags": ["Development", "Custom", "Integration"]
+      }
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+---
+import solutionsData from "../data/solutions.json";
+import imgDocManager from "../assets/images/document_manager.webp";
+import imgDocManager2 from "../assets/images/document_manager_2.webp";
+import imgJpicourl from "../assets/images/jpicourl_1.webp";
+import imgOdoo1 from "../assets/images/odoo_1.webp";
+import imgOdoo2 from "../assets/images/odoo_2.webp";
+
+const imageMap: Record<string, string> = {
+  "document_manager.webp": imgDocManager.src,
+  "document_manager_2.webp": imgDocManager2.src,
+  "jpicourl_1.webp": imgJpicourl.src,
+  "odoo_1.webp": imgOdoo1.src,
+  "odoo_2.webp": imgOdoo2.src,
+};
+
+const lang = (Astro.currentLocale ?? "es") as keyof typeof solutionsData;
+const data = solutionsData[lang];
+const numSlides = data.solutions.length;
+const extraScrollHeight = `${(numSlides - 1) * 80}vh`;
+---
+
+<section id="solutions" class="relative">
+  <div class="max-w-[1280px] mx-auto px-8 pt-24 pb-16 text-center">
+    <h2 class="text-[28px] lg:text-[36px] font-semibold text-ink leading-tight">
+      {data.heading}
+    </h2>
+    <p class="mt-4 text-lg text-charcoal max-w-[48ch] mx-auto leading-relaxed">
+      {data.subtitle}
+    </p>
+  </div>
+
+  <div
+    class="px-[5%]"
+    data-carousel-wrapper
+    style={`height: calc(80vh + ${extraScrollHeight})`}
+  >
+    <div
+      class="carousel-viewport sticky h-[80vh] overflow-hidden bg-ink rounded-lg"
+      style="top: calc(64px + 2vh)"
+      data-num-slides={numSlides}
+    >
+      <div class="absolute top-0 left-0 right-0 h-[3px] bg-white/15 z-10">
+        <div
+          class="h-full w-0 bg-brand-green transition-[width] duration-300"
+          data-progress-bar
+        >
+        </div>
+      </div>
+
+      <div
+        class="absolute bottom-[3vh] right-[5%] z-10 text-[0.85rem] font-medium text-white/60 tabular-nums tracking-[0.05em]"
+      >
+        <span class="text-white" data-counter-current>01</span>
+        <span> /</span>
+        <span>{String(numSlides).padStart(2, "0")}</span>
+      </div>
+
+      {
+        data.solutions.map((solution, i) => (
+          <div
+            class={`carousel-slide absolute inset-0 ${i === 0 ? "active" : ""}`}
+            data-slide-index={i}
+          >
+            <img
+              class="carousel-img absolute inset-0 w-full h-full object-cover"
+              src={imageMap[solution.image]}
+              alt={solution.title}
+              loading={i === 0 ? "eager" : "lazy"}
+            />
+            <div class="absolute inset-0 z-[1] bg-gradient-to-t from-ink/85 via-ink/40 to-ink/[.15]" />
+            <div class="carousel-content absolute bottom-0 left-0 right-0 z-[2] px-[8%] pb-[10vh] max-w-[1280px] mx-auto">
+              <h3 class="text-[clamp(1.5rem,3vw,2.5rem)] font-semibold text-white leading-[1.2] mb-3">
+                {solution.title}
+              </h3>
+              <p class="text-[clamp(0.95rem,1.5vw,1.125rem)] text-white/85 leading-[1.6] max-w-[52ch] mb-5">
+                {solution.description}
+              </p>
+              <div class="flex gap-2 flex-wrap">
+                {solution.tags.map((tag) => (
+                  <span class="inline-block py-[0.3rem] px-[0.85rem] text-[0.8rem] font-medium text-white/90 bg-white/12 backdrop-blur-[8px] border border-white/18 rounded-pill">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style is:global>
+  .carousel-slide {
+    opacity: 0;
+    transform: scale(1.08);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+    will-change: opacity, transform;
+  }
+  .carousel-slide.active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 1;
+  }
+
+  .carousel-img {
+    transition: transform 0.8s ease;
+    will-change: transform;
+  }
+  .carousel-slide.active .carousel-img {
+    transform: translateY(0);
+  }
+
+  .carousel-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  .carousel-slide.active .carousel-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .carousel-content h3 {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .carousel-slide.active .carousel-content h3 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+  }
+
+  .carousel-content p {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .carousel-slide.active .carousel-content p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+  }
+
+  .carousel-content .flex {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .carousel-slide.active .carousel-content .flex {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+  }
+</style>
+
+<script>
+  function initCarousel() {
+    const wrapper = document.querySelector(
+      "[data-carousel-wrapper]",
+    ) as HTMLElement;
+    const viewport = document.querySelector(
+      ".carousel-viewport",
+    ) as HTMLElement;
+    if (!wrapper || !viewport) return;
+
+    const numSlides = parseInt(viewport.dataset.numSlides || "5", 10);
+    const slides = viewport.querySelectorAll<HTMLElement>(".carousel-slide");
+    const progressBar = viewport.querySelector<HTMLElement>(
+      "[data-progress-bar]",
+    );
+    const counterCurrent = viewport.querySelector<HTMLElement>(
+      "[data-counter-current]",
+    );
+    if (!slides.length || !progressBar || !counterCurrent) return;
+
+    let currentActive = 0;
+
+    function updateActive(index: number) {
+      if (index === currentActive) return;
+      slides[currentActive]?.classList.remove("active");
+      slides[index]?.classList.add("active");
+      currentActive = index;
+      progressBar.style.width = `${(index / (numSlides - 1)) * 100}%`;
+      counterCurrent.textContent = String(index + 1).padStart(2, "0");
+    }
+
+    function onScroll() {
+      const wrapperRect = wrapper.getBoundingClientRect();
+      const viewportHeight = viewport.offsetHeight;
+      const scrollableHeight = (numSlides - 1) * viewportHeight;
+
+      const wrapperTop = -wrapperRect.top;
+      const progress = Math.max(0, Math.min(1, wrapperTop / scrollableHeight));
+      const index = Math.round(progress * (numSlides - 1));
+      updateActive(index);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  document.addEventListener("DOMContentLoaded", initCarousel);
+</script>
