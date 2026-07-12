@@ -1,0 +1,124 @@
+{
+	"es": {
+		"heading": "Servicios",
+		"subtitle": "Escalamos la operación de tu empresa. Diseñamos, implementamos y automatizamos la tecnología que tu equipo necesita para dejar de perder tiempo en tareas manuales.",
+		"secondaryHeading": "Otras capacidades técnicas",
+		"services": [
+			{
+				"icon": "database",
+				"title": "Centralización Operativa (ERP)",
+				"description": "Toma el control total de tu empresa en una sola plataforma. Integramos tus ventas, inventario y contabilidad con Odoo para que tomes decisiones basadas en datos reales, no en suposiciones.",
+				"featured": true
+			},
+			{
+				"icon": "monitor",
+				"title": "Software a Medida y Automatización",
+				"description": "Elimina los cuellos de botella. Si tu proceso de negocio es único, construimos la herramienta exacta para automatizarlo, integrando tus sistemas actuales sin fricciones.",
+				"featured": true
+			},
+			{
+				"icon": "globe",
+				"title": "Plataformas Digitales y E-commerce",
+				"description": "Convierte tu presencia en internet en un canal de ventas activo. Desarrollamos sitios web de alto rendimiento diseñados para captar clientes y proyectar autoridad en tu sector.",
+				"featured": true
+			},
+			{
+				"icon": "link",
+				"title": "Integraciones de software",
+				"description": "Conectamos tus herramientas y plataformas para que trabajen en conjunto.",
+				"featured": false
+			},
+			{
+				"icon": "refresh",
+				"title": "Modernización de procesos",
+				"description": "Transformamos flujos de trabajo obsoletos con tecnología moderna.",
+				"featured": false
+			},
+			{
+				"icon": "lightbulb",
+				"title": "Consultoría estratégica",
+				"description": "Asesoramiento para elegir las herramientas adecuadas para crecer.",
+				"featured": false
+			},
+			{
+				"icon": "cloud",
+				"title": "Migración Cloud y DevOps",
+				"description": "Despliegues rápidos, seguros y confiables en la nube.",
+				"featured": false
+			},
+			{
+				"icon": "chart",
+				"title": "Analítica e Inteligencia de Negocio",
+				"description": "Convertimos tus datos en información accionable con dashboards de BI.",
+				"featured": false
+			},
+			{
+				"icon": "book",
+				"title": "Capacitación y soporte",
+				"description": "Acompañamiento continuo para maximizar la adopción tecnológica.",
+				"featured": false
+			}
+		]
+	},
+	"en": {
+		"heading": "Services",
+		"subtitle": "We scale your business operations. We design, implement, and automate the technology your team needs to stop wasting time on manual tasks.",
+		"secondaryHeading": "Other technical capabilities",
+		"services": [
+			{
+				"icon": "database",
+				"title": "ERP Implementation (Odoo)",
+				"description": "Take full control of your company on a single platform. We integrate your sales, inventory, and accounting with Odoo so you can make decisions based on real data, not assumptions.",
+				"featured": true
+			},
+			{
+				"icon": "monitor",
+				"title": "Custom Software & Automation",
+				"description": "Eliminate bottlenecks. If your business process is unique, we build the exact tool to automate it, integrating seamlessly with your current systems.",
+				"featured": true
+			},
+			{
+				"icon": "globe",
+				"title": "Digital Platforms & E-commerce",
+				"description": "Turn your web presence into an active sales channel. We develop high-performance websites designed to capture clients and project authority in your industry.",
+				"featured": true
+			},
+			{
+				"icon": "link",
+				"title": "Software Integrations",
+				"description": "We connect your favorite tools so they work together seamlessly.",
+				"featured": false
+			},
+			{
+				"icon": "refresh",
+				"title": "Process Modernization",
+				"description": "We transform outdated workflows with modern, efficient technology.",
+				"featured": false
+			},
+			{
+				"icon": "lightbulb",
+				"title": "Strategic Consulting",
+				"description": "Expert advice to help you choose the right tools to scale.",
+				"featured": false
+			},
+			{
+				"icon": "cloud",
+				"title": "Cloud Migration & DevOps",
+				"description": "Fast, secure, and reliable deployments in the cloud.",
+				"featured": false
+			},
+			{
+				"icon": "chart",
+				"title": "Data Analytics & BI",
+				"description": "Turn your data into actionable insights with business intelligence dashboards.",
+				"featured": false
+			},
+			{
+				"icon": "book",
+				"title": "Training & Support",
+				"description": "Ongoing technical support to maximize your team's software adoption.",
+				"featured": false
+			}
+		]
+	}
+}
