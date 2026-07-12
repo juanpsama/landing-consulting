@@ -1,7 +1,4 @@
 // src/pages/go/[slug].ts
-
-export const prerender = false;
-
 import type { APIRoute } from 'astro';
 import { teamMembers, generalShortLinks } from '../../data/links';
 
