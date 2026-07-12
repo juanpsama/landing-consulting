@@ -4,12 +4,15 @@ import tailwindcss from '@tailwindcss/vite';
 
 import sitemap from '@astrojs/sitemap';
 
+import cloudflare from '@astrojs/cloudflare';
+
 const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
 
 export default defineConfig({
   site: isGithubPages ? 'https://juanpsama.github.io' : 'https://grupogarpe.com',
   base: isGithubPages ? '/landing-consulting' : '/',
   trailingSlash: 'always',
+  output: 'server',
 
   vite: {
     plugins: [tailwindcss()]
@@ -35,4 +38,6 @@ export default defineConfig({
       },
     }
   )],
+
+  adapter: cloudflare(),
 });

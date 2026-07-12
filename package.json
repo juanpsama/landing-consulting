@@ -1,23 +1,26 @@
 {
-	"name": "landing-garpe-astro",
-	"type": "module",
-	"version": "0.0.1",
-	"engines": {
-		"node": ">=22.12.0"
-	},
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro"
-	},
-	"dependencies": {
-		"@astrojs/sitemap": "^3.7.3",
-		"@tailwindcss/vite": "^4.3.2",
-		"astro": "^7.0.7",
-		"tailwindcss": "^4.3.0"
-	},
-	"devDependencies": {
-		"@types/node": "^26.1.1"
-	}
+  "name": "landing-garpe-astro",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "generate-types": "wrangler types"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "^14.1.2",
+    "@astrojs/sitemap": "^3.7.3",
+    "@tailwindcss/vite": "^4.3.2",
+    "astro": "^7.0.7",
+    "tailwindcss": "^4.3.0",
+    "wrangler": "^4.110.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1"
+  }
 }
