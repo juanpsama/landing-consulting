@@ -10,15 +10,15 @@ export interface TeamMember {
 
 // Registro estático del equipo
 export const teamMembers: Record<string, TeamMember> = {
-    "gabriel-ramon": {
+    "gabriel": {
         name: "Gabriel Ramón Cupil",
         role: "Lead Developer & Tech Consultant",
         phone: "+529611692718",
         email: "gabriel.ramon@grupogarpe.com",
         avatarUrl: null,
     },
-    "juan-garcia": {
-        name: "Juan García",
+    "juan": {
+        name: "Juan Pablo García Samayoa",
         role: "Project Manager",
         phone: "+529612519488",
         email: "juan.garcia@grupogarpe.com",

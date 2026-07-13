@@ -1,0 +1,206 @@
+---
+import { teamMembers } from "../../../data/links";
+import "../../../styles/global.css";
+
+export function getStaticPaths() {
+	const locales = ["es", "en"];
+	const paths = [];
+
+	for (const locale of locales) {
+		for (const slug of Object.keys(teamMembers)) {
+			paths.push({
+				params: { locale, slug },
+			});
+		}
+	}
+
+	return paths;
+}
+
+const { locale, slug } = Astro.params;
+const member = teamMembers[slug];
+
+if (!member) {
+	return Astro.redirect("/404");
+}
+
+// Diccionario de textos localizados para el Modal VIP
+const i18n = {
+	es: {
+		greeting: `¡Hola! Soy ${member.name.split(" ")[0]}`,
+		subtitle:
+			"Guarda mi contacto directo para hablar sobre el motor tecnológico de tu negocio.",
+		button: "📥 Guardar en mis contactos",
+		close: "Cerrar e ir a mi perfil completo",
+		titleSuffix: "Perfil Profesional",
+	},
+	en: {
+		greeting: `Hi! I'm ${member.name.split(" ")[0]}`,
+		subtitle:
+			"Save my direct contact to talk about the technological engine of your business.",
+		button: "📥 Save to Contacts",
+		close: "Close and view full profile",
+		titleSuffix: "Professional Profile",
+	},
+};
+
+// Seleccionamos los textos según el locale actual (fallback a 'es')
+const t = i18n[locale as "es" | "en"] || i18n.es;
+---
+
+<!doctype html>
+<html lang={locale}>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{member.name} | {t.titleSuffix} — Grupo Garpe</title>
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Geist:wght@700&family=Inter:wght@400;500&family=Roboto+Mono:wght@500&display=swap"
+			rel="stylesheet"
+		/>
+
+		<style>
+			.font-geist {
+				font-family: "Geist", sans-serif;
+			}
+			.font-mono {
+				font-family: "Roboto Mono", monospace;
+			}
+			.font-inter {
+				font-family: "Inter", sans-serif;
+			}
+		</style>
+	</head>
+	<body class="bg-[#F8F9FA] font-inter text-[#1A2333] antialiased">
+		<main class="max-w-3xl mx-auto px-6 py-20">
+			<div class="flex items-center gap-6 mb-8">
+				<div
+					class="w-32 h-32 rounded-xl overflow-hidden border border-slate-200 shadow-sm"
+				>
+					{
+						member.avatarUrl ? (
+							<img
+								src={member.avatarUrl}
+								alt={member.name}
+								class="w-full h-full object-cover grayscale-[20%]"
+							/>
+						) : (
+							<div class="w-full h-full flex items-center justify-center bg-slate-200 text-slate-500">
+								<span class="text-4xl font-mono">
+									{member.name?.slice(0, 2).toUpperCase()}
+								</span>
+							</div>
+						)
+					}
+				</div>
+				<div>
+					<h1 class="text-4xl font-geist text-[#1A2333] mb-2">
+						{member.name}
+					</h1>
+					<p class="text-lg font-mono text-[#D97706]">
+						{member.role}
+					</p>
+				</div>
+			</div>
+
+			<section class="prose prose-slate">
+				{
+					locale === "es" ? (
+						<p>
+							Contenido de tu perfil en Español... Estrategia,
+							arquitectura y desarrollo.
+						</p>
+					) : (
+						<p>
+							Profile content in English... Strategy,
+							architecture, and development.
+						</p>
+					)
+				}
+			</section>
+		</main>
+
+		<div
+			id="vcard-modal"
+			class="hidden fixed inset-0 bg-[#1A2333]/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+		>
+			<div
+				class="bg-white rounded-2xl max-w-sm w-full p-8 text-center shadow-2xl border border-slate-100 relative"
+			>
+				<div
+					class="absolute top-4 left-4 text-slate-100 font-mono text-4xl opacity-50 select-none"
+				>
+					&#123; G &#125;
+				</div>
+
+				<div
+					class="w-20 h-20 mx-auto mb-5 rounded-full overflow-hidden border-4 border-white shadow-md relative z-10"
+				>
+					{
+						member.avatarUrl ? (
+							<img
+								src={member.avatarUrl}
+								alt={member.name}
+								class="w-full h-full object-cover grayscale-[20%]"
+							/>
+						) : (
+							<div class="w-full h-full flex items-center justify-center bg-slate-200 text-slate-500">
+								<span class="text-4xl font-mono">
+									{member.name?.slice(0, 2).toUpperCase()}
+								</span>
+							</div>
+						)
+					}
+				</div>
+
+				<h3 class="text-2xl font-geist text-[#1A2333] mb-2">
+					{t.greeting}
+				</h3>
+				<p class="text-sm font-inter text-slate-500 mb-8 px-2">
+					{t.subtitle}
+				</p>
+
+				<a
+					href={`/api/vcard/${slug}/`}
+					class="block w-full py-3.5 bg-[#D97706] hover:bg-[#b46204] text-white font-inter font-medium rounded-lg transition-colors mb-4 shadow-lg shadow-[#D97706]/20"
+				>
+					{t.button}
+				</a>
+
+				<button
+					id="close-modal-btn"
+					class="text-sm font-inter text-slate-400 hover:text-[#1A2333] underline underline-offset-2 transition-colors"
+				>
+					{t.close}
+				</button>
+			</div>
+		</div>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const urlParams = new URLSearchParams(window.location.search);
+				const modal = document.getElementById("vcard-modal");
+				const closeBtn = document.getElementById("close-modal-btn");
+
+				if (urlParams.get("action") === "vcard" && modal) {
+					modal.classList.remove("hidden");
+				}
+
+				if (closeBtn && modal) {
+					closeBtn.addEventListener("click", () => {
+						modal.classList.add("hidden");
+						// Limpia el ?action=vcard de la barra de navegación sin recargar
+						window.history.replaceState(
+							{},
+							document.title,
+							window.location.pathname,
+						);
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

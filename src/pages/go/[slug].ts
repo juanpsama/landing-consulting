@@ -2,16 +2,27 @@
 import type { APIRoute } from 'astro';
 import { teamMembers, generalShortLinks } from '../../data/links';
 
-export const GET: APIRoute = async ({ params }) => {
+export const GET: APIRoute = async ({ params, request }) => {
     const slug = params.slug?.toLowerCase() || "";
+    const url = new URL(request.url);
 
-    console.log(`Redirection request for slug: ${slug}`);
+    // TRUCO SENIOR: Calculamos el origen dinámicamente (ej. "http://localhost:4321" o "https://grupogarpe.com")
+    // Al usar url.origin, se adapta automáticamente al entorno en el que esté corriendo.
+    const currentOrigin = url.origin;
 
+    console.log(`[Router] Request for slug: "${slug}" on origin: ${currentOrigin}`);
+
+    if (slug === "") {
+        return new Response(null, {
+            status: 302, // Usamos 302 temporal en desarrollo para evitar que el navegador cachee de forma agresiva
+            headers: { 'Location': `${currentOrigin}` }
+        });
+    }
+
+    // 2. ¿Es un miembro del equipo?
     const member = teamMembers[slug];
-
-    console.log(`Found team member: ${member ? member.name : 'No member found'}`);
-
     if (member) {
+        // Inyectamos currentOrigin de manera dinámica en los href, metas y scripts
         const htmlWithPreview = `<!DOCTYPE html>
             <html lang="es">
             <head>
@@ -20,13 +31,13 @@ export const GET: APIRoute = async ({ params }) => {
             
             <meta property="og:title" content="${member.name}">
             <meta property="og:description" content="${member.role} — Tecnología que escala con tu negocio.">
-            <meta property="og:image" content="https://grupogarpe.com${member.avatarUrl}">
+            <meta property="og:image" content="${currentOrigin}${member.avatarUrl}">
             <meta property="og:type" content="profile">
             
-            <meta http-equiv="refresh" content="0;url=https://grupogarpe.com/es/team/${slug}?action=vcard">
+            <meta http-equiv="refresh" content="0;url=${currentOrigin}/es/team/${slug}?action=vcard">
             </head>
             <body style="background: #1A2333;">
-            <script>window.location.replace("https://grupogarpe.com/es/team/${slug}?action=vcard");</script>
+            <script>window.location.replace("${currentOrigin}/es/team/${slug}?action=vcard");</script>
             </body>
             </html>`;
 
@@ -35,18 +46,22 @@ export const GET: APIRoute = async ({ params }) => {
         });
     }
 
-    // 2. ¿Es un enlace corto general de marketing?
+    // 3. ¿Es un enlace corto general de marketing?
     if (generalShortLinks[slug]) {
-        console.log(`Found general short link: ${generalShortLinks[slug]}`);
+        // Validamos si es una ruta interna relativa para concatenar el origen dinámico
+        const targetLocation = generalShortLinks[slug].startsWith('http')
+            ? generalShortLinks[slug]
+            : `${currentOrigin}${generalShortLinks[slug]}`;
+
         return new Response(null, {
-            status: 301,
-            headers: { 'Location': generalShortLinks[slug] }
+            status: 302,
+            headers: { 'Location': targetLocation }
         });
     }
 
-    // 3. Fallback (Link no existe)
+    // 4. Fallback (Link no existe)
     return new Response(null, {
         status: 302,
-        headers: { 'Location': 'https://grupogarpe.com/404' }
+        headers: { 'Location': `${currentOrigin}/404` }
     });
 }
