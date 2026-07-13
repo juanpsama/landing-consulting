@@ -10,9 +10,9 @@ export const defaultLang = 'es';
 export const ui = {
   es: {
     'site.title': 'Grupo Garpe | Desarrollo, Consultoría y Automatización',
-    'site.description': 'Ayudamos a las empresas y PyMEs a crecer con tecnología moderna, automatización inteligente y asesoría estratégica a medida.',
+    'site.description': 'Ayudamos a las empresas a crecer con tecnología moderna, automatización inteligente y asesoría estratégica a medida.',
     'hero.title': 'Desarrollo, Consultoría y Automatización digital para empresas',
-    'hero.subtitle': 'Impulsa tu PyME con software a medida, automatización de procesos y consultoría tecnológica. Optimizamos tu operación para que te enfoques en crecer.',
+    'hero.subtitle': 'Impulsa tu negociocon software a medida, automatización de procesos y consultoría tecnológica. Optimizamos tu operación para que te enfoques en crecer.',
     'hero.cta': 'Empezar',
     'hero.services': 'Ver servicios',
     'nav.solutions': 'Soluciones',
