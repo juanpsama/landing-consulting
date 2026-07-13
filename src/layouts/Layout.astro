@@ -1,33 +1,55 @@
 ---
+// src/layouts/Layout.astro
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
-import HeroSection from "../components/HeroSection.astro";
-// import ServicesSection from '../components/ServicesSection.astro';
-import ServicesSection from "../components/ServicesSection_0001.astro";
 import Footer from "../components/Footer.astro";
+import { ui } from "../i18n/ui";
 
 export interface Props {
 	lang: string;
-	title: string;
-	description: string;
-	h1: string;
-	subtitle: string;
-	cta: string;
-	services: string;
+	title?: string;
+	description?: string;
 }
 
-const { lang, title, description, h1, subtitle, cta, services } = Astro.props;
-const origin = Astro.site!.origin.replace(/\/$/, "");
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const { lang, title, description } = Astro.props;
 
-const esUrl = `${origin}${base}/es/`;
-const enUrl = `${origin}${base}/en/`;
+const finalLang =
+	(lang as keyof typeof ui) ??
+	(Astro.currentLocale as keyof typeof ui) ??
+	"es";
+const t = ui[finalLang];
+const finalTitle = title ? `${title} | ${t["site.title"]}` : t["site.title"];
+const finalDescription = description ?? t["site.description"];
 
+// 1. Manejo seguro de la ruta actual
 const cleanPathname = Astro.url.pathname.endsWith("/")
-	? Astro.url.pathname
-	: `${Astro.url.pathname}/`;
+	? Astro.url.pathname.slice(0, -1)
+	: Astro.url.pathname;
 
-const canonicalURL = new URL(cleanPathname, Astro.site);
+const baseOrigin = import.meta.env.PROD ? Astro.site : Astro.url;
+
+const canonicalURL = new URL(cleanPathname, baseOrigin);
+
+// 2. Función para generar las URLs alternativas conservando la ruta
+const getAlternateUrl = (targetLang: string) => {
+	const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+	const pathWithoutBase = cleanPathname.startsWith(base)
+		? cleanPathname.slice(base.length)
+		: cleanPathname;
+
+	const regex = new RegExp(`^\\/${finalLang}(\\/|$)`);
+	let newPath = pathWithoutBase.replace(regex, `/${targetLang}$1`);
+
+	if (newPath === pathWithoutBase && pathWithoutBase.startsWith("/")) {
+		newPath = `/${targetLang}${pathWithoutBase}`;
+	}
+
+	return new URL(`${base}${newPath}`, Astro.site).href;
+};
+
+// 3. Generamos las URLs correctas para cada idioma
+const esUrl = getAlternateUrl("es");
+const enUrl = getAlternateUrl("en");
 ---
 
 <html lang={lang}>
@@ -35,7 +57,7 @@ const canonicalURL = new URL(cleanPathname, Astro.site);
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content={description} />
+		<meta name="description" content={finalDescription} />
 		<meta name="robots" content="index, follow" />
 		<link rel="canonical" href={canonicalURL} />
 		<link rel="alternate" hreflang="es" href={esUrl} />
@@ -43,7 +65,7 @@ const canonicalURL = new URL(cleanPathname, Astro.site);
 		<link rel="alternate" hreflang="x-default" href={esUrl} />
 		<link rel="sitemap" href="/sitemap-index.xml" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<title>{title}</title>
+		<title>{finalTitle}</title>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
@@ -53,8 +75,8 @@ const canonicalURL = new URL(cleanPathname, Astro.site);
 	</head>
 	<body>
 		<NavBar />
-		<HeroSection {h1} {subtitle} {cta} {services} />
-		<ServicesSection />
+		<slot />
+
 		<Footer />
 	</body>
 </html>
