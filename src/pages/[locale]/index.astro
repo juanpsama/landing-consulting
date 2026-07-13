@@ -6,6 +6,7 @@ import HeroSection from "../../components/HeroSection.astro";
 // import ServicesSection from '../components/ServicesSection.astro';
 import ServicesSection from "../../components/ServicesSection_0001.astro";
 import { ui } from "../../i18n/ui";
+import SolutionsSection from "../../components/SolutionsSection.astro";
 
 export async function getStaticPaths() {
 	return [{ params: { locale: "es" } }, { params: { locale: "en" } }];
@@ -24,4 +25,5 @@ const h1 = t['hero.title'];
 		services={t["hero.services"]}
 	/>
 	<ServicesSection />
+	<SolutionsSection />
 </Layout>
