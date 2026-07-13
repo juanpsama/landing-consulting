@@ -3,12 +3,51 @@
 import Layout from "../layouts/Layout.astro";
 import { ui } from "../i18n/ui";
 
-const lang = (Astro.currentLocale ?? "es") as keyof typeof ui;
+const supportedLangs = Object.keys(ui) as (keyof typeof ui)[];
+const defaultLang: keyof typeof ui = "es";
+
+function detectLang(): keyof typeof ui {
+	// 1. Si Astro logró resolver el locale (raro en 404, pero por si acaso)
+	if (
+		Astro.currentLocale &&
+		supportedLangs.includes(Astro.currentLocale as keyof typeof ui)
+	) {
+		return Astro.currentLocale as keyof typeof ui;
+	}
+
+	// 2. Revisa manualmente el primer segmento de la ruta (ej. /en/algo-roto)
+	const segments = Astro.url.pathname.split("/").filter(Boolean);
+	if (
+		segments[0] &&
+		supportedLangs.includes(segments[0] as keyof typeof ui)
+	) {
+		return segments[0] as keyof typeof ui;
+	}
+
+	// 3. Sin prefijo -> adivina con el header Accept-Language del navegador
+	const acceptLanguage = Astro.request.headers.get("accept-language");
+	console.log("Accept-Language header:", acceptLanguage);
+	if (acceptLanguage) {
+		const preferred = acceptLanguage
+			.split(",")
+			.map((entry) =>
+				entry.split(";")[0].trim().split("-")[0].toLowerCase(),
+			);
+
+		const match = preferred.find((l) =>
+			supportedLangs.includes(l as keyof typeof ui),
+		);
+		if (match) return match as keyof typeof ui;
+	}
+
+	return defaultLang;
+}
+
+const lang = detectLang();
 const t = ui[lang];
 
-const title = `Página no encontrada`;
-const description =
-	"Parece que esta ruta no existe. Te ayudamos a volver al inicio.";
+const title = t["404.title"];
+const description = t["404.description"];
 ---
 
 <Layout lang={lang} title={title} description={description}>
@@ -26,38 +65,38 @@ const description =
 			<div
 				class="inline-flex items-center rounded-pill border border-hairline bg-surface px-4 py-1.5 text-xs font-medium uppercase tracking-widest text-steel"
 			>
-				Ruta no encontrada
+				{t["404.badge"]}
 			</div>
 
 			<h1
 				class="text-4xl font-extrabold tracking-tight text-ink sm:text-6xl lg:text-7xl"
 			>
-				Esta página no existe{" "}
+				{t["404.title"]}{" "}
 				(<span
 					class="bg-linear-to-br from-brand-tag to-brand-green-deep bg-clip-text text-transparent"
 				>
-					todavía
+					{t["404.highlight"]}
 				</span>).
 			</h1>
 
 			<p class="text-lg text-steel max-w-xl leading-relaxed">
-				El enlace que buscas puede haber cambiado o ya no está disponible. Mientras tanto, te ayudamos a volver a un entorno estable.
+				{t["404.description"]}
 			</p>
 
 			<div
 				class="mt-6 flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
 			>
 				<a
-					href="/"
+					href={`/${lang}`}
 					class="inline-flex w-full sm:w-auto items-center justify-center rounded-pill bg-[#0a0a0a] px-8 py-3.5 text-sm font-semibold text-white transition-transform duration-200 hover:scale-105 active:scale-95"
 				>
-					Volver al inicio
+					{t["404.primary_btn"]}
 				</a>
 				<a
 					href={`/${lang}/#services`}
 					class="inline-flex w-full sm:w-auto items-center justify-center rounded-pill border border-hairline bg-surface px-8 py-3.5 text-sm font-medium text-ink transition-colors duration-200 hover:bg-hairline"
 				>
-					Explorar servicios
+					{t["404.secondary_btn"]}
 				</a>
 			</div>
 		</div>

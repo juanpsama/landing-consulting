@@ -34,7 +34,15 @@ export const ui = {
     'member.greeting': '¡Hola! Soy {name}',
     'member.subtitle': 'Guarda mi contacto directo para hablar sobre el motor tecnológico de tu negocio.',
     'member.modal_button': '📥 Guardar en mis contactos',
-    'member.modal_close': 'Cerrar e ir a mi perfil completo'
+    'member.modal_close': 'Cerrar e ir a mi perfil completo',
+    // 404 page
+    '404.title': 'Esta página no existe',
+    '404.description': 'El enlace que buscas puede haber cambiado o ya no está disponible. Mientras tanto, te ayudamos a volver a un entorno estable.',
+    '404.badge': 'RUTA NO ENCONTRADA',
+    '404.highlight': 'todavía',
+    '404.primary_btn': 'Volver al inicio',
+    '404.secondary_btn': 'Explorar servicios',
+
   },
   en: {
     'site.title': 'Grupo Garpe | Development, Consulting & Automation',
@@ -62,7 +70,14 @@ export const ui = {
     'member.greeting': 'Hi! I\'m {name}',
     'member.subtitle': 'Save my direct contact to talk about the technological engine of your business.',
     'member.modal_button': '📥 Save to Contacts',
-    'member.modal_close': 'Close and view full profile'
+    'member.modal_close': 'Close and view full profile',
+    // 404 page
+    '404.title': 'This page doesn\'t  exist',
+    '404.description': 'The link you are looking for may have changed or is no longer available. In the meantime, we help you return to a stable environment.',
+    '404.badge': 'PAGE NOT FOUND',
+    '404.highlight': 'yet',
+    '404.primary_btn': 'Go back to home',
+    '404.secondary_btn': 'Explore services',
   },
 } as const;
 
