@@ -1,12 +1,40 @@
 ---
-import { languages } from '../i18n/ui';
+// src/components/LanguageToggle.astro
+// src/components/LanguageToggle.astro
+import { languages } from "../i18n/ui";
 
-const currentLang = (Astro.currentLocale ?? 'es') as keyof typeof languages;
-const toggleLang = currentLang === 'es' ? 'en' : 'es';
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
-const toggleUrl = `${base}/${toggleLang}/`;
+const currentLang = (Astro.currentLocale ?? "es") as keyof typeof languages;
+const toggleLang = currentLang === "es" ? "en" : "es";
+
+// 1. Obtenemos la ruta actual (ej. /my-base/es/contacto/)
+const { pathname } = Astro.url;
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+// 2. Removemos la base temporalmente para analizar solo la ruta (ej. /es/contacto/)
+const pathWithoutBase = pathname.startsWith(base)
+	? pathname.slice(base.length)
+	: pathname;
+
+// 3. Expresión regular para encontrar el idioma actual justo al inicio de la ruta
+// Esto evita reemplazar letras accidentalmente (ej. evitar que /es/estudios pase a /en/entudios)
+const regex = new RegExp(`^\\/${currentLang}(\\/|$)`);
+
+// 4. Reemplazamos el idioma en la ruta o, si estamos en la raíz sin prefijo, lo agregamos
+let newPath = pathWithoutBase.replace(regex, `/${toggleLang}$1`);
+
+// Si la ruta no tenía el prefijo del idioma actual (suele pasar en la página de inicio raíz '/'),
+// nos aseguramos de anteponer el nuevo idioma.
+if (newPath === pathWithoutBase && pathWithoutBase.startsWith("/")) {
+	newPath = `/${toggleLang}${pathWithoutBase}`;
+}
+
+// 5. Reconstruimos la URL final uniendo la base y la nueva ruta
+const toggleUrl = `${base}${newPath}`;
 ---
 
-<a href={toggleUrl} class="inline-flex items-center gap-1.5 bg-transparent text-ink text-sm font-medium px-4 py-[6px] rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface">
-  <span>{languages[toggleLang]}</span>
+<a
+	href={toggleUrl}
+	class="inline-flex items-center gap-1.5 bg-transparent text-ink text-sm font-medium px-4 py-1.5 rounded-pill no-underline border border-hairline transition-colors duration-150 hover:bg-surface"
+>
+	<span>{languages[toggleLang]}</span>
 </a>

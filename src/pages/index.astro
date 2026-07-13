@@ -1,17 +1,24 @@
 ---
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+// src/pages/index.astro
+const url = new URL(Astro.request.url);
+
+if (url.hostname.includes("garpe.dev")) {
+	return Astro.redirect("https://grupogarpe.com", 301);
+}
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const redirectUrl = `${base}/es/`;
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
-    <link rel="canonical" href={redirectUrl} />
-    <title>Garpe</title>
-  </head>
-  <body>
-    <a href={redirectUrl}>Ir a la página</a>
-  </body>
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
+		<link rel="canonical" href={redirectUrl} />
+		<title>Grupo Garpe</title>
+	</head>
+	<body>
+		<a href={redirectUrl}>Ir a la página</a>
+	</body>
 </html>
