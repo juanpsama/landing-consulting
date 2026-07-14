@@ -35,6 +35,7 @@ export const ui = {
     'member.subtitle': 'Guarda mi contacto directo para hablar sobre el motor tecnológico de tu negocio.',
     'member.modal_button': '📥 Guardar en mis contactos',
     'member.modal_close': 'Cerrar e ir a mi perfil completo',
+    'member.slogan': 'Deja de hacer todo a mano!... te ayudamos a automatizar y a adoptar la tecnologia en tu negocio.',
     // 404 page
     '404.title': 'Esta página no existe',
     '404.description': 'El enlace que buscas puede haber cambiado o ya no está disponible. Mientras tanto, te ayudamos a volver a un entorno estable.',
@@ -59,7 +60,7 @@ export const ui = {
     'hero.title': 'Development, Consulting & Automation for SMBs',
     'hero.subtitle': 'Scale your SME with custom software, workflow automation, and strategic tech consulting. We optimize your operations so you can focus on growth.',
     'hero.cta': 'Get started',
-    'hero.services': 'See services',
+    'hero.services': 'Explore services',
     'nav.solutions': 'Solutions',
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
@@ -80,6 +81,7 @@ export const ui = {
     'member.subtitle': 'Save my direct contact to talk about the technological engine of your business.',
     'member.modal_button': '📥 Save to Contacts',
     'member.modal_close': 'Close and view full profile',
+    'member.slogan': 'Leave the manual work behind!... We help you automate and adopt technology in your business.',
     // 404 page
     '404.title': 'This page doesn\'t  exist',
     '404.description': 'The link you are looking for may have changed or is no longer available. In the meantime, we help you return to a stable environment.',

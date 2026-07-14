@@ -6,22 +6,23 @@ import HeroSection from "../../components/HeroSection.astro";
 // import ServicesSection from '../components/ServicesSection.astro';
 import ServicesSection from "../../components/ServicesSection_0001.astro";
 import { ui } from "../../i18n/ui";
+import ContactSection from "../../components/ContactSection.astro";
 
 export async function getStaticPaths() {
-	return [{ params: { locale: "es" } }, { params: { locale: "en" } }];
+  return [{ params: { locale: "es" } }, { params: { locale: "en" } }];
 }
 
 const lang = (Astro.currentLocale ?? "es") as keyof typeof ui;
 const t = ui[lang];
-const h1 = t['hero.title'];
 ---
 
 <Layout lang={lang}>
-	<HeroSection
-		h1 = {h1}
-		subtitle={t["hero.subtitle"]}
-		cta={t["hero.cta"]}
-		services={t["hero.services"]}
-	/>
-	<ServicesSection />
+  <HeroSection
+    title={t["hero.title"]}
+    subtitle={t["hero.subtitle"]}
+    cta={t["hero.cta"]}
+    services={t["hero.services"]}
+  />
+  <ServicesSection />
+  <ContactSection />
 </Layout>
