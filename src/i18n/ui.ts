@@ -42,6 +42,15 @@ export const ui = {
     '404.highlight': 'todavía',
     '404.primary_btn': 'Volver al inicio',
     '404.secondary_btn': 'Explorar servicios',
+    // Contact section
+    'contact.title': 'Contáctanos',
+    'contact.subtitle': 'Cuéntanos sobre tu proyecto y te ayudaremos a encontrar la mejor solución.',
+    'contact.name': 'Nombre',
+    'contact.email': 'Correo electrónico',
+    'contact.phone': 'Teléfono',
+    'contact.message': 'Mensaje',
+    'contact.send': 'Enviar mensaje',
+    'contact.whatsapp': 'WhatsApp',
 
   },
   en: {
@@ -78,6 +87,15 @@ export const ui = {
     '404.highlight': 'yet',
     '404.primary_btn': 'Go back to home',
     '404.secondary_btn': 'Explore services',
+    // Contact section
+    'contact.title': 'Contact us',
+    'contact.subtitle': 'Tell us about your project and we\'ll help you find the best solution.',
+    'contact.name': 'Name',
+    'contact.email': 'Email',
+    'contact.phone': 'Phone',
+    'contact.message': 'Message',
+    'contact.send': 'Send message',
+    'contact.whatsapp': 'WhatsApp',
   },
 } as const;
 
