@@ -3,6 +3,7 @@
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
+import GoogleTagManager from "../components/reusable/GoogleTagManager.astro";
 import { ui } from "../i18n/ui";
 
 export interface Props {
@@ -50,10 +51,13 @@ const getAlternateUrl = (targetLang: string) => {
 // 3. Generamos las URLs correctas para cada idioma
 const esUrl = getAlternateUrl("es");
 const enUrl = getAlternateUrl("en");
+// Google Tag Manager ID
+const GTM_ID = "GTM-NTN5CL8T";
 ---
 
 <html lang={lang}>
 	<head>
+		<GoogleTagManager id={GTM_ID} part="head" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -74,6 +78,7 @@ const enUrl = getAlternateUrl("en");
 		/>
 	</head>
 	<body>
+		<GoogleTagManager id={GTM_ID} part="body" />
 		<NavBar />
 		<slot />
 

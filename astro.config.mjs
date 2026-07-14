@@ -6,6 +6,8 @@ import sitemap from '@astrojs/sitemap';
 
 import cloudflare from '@astrojs/cloudflare';
 
+import partytown from '@astrojs/partytown';
+
 const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
 
 export default defineConfig({
@@ -26,8 +28,8 @@ export default defineConfig({
     },
   },
 
-  integrations: [sitemap(
-    {
+  integrations: [
+    sitemap({
       i18n: {
         defaultLocale: 'es',
         locales: {
@@ -35,8 +37,13 @@ export default defineConfig({
           es: 'es-MX',
         },
       },
-    }
-  )],
+    }),
+    partytown({
+      config: {
+        forward: ["dataLayer.push"], // <- Esto es vital para GTM
+      },
+    }),
+  ],
 
   adapter: cloudflare(),
 });
