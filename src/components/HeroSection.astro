@@ -28,6 +28,7 @@ const { h1, subtitle, cta, services } = Astro.props;
 		<div class="mt-8 flex gap-4 flex-wrap justify-center">
 			<a
 				href="#contact"
+				data-track="hero-cta-contacto"
 				class="inline-flex items-center justify-center bg-brand-green text-primary text-base font-semibold px-7 py-3.5 rounded-lg shadow-sm hover:shadow-md hover:-translate-y-0.5 hover:bg-brand-green-deep transition-all duration-200 active:scale-95"
 			>
 				{cta}
@@ -35,6 +36,7 @@ const { h1, subtitle, cta, services } = Astro.props;
 
 			<a
 				href="#services"
+				data-track="hero-cta-servicios"
 				class="inline-flex items-center justify-center bg-transparent text-ink text-base font-medium px-7 py-3.5 rounded-lg border border-steel/30 shadow-sm hover:border-steel hover:bg-surface transition-all duration-200 active:scale-95 backdrop-blur-sm"
 			>
 				{services}
