@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
+import preact from '@astrojs/preact';
 
 import sitemap from '@astrojs/sitemap';
 
@@ -26,8 +27,9 @@ export default defineConfig({
     },
   },
 
-  integrations: [sitemap(
-    {
+  integrations: [
+    preact(),
+    sitemap({
       i18n: {
         defaultLocale: 'es',
         locales: {
@@ -35,8 +37,8 @@ export default defineConfig({
           es: 'es-MX',
         },
       },
-    }
-  )],
+    }),
+  ],
 
   adapter: cloudflare(),
 });
