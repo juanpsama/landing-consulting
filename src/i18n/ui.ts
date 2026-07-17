@@ -52,6 +52,8 @@ export const ui = {
     'contact.message': 'Mensaje',
     'contact.send': 'Enviar mensaje',
     'contact.whatsapp': 'WhatsApp',
+    'contact.success': '¡Mensaje enviado con éxito!',
+    'contact.error': 'Algo salió mal. Inténtalo de nuevo.',
 
   },
   en: {
@@ -98,6 +100,8 @@ export const ui = {
     'contact.message': 'Message',
     'contact.send': 'Send message',
     'contact.whatsapp': 'WhatsApp',
+    'contact.success': 'Message sent successfully!',
+    'contact.error': 'Something went wrong. Try again.',
   },
 } as const;
 
