@@ -4,6 +4,7 @@ import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import { ui } from "../i18n/ui";
+import WhatsappButton from "../components/WhatsappButton.astro";
 
 export interface Props {
 	lang: string;
@@ -74,6 +75,7 @@ const enUrl = getAlternateUrl("en");
 		/>
 	</head>
 	<body>
+		<WhatsappButton area_code="+52" whatsapp="9612401220" />
 		<NavBar />
 		<slot />
 
