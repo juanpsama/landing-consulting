@@ -10,77 +10,75 @@ const homeUrl = `${base}/${lang}/`;
 ---
 
 <nav
-	id="navbar"
-	class="nav-hidden fixed top-0 left-0 right-0 z-50 h-16 bg-canvas border-b border-hairline flex items-center px-6"
+  id="navbar"
+  class="nav-hidden fixed top-0 left-0 right-0 z-50 h-16 bg-canvas border-b border-hairline flex items-center px-6"
 >
-	<a href={homeUrl} class="text-ink font-semibold text-lg no-underline mr-10"
-		>Home</a
-	>
-	<div class="hidden sm:flex items-center gap-8">
-		<a
-			href="#services"
-			class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
-			>{t["nav.solutions"]}</a
-		>
-		<a
-			href="#"
-			class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
-			>{t["nav.blog"]}</a
-		>
-		<a
-			href="#"
-			class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
-			>{t["nav.contact"]}</a
-		>
-		<a
-			href="#"
-			class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
-			>{t["nav.customers"]}</a
-		>
-	</div>
-	<div class="ml-auto">
-		<LanguageToggle />
-	</div>
+  <a href={homeUrl} class="text-ink font-semibold text-lg no-underline mr-10"
+    >Home</a
+  >
+  <div class="hidden sm:flex items-center gap-8">
+    <a
+      href={homeUrl + "#services"}
+      class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
+      >{t["nav.solutions"]}
+    </a>
+    <a
+      href={homeUrl + "#blog"}
+      class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
+      >{t["nav.blog"]}
+    </a>
+    <a
+      href={homeUrl + "#contact"}
+      class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
+      >{t["nav.contact"]}
+    </a>
+    <a
+      href={homeUrl + "#customers"}
+      class="text-steel text-sm font-medium no-underline hover:text-ink transition-colors"
+      >{t["nav.customers"]}
+    </a>
+  </div>
+  <div class="ml-auto">
+    <LanguageToggle />
+  </div>
 </nav>
 
 <style is:global>
-	#navbar {
-		transition:
-			transform 1s ease,
-			opacity 0.3s ease;
-	}
-	#navbar.nav-hidden {
-		transform: translateY(-100%);
-		opacity: 0;
-		pointer-events: none;
-	}
+  #navbar {
+    transition: transform 1s ease, opacity 0.3s ease;
+  }
+  #navbar.nav-hidden {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
 </style>
 
 <script>
-	const navbar = document.getElementById("navbar") as HTMLElement | null;
-	let hideTimer: ReturnType<typeof setTimeout> | undefined;
+  const navbar = document.getElementById("navbar") as HTMLElement | null;
+  let hideTimer: ReturnType<typeof setTimeout> | undefined;
 
-	function onScroll() {
-		navbar?.classList.remove("nav-hidden");
-		clearTimeout(hideTimer);
-		hideTimer = setTimeout(() => {
-			navbar?.classList.add("nav-hidden");
-		}, 2500);
-	}
+  function onScroll() {
+    navbar?.classList.remove("nav-hidden");
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+      navbar?.classList.add("nav-hidden");
+    }, 2500);
+  }
 
-	window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
 
-	window.addEventListener(
-		"mousemove",
-		(e) => {
-			if (e.clientY < 150) {
-				navbar?.classList.remove("nav-hidden");
-				clearTimeout(hideTimer);
-				hideTimer = setTimeout(() => {
-					navbar?.classList.add("nav-hidden");
-				}, 2500);
-			}
-		},
-		{ passive: true },
-	);
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      if (e.clientY < 150) {
+        navbar?.classList.remove("nav-hidden");
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(() => {
+          navbar?.classList.add("nav-hidden");
+        }, 2500);
+      }
+    },
+    { passive: true },
+  );
 </script>

@@ -2,13 +2,13 @@
 import GradientBackground from "./GradientBackground.astro";
 
 export interface Props {
-	h1: string;
+	title: string;
 	subtitle: string;
 	cta: string;
 	services: string;
 }
 
-const { h1, subtitle, cta, services } = Astro.props;
+const { title, subtitle, cta, services } = Astro.props;
 ---
 
 <section
@@ -18,8 +18,9 @@ const { h1, subtitle, cta, services } = Astro.props;
 	<div class="relative z-10 w-full max-w-7xl px-8">
 		<h1
 			class="text-[clamp(2.25rem,5vw,72px)] font-semibold leading-[1.05] tracking-[-2px] max-w-[16ch] mx-auto text-ink"
-			set:html={h1}
-		/>
+		>
+			{title}
+		</h1>
 		<p
 			class="mt-6 text-lg font-normal leading-normal text-charcoal max-w-[48ch] mx-auto"
 		>

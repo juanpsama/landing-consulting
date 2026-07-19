@@ -1,0 +1,37 @@
+---
+import { ui } from "../i18n/ui";
+import ContactForm from "./ContactForm";
+
+const lang = (Astro.currentLocale ?? "es") as keyof typeof ui;
+const t = ui[lang];
+
+const labels = {
+  name: t["contact.name"],
+  email: t["contact.email"],
+  phone: t["contact.phone"],
+  message: t["contact.message"],
+  send: t["contact.send"],
+  success: t["contact.success"],
+  error: t["contact.error"],
+};
+---
+
+<section id="contact" class="py-16 lg:py-24 bg-surface">
+  <div class="max-w-7xl mx-auto px-8">
+    <header class="text-center mb-6">
+      <h2
+        class="text-[28px] lg:text-[36px] font-semibold text-ink leading-tight"
+      >
+        {t["contact.title"]}
+      </h2>
+      <p
+        class="mt-4 text-lg text-charcoal max-w-[54ch] mx-auto leading-relaxed"
+      >
+        {t["contact.subtitle"]}
+      </p>
+    </header>
+    <div class="bg-canvas rounded-lg p-8 border border-hairline shadow-sm">
+      <ContactForm labels={labels} client:load />
+    </div>
+  </div>
+</section>
