@@ -86,7 +86,7 @@ const GTM_ID = "GTM-NTN5CL8T";
 
 		<Footer />
 
-		<!-- <script is:inline>
+		<script is:inline>
 			document.addEventListener("click", function (event) {
 				// Busca si a lo que le dimos clic (o su contenedor) tiene data-track
 				const trackElement = event.target.closest("[data-track]");
@@ -97,7 +97,7 @@ const GTM_ID = "GTM-NTN5CL8T";
 					// Forzamos el envío del dato al dataLayer de Google
 					window.dataLayer = window.dataLayer || [];
 					window.dataLayer.push({
-						event: "clic_forzado",
+						event: "dl_clic_trackeado",
 						accion_boton: trackValue,
 					});
 
@@ -105,6 +105,6 @@ const GTM_ID = "GTM-NTN5CL8T";
 					console.log("🚀 Dato empujado a GTM:", trackValue);
 				}
 			});
-		</script> -->
+		</script>
 	</body>
 </html>
