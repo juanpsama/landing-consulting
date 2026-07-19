@@ -31,7 +31,7 @@ export const GET: APIRoute = async ({ params, request }) => {
                 const shortUrl = `https://garpe.dev/${slug.toLowerCase()}`;
 
                 const qrSvg = renderSVG(shortUrl, {
-                    blackColor: '#111827',
+                    blackColor: '#1a2333',
                     whiteColor: '#ffffff00', // Transparente
                 });
 
