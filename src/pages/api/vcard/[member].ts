@@ -1,10 +1,10 @@
 // src/pages/api/vcard/[member].ts
 import type { APIRoute } from "astro";
-import { teamMembers } from "../../../data/links";
+import teamMembers from "../../../data/members.json";
 
 export const GET: APIRoute = async ({ params, request }) => {
   const memberSlug = params.member || "";
-  const member = teamMembers[memberSlug];
+  const member = teamMembers[memberSlug as keyof typeof teamMembers];
 
   // Obtenemos el origen de la petición en tiempo de ejecución (localhost o dominio real)
   const url = new URL(request.url);
