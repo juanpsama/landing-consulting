@@ -86,6 +86,7 @@ const columns = [
 											href={link.href}
 											target="_blank"
 											rel="noopener noreferrer"
+											data-track={`footer-nav-${link.text.toLowerCase()}`}
 											class="text-sm text-steel no-underline hover:text-ink transition-colors"
 										>
 											{link.text}
@@ -96,6 +97,7 @@ const columns = [
 								return (
 									<a
 										href={link.href}
+										data-track={`footer-nav-${link.text.toLowerCase()}`}
 										class="text-sm text-steel no-underline hover:text-ink transition-colors"
 									>
 										{link.text}

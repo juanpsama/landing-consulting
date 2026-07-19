@@ -3,6 +3,7 @@
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
+import GoogleTagManager from "../components/reusable/GoogleTagManager.astro";
 import { ui } from "../i18n/ui";
 import WhatsappButton from "../components/WhatsappButton.astro";
 
@@ -51,10 +52,13 @@ const getAlternateUrl = (targetLang: string) => {
 // 3. Generamos las URLs correctas para cada idioma
 const esUrl = getAlternateUrl("es");
 const enUrl = getAlternateUrl("en");
+// Google Tag Manager ID
+const GTM_ID = "GTM-NTN5CL8T";
 ---
 
 <html lang={lang}>
 	<head>
+		<GoogleTagManager id={GTM_ID} part="head" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
@@ -75,10 +79,32 @@ const enUrl = getAlternateUrl("en");
 		/>
 	</head>
 	<body>
+		<GoogleTagManager id={GTM_ID} part="body" />
 		<WhatsappButton area_code="+52" whatsapp="9612401220" />
 		<NavBar />
 		<slot />
 
 		<Footer />
+
+		<script is:inline>
+			document.addEventListener("click", function (event) {
+				// Busca si a lo que le dimos clic (o su contenedor) tiene data-track
+				const trackElement = event.target.closest("[data-track]");
+
+				if (trackElement) {
+					const trackValue = trackElement.getAttribute("data-track");
+
+					// Forzamos el envío del dato al dataLayer de Google
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push({
+						event: "dl_clic_trackeado",
+						accion_boton: trackValue,
+					});
+
+					// Imprimimos en consola para que tú confirmes que funciona en local/prod
+					console.log("🚀 Dato empujado a GTM:", trackValue);
+				}
+			});
+		</script>
 	</body>
 </html>
