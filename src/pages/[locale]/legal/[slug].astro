@@ -1,0 +1,56 @@
+---
+// src/pages/[locale]/legal/[slug].astro
+import { languages, ui } from "../../../i18n/ui";
+import Layout from "../../../layouts/Layout.astro";
+import { getEntry, getCollection, render } from "astro:content";
+import Prose from "../../../components/Prose.astro";
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+	const legals = await getCollection("legal");
+
+	return legals.map((legal) => {
+		const [locale, slug] = legal.id.split("/");
+
+		return {
+			params: { locale, slug },
+		};
+	});
+}
+
+const { locale, slug } = Astro.params;
+
+const legalDoc = await getEntry("legal", `${locale}/${slug}`);
+
+if (!legalDoc) {
+	return Astro.redirect("/404");
+}
+
+const { Content } = await render(legalDoc);
+
+const t = ui[locale as keyof typeof ui];
+---
+
+<Layout lang={locale} title={legalDoc.data.title}>
+	<main class="max-w-3xl mx-auto py-12 px-4 sm:px-6 mt-8">
+		<header class="mb-10 border-b dark:border-gray-200 border-gray-800 pb-8">
+            <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight dark:text-gray-900 text-white mb-3">
+                {legalDoc.data.title}
+            </h1>
+            <p class="text-sm text-gray-500 dark:text-gray-400">
+                {t["legal.lastUpdated"]}: {
+                    legalDoc.data.lastUpdated.toLocaleDateString(locale, {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    })
+                }
+            </p>
+        </header>
+
+		<Prose class="mt-8">
+			<Content />
+		</Prose>
+	</main>
+</Layout>

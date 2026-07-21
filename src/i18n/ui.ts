@@ -54,7 +54,8 @@ export const ui = {
     'contact.whatsapp': 'WhatsApp',
     'contact.success': '¡Mensaje enviado con éxito!',
     'contact.error': 'Algo salió mal. Inténtalo de nuevo.',
-
+    // Legal pages
+    'legal.lastUpdated': 'Última actualización',
   },
   en: {
     'site.title': 'Grupo Garpe | Development, Consulting & Automation',
@@ -102,6 +103,8 @@ export const ui = {
     'contact.whatsapp': 'WhatsApp',
     'contact.success': 'Message sent successfully!',
     'contact.error': 'Something went wrong. Try again.',
+    // Legal pages
+    'legal.lastUpdated': 'Last updated',
   },
 } as const;
 

@@ -2,10 +2,27 @@
 // src/components/Footer.astro
 import { ui } from "../i18n/ui";
 import Logo from "./svgs/Logo.astro";
+import { getCollection } from "astro:content";
 
 const lang = (Astro.currentLocale ?? "es") as keyof typeof ui;
 const t = ui[lang];
 const year = new Date().getFullYear();
+
+const allLegals = await getCollection("legal");
+
+const currentLangLegals = allLegals.filter((doc) =>
+	doc.id.startsWith(`${lang}/`),
+);
+
+const legalLinks = currentLangLegals.map((doc) => {
+	const slug: string = doc.id.split("/")[1] as string;
+	const key = `footer.${slug}` as keyof typeof t;
+
+	return {
+		text: t[key] || doc.data.title,
+		href: `/${lang}/legal/${slug}`,
+	};
+});
 
 const columns = [
 	{
@@ -29,11 +46,7 @@ const columns = [
 	},
 	{
 		title: t["footer.legal"],
-		links: [
-			{ text: t["footer.tos"], href: "/tos" },
-			{ text: t["footer.privacy"], href: "/privacy" },
-			{ text: t["footer.cookies"], href: "/cookies" },
-		],
+		links: legalLinks,
 	},
 ];
 ---
