@@ -24,5 +24,27 @@
 			"persist": true,
 			"head_sampling_rate": 1
 		}
-	}
+	},
+	"routes": [
+		{
+			"pattern": "grupogarpe.com",
+			"custom_domain": true,
+			"enabled": true,
+			"previews_enabled": false,
+			"zone_name": "grupogarpe.com"
+		},
+		{
+			"pattern": "garpe.dev",
+			"custom_domain": true,
+			"enabled": true,
+			"previews_enabled": false,
+			"zone_name": "garpe.dev"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "SESSION",
+			"id": "1394fe7a5de743569586e01a590cb9ac"
+		}
+	]
 }

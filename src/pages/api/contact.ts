@@ -1,11 +1,11 @@
 // src/pages/api/contact.ts
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
+import { env } from "cloudflare:workers";
 
 export const POST: APIRoute = async ({ request, locals }) => {
-  const CF_ENV = locals.runtime?.env;
-  const RESEND_API_KEY = CF_ENV?.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
-  const EMAIL_TO = CF_ENV?.EMAIL_TO || import.meta.env.EMAIL_TO || "samajpablo@gmail.com";
+  const RESEND_API_KEY = env.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
+  const EMAIL_TO = env.EMAIL_TO || import.meta.env.EMAIL_TO || "samajpablo@gmail.com";
 
   if (!RESEND_API_KEY) {
     return new Response(JSON.stringify({ error: "Falta la API Key de Resend" }), { status: 500 });
