@@ -2,7 +2,11 @@
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "jsxImportSource": "preact"
+    "jsxImportSource": "preact",
+    "types": [
+      "astro/client",
+      "@cloudflare/workers-types"
+    ]  
   },
   "include": [
     ".astro/types.d.ts",

@@ -1,14 +1,29 @@
+// src/pages/api/contact.ts
 import type { APIRoute } from "astro";
 import { Resend } from "resend";
 
-const resend = new Resend(import.meta.env.RESEND_API_KEY);
+export const POST: APIRoute = async ({ request, locals }) => {
+  const CF_ENV = locals.runtime?.env;
+  const RESEND_API_KEY = CF_ENV?.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
+  const EMAIL_TO = CF_ENV?.EMAIL_TO || import.meta.env.EMAIL_TO || "samajpablo@gmail.com";
 
-export const POST: APIRoute = async ({ request }) => {
+  if (!RESEND_API_KEY) {
+    return new Response(JSON.stringify({ error: "Falta la API Key de Resend" }), { status: 500 });
+  }
+
+  const resend = new Resend(RESEND_API_KEY);
+
   const formData = await request.formData();
-  const name = formData.get("name")?.toString() ?? "";
-  const email = formData.get("email")?.toString() ?? "";
-  const phone = formData.get("phone")?.toString() ?? "";
-  const message = formData.get("message")?.toString() ?? "";
+
+  const getString = (key: string) => {
+    const value = formData.get(key);
+    return typeof value === "string" ? value : "";
+  };
+
+  const name = getString("name");
+  const email = getString("email");
+  const phone = getString("phone");
+  const message = getString("message");
 
   if (!name || !email || !message) {
     return new Response(JSON.stringify({ error: "Missing required fields" }), {
@@ -28,7 +43,7 @@ export const POST: APIRoute = async ({ request }) => {
 
   const { error } = await resend.emails.send({
     from: "onboarding@resend.dev",
-    to: "samajpablo@gmail.com",
+    to: EMAIL_TO,
     subject: `Contacto: ${name}`,
     html,
     replyTo: email,
