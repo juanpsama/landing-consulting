@@ -11,7 +11,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate-types": "wrangler types",
-    "deploy": "wrangler deploy --secrets-file .env",
+    "deploy": "wrangler deploy",
     "dev:wrangler": "wrangler dev"
   },
   "dependencies": {
