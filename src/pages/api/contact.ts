@@ -3,17 +3,25 @@ import type { APIRoute } from "astro";
 import { Resend } from "resend";
 import { env } from "cloudflare:workers";
 
+export const prerender = false;
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const RESEND_API_KEY = env.RESEND_API_KEY || import.meta.env.RESEND_API_KEY;
-    const EMAIL_TO = env.EMAIL_TO || import.meta.env.EMAIL_TO || "samajpablo@gmail.com";
+    const EMAIL_TO = (env.EMAIL_TO || import.meta.env.EMAIL_TO || "samajpablo@gmail.com")
+      .split(",")
+      .map((e: string) => e.trim())
+      .filter(Boolean);
+
+    console.log("RESEND_API_KEY presente:", !!RESEND_API_KEY);
+    console.log("EMAIL_TO length:", EMAIL_TO.length, "JSON:", JSON.stringify(EMAIL_TO));
 
     if (!RESEND_API_KEY) {
+      console.error("Falta RESEND_API_KEY en env");
       return new Response(JSON.stringify({ error: "Falta la API Key de Resend" }), { status: 500 });
     }
 
     const resend = new Resend(RESEND_API_KEY);
-
     const formData = await request.formData();
 
     const getString = (key: string) => {
@@ -51,6 +59,7 @@ export const POST: APIRoute = async ({ request }) => {
     });
 
     if (error) {
+      console.error("Resend error:", error);
       return new Response(JSON.stringify({ error: error.message }), {
         status: 500,
         headers: { "Content-Type": "application/json" },
