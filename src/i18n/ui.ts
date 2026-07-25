@@ -19,7 +19,7 @@ export const ui = {
     'role.lorenzo': 'Desarrollador Full-Stack',
     // Hero section
     'hero.title': 'Desarrollo, Consultoría y Automatización digital para empresas',
-    'hero.subtitle': 'Impulsa tu negociocon software a medida, automatización de procesos y consultoría tecnológica. Optimizamos tu operación para que te enfoques en crecer.',
+    'hero.subtitle': 'Impulsa tu negocio con software a medida, automatización de procesos y consultoría tecnológica. Optimizamos tu operación para que te enfoques en crecer.',
     'hero.cta': 'Empezar',
     'hero.services': 'Ver servicios',
     'nav.solutions': 'Soluciones',

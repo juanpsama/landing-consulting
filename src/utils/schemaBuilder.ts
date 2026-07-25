@@ -10,7 +10,7 @@ export function generateOrganizationSchema(seoData: any, localizedUi: any, curre
         const urlPrefix = currentLang === defaultLang ? '' : `${currentLang}/`;
         return {
             "@type": "Person",
-            "name": data.name,
+            "name": [data.name, data.lastName, data.mothersLastName].filter(Boolean).join(' '),
             "jobTitle": localizedUi[`role.${slug}`] || data.role,
             "url": `https://${seoData.domain}/${urlPrefix}${slug}`,
             "worksFor": {
