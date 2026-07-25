@@ -1,16 +1,29 @@
 {
 	"gabriel": {
-		"name": "Gabriel Ramón Cupil",
-		"role": "Lead Developer & Tech Consultant",
+		"name": "Gabriel",
+		"lastName": "Ramón",
+		"mothersLastName": "Cupil",
+		"role": "Tech Consultant",
 		"phone": "+529611692718",
 		"email": "gabriel.ramon@grupogarpe.com",
 		"avatarUrl": null
 	},
 	"juan": {
-		"name": "Juan Pablo García Samayoa",
+		"name": "Juan Pablo",
+		"lastName": "García",
+		"mothersLastName": "Samayoa",
 		"role": "Project Manager",
 		"phone": "+529612519488",
 		"email": "juan.garcia@grupogarpe.com",
+		"avatarUrl": null
+	},
+	"lorenzo": {
+		"name": "Lorenzo Ramón",
+		"lastName": "Pérez",
+		"mothersLastName": "Morales",
+		"role": "Full-Stack Developer",
+		"phone": "+529171025564",
+		"email": "lorenzoramon.perez@grupogarpe.com",
 		"avatarUrl": null
 	}
 }

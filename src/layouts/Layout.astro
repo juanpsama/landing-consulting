@@ -6,7 +6,8 @@ import Footer from "../components/Footer.astro";
 import GoogleTagManager from "../components/reusable/GoogleTagManager.astro";
 import { ui } from "../i18n/ui";
 import WhatsappButton from "../components/WhatsappButton.astro";
-
+import { generateOrganizationSchema } from "../utils/schemaBuilder";
+import seoData from "../data/seo.json";
 export interface Props {
 	lang: string;
 	title?: string;
@@ -54,6 +55,8 @@ const esUrl = getAlternateUrl("es");
 const enUrl = getAlternateUrl("en");
 // Google Tag Manager ID
 const GTM_ID = "GTM-NTN5CL8T";
+
+const jsonLdSchema = generateOrganizationSchema(seoData, t, finalLang);
 ---
 
 <html lang={lang}>
@@ -76,6 +79,10 @@ const GTM_ID = "GTM-NTN5CL8T";
 		<link
 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap"
 			rel="stylesheet"
+		/>
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(jsonLdSchema)}
 		/>
 	</head>
 	<body>

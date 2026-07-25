@@ -10,7 +10,14 @@ export const defaultLang = 'es';
 export const ui = {
   es: {
     'site.title': 'Grupo Garpe | Desarrollo, Consultoría y Automatización',
-    'site.description': 'Ayudamos a las empresas a crecer con tecnología moderna, automatización inteligente y asesoría estratégica a medida.',
+    'site.description': 'Consultora de habilitación tecnológica. Ayudamos a las empresas a crecer con tecnología moderna, automatización y asesoría estratégica a medida.',
+    // SEO
+    'schema.description': 'Consultora de habilitación tecnológica B2B. Ayudamos a las empresas a crecer con tecnología moderna, automatización inteligente y asesoría estratégica a medida. Construimos la infraestructura tecnológica que te permite tomar decisiones informadas, entender tus márgenes y escalar con precisión. Especialistas en ecosistemas SaaS Multi-tenant, Astro, Supabase y arquitecturas Headless Commerce.',
+    'schema.slogan': 'Tecnología que escala con tu negocio.',
+    'role.gabriel': 'Consultor Tecnológico',
+    'role.juan': 'Gestor de Proyectos',
+    'role.lorenzo': 'Desarrollador Full-Stack',
+    // Hero section
     'hero.title': 'Desarrollo, Consultoría y Automatización digital para empresas',
     'hero.subtitle': 'Impulsa tu negociocon software a medida, automatización de procesos y consultoría tecnológica. Optimizamos tu operación para que te enfoques en crecer.',
     'hero.cta': 'Empezar',
@@ -59,7 +66,14 @@ export const ui = {
   },
   en: {
     'site.title': 'Grupo Garpe | Development, Consulting & Automation',
-    'site.description': 'We help businesses and SMEs grow with modern technology, smart workflow automation, and custom strategic consulting.',
+    'site.description': 'Technology enablement consultancy. We help companies grow through modern technology, automation, and tailored strategic advice.',
+    // SEO
+    'schema.description': 'B2B technology enablement consultancy. We help companies grow through modern technology, intelligent automation, and tailored strategic advice. We build the technology infrastructure that enables you to make informed decisions, understand your margins, and scale with precision. Specialists in multi-tenant SaaS ecosystems, Astro, Supabase, and headless commerce architectures.',
+    'schema.slogan': 'Technology that scales with your business.',
+    'role.gabriel': 'Tech Consultant',
+    'role.juan': 'Project Manager',
+    'role.lorenzo': 'Full-Stack Developer',
+    // Hero section
     'hero.title': 'Development, Consulting & Automation for SMBs',
     'hero.subtitle': 'Scale your SME with custom software, workflow automation, and strategic tech consulting. We optimize your operations so you can focus on growth.',
     'hero.cta': 'Get started',

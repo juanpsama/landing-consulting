@@ -8,54 +8,63 @@
 				"icon": "database",
 				"title": "Centralización Operativa (ERP)",
 				"description": "Toma el control total de tu empresa en una sola plataforma. Integramos tus ventas, inventario y contabilidad con Odoo para que tomes decisiones basadas en datos reales, no en suposiciones.",
+				"schema_description": "Servicio B2B de implementación, consultoría y desarrollo de ERP Odoo para centralización operativa. Incluye integración de módulos de ventas, control de inventario multialmacén y contabilidad automatizada. Diseñado para eliminar cuellos de botella y permitir la escalabilidad mediante arquitectura de datos y Business Intelligence.",
 				"featured": true
 			},
 			{
 				"icon": "monitor",
 				"title": "Software a Medida y Automatización",
 				"description": "Elimina los cuellos de botella. Si tu proceso de negocio es único, construimos la herramienta exacta para automatizarlo, integrando tus sistemas actuales sin fricciones.",
+				"schema_description": "Desarrollo B2B de software a medida, plataformas Multi-tenant (SaaS White-Label) y automatización de procesos de negocio (RPA). Especialistas en el desarrollo de herramientas internas (internal tools), optimización de flujos de trabajo empresariales y ecosistemas web modernos usando el Garpe Engine.",
 				"featured": true
 			},
 			{
 				"icon": "globe",
 				"title": "Plataformas Digitales y E-commerce",
 				"description": "Convierte tu presencia en internet en un canal de ventas activo. Desarrollamos sitios web de alto rendimiento diseñados para captar clientes y proyectar autoridad en tu sector.",
+				"schema_description": "Desarrollo de plataformas digitales de alto rendimiento, arquitecturas Headless Commerce y sitios web corporativos. Utilización de tecnologías modernas como Astro, bases de datos agnósticas (Supabase) y despliegues Edge (Cloudflare Workers) para garantizar máxima velocidad, SEO técnico y alta conversión B2B y B2C.",
 				"featured": true
 			},
 			{
 				"icon": "link",
 				"title": "Integraciones de software",
 				"description": "Conectamos tus herramientas y plataformas para que trabajen en conjunto.",
+				"schema_description": "Servicio avanzado de integración de sistemas, webhooks y orquestación de APIs. Conectamos sistemas legados, ERPs, CRMs, plataformas de pago y software de terceros para crear ecosistemas tecnológicos unificados, eliminando silos de información y sincronizando datos en tiempo real.",
 				"featured": false
 			},
 			{
 				"icon": "refresh",
 				"title": "Modernización de procesos",
 				"description": "Transformamos flujos de trabajo obsoletos con tecnología moderna.",
+				"schema_description": "Consultoría y ejecución en transformación digital. Reingeniería y modernización de flujos de trabajo heredados (legacy systems) mediante la adopción de infraestructuras en la nube, digitalización de documentos y habilitación tecnológica para escalar operaciones empresariales con precisión.",
 				"featured": false
 			},
 			{
 				"icon": "lightbulb",
 				"title": "Consultoría estratégica",
 				"description": "Asesoramiento para elegir las herramientas adecuadas para crecer.",
+				"schema_description": "Consultoría de habilitación tecnológica de alto nivel (CTO as a Service). Asesoría estratégica para directivos sobre arquitectura de software, viabilidad técnica, seguridad, selección de stack tecnológico y diseño de hojas de ruta para el crecimiento y escalabilidad del negocio.",
 				"featured": false
 			},
 			{
 				"icon": "cloud",
 				"title": "Migración Cloud y DevOps",
 				"description": "Despliegues rápidos, seguros y confiables en la nube.",
+				"schema_description": "Servicios de arquitectura Cloud, despliegues Serverless/Edge computing y cultura DevOps. Especialistas en optimización de rendimiento, migración de infraestructura, gestión de secretos (Environment Variables) y configuración de bases de datos globales, garantizando alta disponibilidad y seguridad informática.",
 				"featured": false
 			},
 			{
 				"icon": "chart",
 				"title": "Analítica e Inteligencia de Negocio",
 				"description": "Convertimos tus datos en información accionable con dashboards de BI.",
+				"schema_description": "Implementación de soluciones de Business Intelligence (BI) y analítica de datos. Construcción de dashboards personalizados, modelado de bases de datos relacionales y extracción de métricas clave (KPIs) para facilitar la toma de decisiones informadas y entender los márgenes de beneficio reales del negocio.",
 				"featured": false
 			},
 			{
 				"icon": "book",
 				"title": "Capacitación y soporte",
 				"description": "Acompañamiento continuo para maximizar la adopción tecnológica.",
+				"schema_description": "Acompañamiento técnico continuo, soporte de infraestructura de software y capacitación de equipos. Aseguramos la correcta adopción tecnológica de las herramientas empresariales desarrolladas, ofreciendo mantenimiento preventivo, gestión de incidencias y evolución continua de las arquitecturas SaaS.",
 				"featured": false
 			}
 		]
@@ -69,54 +78,63 @@
 				"icon": "database",
 				"title": "ERP Implementation (Odoo)",
 				"description": "Take full control of your company on a single platform. We integrate your sales, inventory, and accounting with Odoo so you can make decisions based on real data, not assumptions.",
+				"schema_description": "B2B service for the implementation, consulting, and development of Odoo ERP for operational centralization. Includes integration of sales modules, multi-warehouse inventory control, and automated accounting. Designed to eliminate bottlenecks and enable scalability through data architecture and business intelligence.",
 				"featured": true
 			},
 			{
 				"icon": "monitor",
 				"title": "Custom Software & Automation",
 				"description": "Eliminate bottlenecks. If your business process is unique, we build the exact tool to automate it, integrating seamlessly with your current systems.",
+				"schema_description": "Custom B2B software development, multi-tenant platforms (white-label SaaS), and business process automation (RPA). Specialists in developing internal tools, optimizing business workflows, and building modern web ecosystems using the Garpe Engine.",
 				"featured": true
 			},
 			{
 				"icon": "globe",
 				"title": "Digital Platforms & E-commerce",
 				"description": "Turn your web presence into an active sales channel. We develop high-performance websites designed to capture clients and project authority in your industry.",
+				"schema_description": "Development of high-performance digital platforms, headless commerce architectures, and corporate websites. Use of modern technologies such as Astro, database-agnostic solutions (Supabase), and edge deployments (Cloudflare Workers) to ensure maximum speed, technical SEO, and high B2B and B2C conversion rates.",
 				"featured": true
 			},
 			{
 				"icon": "link",
 				"title": "Software Integrations",
 				"description": "We connect your favorite tools so they work together seamlessly.",
+				"schema_description": "Advanced systems integration, webhooks, and API orchestration services. We connect legacy systems, ERPs, CRMs, payment platforms, and third-party software to create unified technology ecosystems, eliminating information silos and synchronizing data in real time.",
 				"featured": false
 			},
 			{
 				"icon": "refresh",
 				"title": "Process Modernization",
 				"description": "We transform outdated workflows with modern, efficient technology.",
+				"schema_description": "Consulting and implementation for digital transformation. Reengineering and modernization of legacy workflows through the adoption of cloud infrastructure, document digitization, and technological enablement to scale business operations with precision.",
 				"featured": false
 			},
 			{
 				"icon": "lightbulb",
 				"title": "Strategic Consulting",
 				"description": "Expert advice to help you choose the right tools to scale.",
+				"schema_description": "High-level technology enablement consulting (CTO as a Service). Strategic advisory services for executives on software architecture, technical feasibility, security, technology stack selection, and the design of roadmaps for business growth and scalability.",
 				"featured": false
 			},
 			{
 				"icon": "cloud",
 				"title": "Cloud Migration & DevOps",
 				"description": "Fast, secure, and reliable deployments in the cloud.",
+				"schema_description": "Cloud architecture services, serverless and edge computing deployments, and DevOps culture. Specialists in performance optimization, infrastructure migration, secret management (environment variables), and global database configuration, ensuring high availability and IT security.",
 				"featured": false
 			},
 			{
 				"icon": "chart",
 				"title": "Data Analytics & BI",
 				"description": "Turn your data into actionable insights with business intelligence dashboards.",
+				"schema_description": "",
 				"featured": false
 			},
 			{
 				"icon": "book",
 				"title": "Training & Support",
 				"description": "Ongoing technical support to maximize your team's software adoption.",
+				"schema_description": "Ongoing technical assistance, software infrastructure support, and team training. We ensure the proper technological adoption of the business tools we develop by providing preventive maintenance, incident management, and continuous evolution of SaaS architectures.",
 				"featured": false
 			}
 		]
