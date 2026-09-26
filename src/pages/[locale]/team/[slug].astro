@@ -80,7 +80,7 @@ const t = ui[locale as keyof typeof ui];
 
 	<div
 		id="vcard-modal"
-		class="hidden fixed inset-0 bg-[#1A2333]/80 backdrop-blur-sm flex items-center justify-center p-4 z-50"
+		class="hidden fixed inset-0 bg-[#1A2333]/80 backdrop-blur-sm flex items-center justify-center p-4 z-modal"
 	>
 		<div
 			class="bg-white rounded-2xl max-w-sm w-full p-8 text-center shadow-2xl border border-slate-100 relative"
@@ -92,7 +92,7 @@ const t = ui[locale as keyof typeof ui];
 			</div>
 
 			<div
-				class="w-20 h-20 mx-auto mb-5 rounded-full overflow-hidden border-4 border-white shadow-md relative z-10"
+				class="w-20 h-20 mx-auto mb-5 rounded-full overflow-hidden border-4 border-white shadow-md relative z-base"
 			>
 				{
 					member.avatarUrl ? (
@@ -120,9 +120,10 @@ const t = ui[locale as keyof typeof ui];
 
 			<a
 				href={`/api/vcard/${slug}/`}
-				class="block w-full py-3.5 bg-[#D97706] hover:bg-[#b46204] text-white font-inter font-medium rounded-lg transition-colors mb-4 shadow-lg shadow-[#D97706]/20"
+				class="inline-flex items-center justify-center w-full py-3.5 bg-[#D97706] hover:bg-[#b46204] text-white font-inter font-medium rounded-lg transition-colors mb-4 shadow-lg shadow-[#D97706]/20 gap-2"
 			>
-				{t["member.modal_button"]}
+				<i class="ph-bold ph-address-book text-lg"></i>
+				<span>{t["member.modal_button"]}</span>
 			</a>
 
 			<button

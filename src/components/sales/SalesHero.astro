@@ -1,0 +1,186 @@
+---
+// src/components/sales/SalesHero.astro
+interface Props {
+	whatsappNumber?: string;
+}
+
+const { whatsappNumber = "529612401220" } = Astro.props;
+---
+
+<section id="hero" class="relative pt-24 pb-16 sm:pt-28 sm:pb-20 lg:pt-32 lg:pb-24 overflow-hidden bg-canvas">
+	<!-- Background Grid Pattern with Semantic z-hide -->
+	<div class="absolute inset-0 z-hide opacity-30 pointer-events-none" aria-hidden="true">
+		<div class="w-full h-full bg-[linear-gradient(to_right,#e5e5e5_1px,transparent_1px),linear-gradient(to_bottom,#e5e5e5_1px,transparent_1px)] bg-[size:4rem_4rem]"></div>
+	</div>
+
+	<div class="relative z-base max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-10 items-start">
+			
+			<!-- Left Column: Problem, Promise & Operational Audit -->
+			<div class="lg:col-span-7 flex flex-col items-start text-left pt-2">
+				
+				<!-- Audience statement (honest sentence case, no AI uppercase tracking, no pulsing dot) -->
+				<div class="mb-4">
+					<span class="text-xs sm:text-sm font-medium text-steel">
+						Para clínicas privadas, consultorios y servicios locales
+					</span>
+				</div>
+
+				<!-- Headline attacking the exact operational drain of the owner -->
+				<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-[1.14] mb-5">
+					Deja de pagar anuncios para que tu recepcionista pase 4 horas al día contestando "¿precio?".
+				</h1>
+
+				<!-- Subtext in direct, human language -->
+				<p class="text-base sm:text-lg text-charcoal font-normal leading-relaxed max-w-xl mb-7">
+					Instalamos un sistema de filtro que resuelve tarifas, sucursal y requisitos en tu página antes de abrir el chat. A tu WhatsApp solo llegan personas que ya aceptaron tus costos y quieren apartar fecha.
+				</p>
+
+				<!-- Conversion Actions (Varied border-radius: rounded-xl, no decorative glued arrows) -->
+				<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 w-full sm:w-auto mb-9">
+					<a
+						href="#conversion"
+						data-track="hero_primary_cta_instalar"
+						class="inline-flex items-center justify-center px-6 py-3.5 text-sm sm:text-base font-semibold rounded-xl bg-ink text-canvas border border-ink hover:border-text-main/30 active:scale-95 transition-all duration-150 cursor-pointer no-underline text-center shadow-xs"
+					>
+						Agendar Consultoría de Instalación
+					</a>
+
+					<a
+						href="#services"
+						data-track="hero_secondary_cta_filtro"
+						class="inline-flex items-center justify-center px-5 py-3.5 text-sm sm:text-base font-medium rounded-xl bg-surface text-ink border border-hairline hover:border-text-main/30 active:scale-95 transition-all duration-150 cursor-pointer no-underline text-center"
+					>
+						Ver Cómo Funciona el Filtro
+					</a>
+				</div>
+
+				<!-- Narrative Proof Block: Real-world Reception Audit (Replaces generic 3-column stats) -->
+				<div class="pt-6 border-t border-hairline w-full max-w-xl">
+					<div class="text-[11px] font-mono font-semibold uppercase tracking-wider text-steel mb-3">
+						Auditoría de recepción en un consultorio típico
+					</div>
+					<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+						<!-- Sin filtro -->
+						<div class="p-3.5 rounded-xl bg-surface border border-hairline">
+							<div class="font-semibold text-brand-ruby flex items-center gap-1.5 mb-1.5">
+								<i class="ph-bold ph-x-circle text-base"></i> Anuncio directo a WhatsApp
+							</div>
+							<p class="text-steel leading-relaxed">
+								40 mensajes al día. 4 horas contestando precios a personas que dejan en visto. Solo 2 citas agendadas.
+							</p>
+						</div>
+						<!-- Con filtro Garpe -->
+						<div class="p-3.5 rounded-xl bg-[#f0fdf4] border border-[#bbf7d0]">
+							<div class="font-semibold text-brand-emerald flex items-center gap-1.5 mb-1.5">
+								<i class="ph-bold ph-check-circle text-base"></i> Con Filtro Garpe previo
+							</div>
+							<p class="text-charcoal leading-relaxed">
+								8 mensajes al día precalificados. 15 minutos de atención. 6 citas confirmadas listas para consulta.
+							</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- Right Column: The ONE Visual Centerpiece — Authentic WhatsApp Lead Flow -->
+			<div class="lg:col-span-5 w-full">
+				<!-- Smartphone Container with distinct rounded-[28px] chassis -->
+				<div class="rounded-[28px] border-2 border-charcoal/15 bg-[#efeae2] overflow-hidden shadow-lg max-w-md mx-auto">
+					
+					<!-- WhatsApp Header with authentic WhatsApp forest green (#075E54) -->
+					<div class="bg-[#075e54] px-4 py-3 text-canvas flex items-center justify-between shadow-xs">
+						<div class="flex items-center gap-3">
+							<!-- Back arrow icon -->
+							<i class="ph-bold ph-arrow-left text-sm opacity-90 cursor-default"></i>
+							<!-- Avatar -->
+							<div class="w-9 h-9 rounded-full bg-canvas/15 p-0.5 flex items-center justify-center shrink-0 border border-canvas/20">
+								<img src="/favicon.svg" alt="Clínica Garpe" class="w-full h-full object-contain rounded-full" />
+							</div>
+							<!-- Contact info -->
+							<div class="leading-tight">
+								<div class="font-semibold text-sm tracking-tight text-canvas flex items-center gap-1.5">
+									<span>Clínica Especializada</span>
+									<i class="ph-fill ph-check-circle text-emerald-300 text-xs"></i>
+								</div>
+								<div class="text-[11px] text-canvas/80">en línea</div>
+							</div>
+						</div>
+
+						<!-- Action icons -->
+						<div class="flex items-center gap-3 text-canvas/90 text-base">
+							<i class="ph-bold ph-video-camera cursor-default"></i>
+							<i class="ph-bold ph-phone cursor-default"></i>
+							<i class="ph-bold ph-dots-three-vertical cursor-default"></i>
+						</div>
+					</div>
+
+					<!-- Chat Stream with authentic WhatsApp wallpaper color -->
+					<div class="p-4 space-y-3 min-h-[340px] flex flex-col justify-end text-xs font-sans">
+						
+						<!-- Context pill -->
+						<div class="flex justify-center my-1">
+							<span class="px-3 py-1 rounded-md bg-canvas/85 border border-black/5 text-[11px] font-medium text-steel shadow-2xs">
+								Hoy • Proveniente de anuncio en Instagram
+							</span>
+						</div>
+
+						<!-- Message 1: Pre-filtered Lead arrives with objections resolved -->
+						<div class="self-end max-w-[92%] bg-[#d9fdd3] text-charcoal rounded-2xl rounded-tr-xs p-3 shadow-2xs border border-[#bbf7d0]">
+							<p class="text-xs text-ink leading-relaxed">
+								Hola, vi su anuncio de ortodoncia en Instagram. Ya revisé en su página los precios del paquete de alineadores ($1,400 el diagnóstico) y las sucursales.
+							</p>
+							<p class="text-xs text-ink leading-relaxed mt-1.5">
+								Me interesa apartar cita de valoración este jueves a las 4:00 PM con la Dra. Morales, ¿tienen espacio?
+							</p>
+							<div class="flex items-center justify-end gap-1 mt-1.5 text-[11px] text-steel">
+								<span>10:41 AM</span>
+								<i class="ph-bold ph-checks text-[#53bdeb] text-xs"></i>
+							</div>
+						</div>
+
+						<!-- Message 2: Reception response (warm, fast, only confirming agenda) -->
+						<div class="self-start max-w-[88%] bg-canvas text-charcoal rounded-2xl rounded-tl-xs p-3 shadow-2xs border border-black/5">
+							<p class="text-xs leading-relaxed text-charcoal">
+								¡Hola Carlos! Con gusto. Sí, la Dra. Morales tiene libre justo a las 4:30 PM este jueves en la sucursal Del Valle.
+							</p>
+							<p class="text-xs leading-relaxed text-charcoal mt-1.5">
+								Te apartamos ese espacio. ¿Me confirmas tu nombre completo y teléfono para abrir tu ficha médica previa?
+							</p>
+							<div class="flex items-center justify-end gap-1 mt-1 text-[11px] text-steel">
+								<span>10:42 AM</span>
+								<i class="ph-bold ph-checks text-[#53bdeb] text-xs"></i>
+							</div>
+						</div>
+
+						<!-- Message 3: Customer closes and provides data immediately -->
+						<div class="self-end max-w-[90%] bg-[#d9fdd3] text-charcoal rounded-2xl rounded-tr-xs p-2.5 shadow-2xs border border-[#bbf7d0]">
+							<p class="text-xs text-ink leading-relaxed font-medium">
+								Perfecto, Carlos Mendoza Torres, cel 55-4819-2041. Ahí nos vemos el jueves.
+							</p>
+							<div class="flex items-center justify-end gap-1 mt-1 text-[11px] text-steel">
+								<span>10:43 AM</span>
+								<i class="ph-bold ph-checks text-[#53bdeb] text-xs"></i>
+							</div>
+						</div>
+
+					</div>
+
+					<!-- Bottom Reception Status Bar: tangible operational takeaway -->
+					<div class="bg-canvas px-4 py-2.5 border-t border-black/5 flex items-center justify-between text-xs">
+						<div class="flex items-center gap-1.5 text-steel text-[11px] font-medium">
+							<i class="ph-bold ph-calendar-check text-brand-emerald text-sm"></i>
+							<span>Cita confirmada en agenda</span>
+						</div>
+						<div class="text-[11px] font-mono text-steel">
+							Tiempo de atención: <strong>2 min</strong>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>

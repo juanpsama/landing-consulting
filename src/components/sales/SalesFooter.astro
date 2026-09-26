@@ -1,0 +1,35 @@
+---
+// src/components/sales/SalesFooter.astro
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="py-12 bg-canvas border-t border-hairline relative z-base text-steel">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-hairline">
+			<div class="flex items-center gap-3">
+				<img src="/favicon.svg" alt="Grupo Garpe Logo" class="w-6 h-6 rounded-md object-contain shadow-2xs shrink-0" />
+				<span class="font-bold text-ink text-sm tracking-tight">Grupo GARPE</span>
+				<span class="text-xs text-steel">Filtro de prospectos para WhatsApp</span>
+			</div>
+
+			<div class="flex items-center gap-6 text-xs text-steel">
+				<a href="/es/legal/privacy" class="hover:text-ink transition-colors no-underline text-steel">
+					Privacidad
+				</a>
+				<a href="/es/legal/tos" class="hover:text-ink transition-colors no-underline text-steel">
+					Términos de Servicio
+				</a>
+				<a href="#hero" class="hover:text-ink transition-colors no-underline text-steel">
+					Volver al inicio
+				</a>
+			</div>
+		</div>
+
+		<div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-steel/80">
+			<p>© {currentYear} Grupo Garpe. Todos los derechos reservados.</p>
+			<p class="text-[11px]">
+				Aviso de exención de responsabilidad: Este sitio no es parte del sitio web de Meta o Meta Platforms, Inc. Además, este sitio no está respaldado por Meta de ninguna manera.
+			</p>
+		</div>
+	</div>
+</footer>

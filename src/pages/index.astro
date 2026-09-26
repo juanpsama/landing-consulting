@@ -1,24 +1,23 @@
 ---
-// src/pages/index.astro
-const url = new URL(Astro.request.url);
+// src/pages/index.astroexport const prerender = true;
+import Layout from "../layouts/Layout.astro";
+import HeroSection from "../components/HeroSection.astro";
+// import ServicesSection from '../components/ServicesSection.astro';
+import ServicesSection from "../components/ServicesSection_0001.astro";
+import { ui, languages } from "../i18n/ui";
+import ContactSection from "../components/ContactSection.astro";
 
-if (url.hostname.includes("garpe.dev")) {
-	return Astro.redirect("https://grupogarpe.com", 301);
-}
-
-const base = import.meta.env.BASE_URL.replace(/\/$/, "");
-const redirectUrl = `${base}/es/`;
+const lang = (Astro.currentLocale ?? "es") as keyof typeof ui;
+const t = ui[lang];
 ---
 
-<!doctype html>
-<html lang="es">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="refresh" content={`0;url=${redirectUrl}`} />
-		<link rel="canonical" href={redirectUrl} />
-		<title>Grupo Garpe</title>
-	</head>
-	<body>
-		<a href={redirectUrl}>Ir a la página</a>
-	</body>
-</html>
+<Layout lang={lang}>
+	<HeroSection
+		title={t["hero.title"]}
+		subtitle={t["hero.subtitle"]}
+		cta={t["hero.cta"]}
+		services={t["hero.services"]}
+	/>
+	<ServicesSection />
+	<ContactSection />
+</Layout>

@@ -1,0 +1,128 @@
+---
+// src/pages/sistemas-de-ventas.astro
+export const prerender = true;
+
+import "../styles/global.css";
+import GoogleTagManager from "../components/reusable/GoogleTagManager.astro";
+import SalesHeader from "../components/sales/SalesHeader.astro";
+import SalesHero from "../components/sales/SalesHero.astro";
+import SalesPersuasion from "../components/sales/SalesPersuasion.astro";
+import SalesSystem from "../components/sales/SalesSystem.astro";
+import SalesDemos from "../components/sales/SalesDemos.astro";
+import SalesAuthority from "../components/sales/SalesAuthority.astro";
+import SalesConversion from "../components/sales/SalesConversion.astro";
+import SalesFloatingCTA from "../components/sales/SalesFloatingCTA.astro";
+import SalesFooter from "../components/sales/SalesFooter.astro";
+
+const GTM_ID = "GTM-NTN5CL8T";
+const whatsappNumber = "529612401220";
+
+const siteTitle = "Sistemas de Captura de Clientes por WhatsApp | Grupo Garpe";
+const siteDescription = "Infraestructura de captura de clientes para tráfico de Meta Ads. Filtra curiosos, elimina el 90% de la carga operativa manual y recibe prospectos calificados directo a tu WhatsApp con garantía a resultados.";
+const canonicalURL = "https://grupogarpe.com/sistemas-de-ventas";
+
+const jsonLdSchema = {
+	"@context": "https://schema.org",
+	"@type": "Service",
+	"name": "Sistemas de Captura de Clientes por WhatsApp",
+	"provider": {
+		"@type": "Organization",
+		"name": "Grupo Garpe",
+		"url": "https://grupogarpe.com",
+		"logo": "https://grupogarpe.com/favicon.svg"
+	},
+	"serviceType": "Infraestructura de Adquisición Digital B2B",
+	"description": siteDescription,
+	"offers": {
+		"@type": "Offer",
+		"priceCurrency": "USD",
+		"description": "Garantía de Adquisición de 30 Días con Outcome-Based Pricing"
+	}
+};
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<GoogleTagManager id={GTM_ID} part="head" />
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{siteTitle}</title>
+		<meta name="description" content={siteDescription} />
+		<meta name="robots" content="index, follow" />
+		<link rel="canonical" href={canonicalURL} />
+
+		<!-- OpenGraph / Social Meta -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={canonicalURL} />
+		<meta property="og:title" content={siteTitle} />
+		<meta property="og:description" content={siteDescription} />
+		<meta property="og:locale" content="es_MX" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={siteTitle} />
+		<meta name="twitter:description" content={siteDescription} />
+
+		<!-- Favicon & Fonts -->
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<!-- impeccable-disable overused-font, design-system-font -- Intentional brand typography -->
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Structured Data -->
+		<script type="application/ld+json" set:html={JSON.stringify(jsonLdSchema)} />
+	</head>
+
+	<body class="bg-canvas text-ink font-['Instrument_Sans',sans-serif] antialiased selection:bg-brand-green selection:text-ink">
+		<GoogleTagManager id={GTM_ID} part="body" />
+
+		<!-- Fixed High-Conversion Sales Header (Semantic z-sticky) -->
+		<SalesHeader whatsappNumber={whatsappNumber} />
+
+		<main id="main-content" class="relative z-base">
+			<!-- 1. Hero Section (hero) -->
+			<SalesHero whatsappNumber={whatsappNumber} />
+
+			<!-- 2. Bloque de Persuasión (persuasion) -->
+			<SalesPersuasion />
+
+			<!-- 3. El Sistema (services) -->
+			<SalesSystem />
+
+			<!-- 4. Silos de Demos / Casos de Uso (demos) -->
+			<SalesDemos />
+
+			<!-- 5. Prueba Social / Autoridad & Garantía de Resultados (authority) -->
+			<SalesAuthority />
+
+			<!-- 6. Formulario / CTA Final (conversion) -->
+			<SalesConversion whatsappNumber={whatsappNumber} />
+		</main>
+
+		<!-- Floating Direct WhatsApp Action (Semantic z-toast) -->
+		<SalesFloatingCTA whatsappNumber={whatsappNumber} />
+
+		<!-- Footer (Semantic z-base) -->
+		<SalesFooter />
+
+		<!-- Click Telemetry for GTM & Meta Pixel Bridge -->
+		<script is:inline>
+			document.addEventListener("click", function (event) {
+				const trackElement = event.target.closest("[data-track]");
+				if (trackElement) {
+					const trackValue = trackElement.getAttribute("data-track");
+					window.dataLayer = window.dataLayer || [];
+					window.dataLayer.push({
+						event: "dl_clic_trackeado",
+						accion_boton: trackValue,
+						timestamp: new Date().toISOString()
+					});
+				}
+			});
+		</script>
+	</body>
+</html>

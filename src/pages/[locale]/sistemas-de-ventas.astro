@@ -1,9 +1,9 @@
 ---
-// src/pages/[locale]/index.astro
+// src/pages/[locale]/sistemas-de-ventas.astro
 export const prerender = true;
 
 import { languages } from "../../i18n/ui";
-import Index from "../index.astro";
+import SistemasDeVentasPage from "../sistemas-de-ventas.astro";
 
 export async function getStaticPaths() {
 	return Object.keys(languages).map((locale) => ({
@@ -12,4 +12,4 @@ export async function getStaticPaths() {
 }
 ---
 
-<Index />
+<SistemasDeVentasPage />

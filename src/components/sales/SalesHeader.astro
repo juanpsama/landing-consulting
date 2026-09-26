@@ -1,0 +1,56 @@
+---
+// src/components/sales/SalesHeader.astro
+interface Props {
+	whatsappNumber?: string;
+}
+
+const { whatsappNumber = "529612401220" } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-sticky bg-canvas/95 backdrop-blur-md border-b border-hairline">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+		
+		<!-- Brand: Monogram squircle + Name + Quiet contextual descriptor -->
+		<div class="flex items-center gap-3">
+			<a
+				href="#hero"
+				class="flex items-center gap-2.5 font-bold tracking-tight text-ink text-base no-underline group"
+				aria-label="Grupo Garpe - Inicio"
+			>
+				<img
+					src="/favicon.svg"
+					alt="Grupo Garpe Logo"
+					class="w-7 h-7 rounded-lg object-contain shadow-2xs shrink-0 transition-transform duration-150 group-active:scale-95"
+				/>
+				<span>Grupo GARPE</span>
+			</a>
+			<span class="hidden sm:inline-block w-px h-3.5 bg-hairline" aria-hidden="true"></span>
+			<span class="hidden sm:inline-block text-xs text-steel font-normal">Filtro de Leads para WhatsApp</span>
+		</div>
+
+		<!-- Main Nav: direct, clear links without decorative dots -->
+		<nav class="hidden lg:flex items-center gap-8 text-xs sm:text-sm font-medium text-steel">
+			<a href="#services" class="text-steel hover:text-ink transition-colors no-underline">
+				Cómo Funciona
+			</a>
+			<a href="#demos" class="text-steel hover:text-ink transition-colors no-underline">
+				Demos por Sector
+			</a>
+			<a href="#authority" class="text-steel hover:text-ink transition-colors no-underline">
+				Garantía de 30 Días
+			</a>
+		</nav>
+
+		<!-- Action: distinct rounded-lg button, disciplined and intentional -->
+		<div class="flex items-center gap-3">
+			<a
+				href="#conversion"
+				data-track="header_cta_diagnostico"
+				class="inline-flex items-center justify-center px-4 py-2 text-xs sm:text-sm font-semibold rounded-lg bg-ink text-canvas border border-ink hover:border-text-main/30 active:scale-95 transition-all duration-150 cursor-pointer no-underline shadow-xs"
+			>
+				Hablar con un Asesor
+			</a>
+		</div>
+
+	</div>
+</header>

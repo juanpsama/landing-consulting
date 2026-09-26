@@ -1,0 +1,305 @@
+---
+// src/components/sales/SalesConversion.astro
+interface Props {
+	whatsappNumber?: string;
+}
+
+const { whatsappNumber = "529612401220" } = Astro.props;
+const defaultWaUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hola Grupo Garpe, quiero agendar la consultoría de instalación del Sistema de Filtrado de Leads para mi negocio.")}`;
+---
+
+<section id="conversion" class="py-20 sm:py-28 bg-surface border-t border-hairline relative">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		
+		<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+			
+			<!-- Left Column: Plain Human Copywriting (Zero pill eyebrows, zero middle-dot strings) -->
+			<div class="lg:col-span-5">
+				<h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-ink leading-tight mb-5">
+					Empieza a recibir prospectos precalificados listos para comprar esta misma semana
+				</h2>
+
+				<p class="text-base text-charcoal font-normal leading-relaxed mb-6">
+					Agenda una sesión de 20 minutos. Revisamos cómo están llegando hoy los mensajes de tus anuncios en Instagram y Facebook, y te mostramos el flujo de filtrado exacto para tu sector.
+				</p>
+
+				<!-- Direct WhatsApp Fast-Lane Card (Visually distinct: soft green highlight card) -->
+				<div class="p-5 rounded-2xl bg-[#f0fdf4] border border-[#bbf7d0] mb-8 shadow-2xs">
+					<div class="flex items-center justify-between mb-2">
+						<span class="text-xs font-semibold uppercase text-brand-emerald tracking-wide">
+							¿Prefieres atención inmediata?
+						</span>
+						<span class="text-xs text-steel">Sin esperas</span>
+					</div>
+					<p class="text-xs text-charcoal mb-4 leading-relaxed">
+						Escríbenos directamente a WhatsApp y uno de nuestros especialistas te atenderá en tiempo real:
+					</p>
+					<a
+						href={defaultWaUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						data-track="conversion_whatsapp_direct"
+						class="inline-flex items-center justify-center w-full px-5 py-3 text-sm font-semibold rounded-xl bg-ink text-canvas border border-ink hover:border-text-main/30 active:scale-95 transition-transform duration-150 cursor-pointer no-underline text-center shadow-xs"
+					>
+						Hablar por WhatsApp Directo
+					</a>
+				</div>
+
+				<!-- Guarantees List -->
+				<div class="space-y-3 text-xs text-steel font-medium">
+					<div class="flex items-center gap-2.5">
+						<i class="ph-bold ph-check text-brand-emerald shrink-0"></i>
+						<span>Diagnóstico sin costo ni compromiso forzado.</span>
+					</div>
+					<div class="flex items-center gap-2.5">
+						<i class="ph-bold ph-check text-brand-emerald shrink-0"></i>
+						<span>Garantía de 30 días con compromiso a resultados.</span>
+					</div>
+					<div class="flex items-center gap-2.5">
+						<i class="ph-bold ph-check text-brand-emerald shrink-0"></i>
+						<span>Ahorro garantizado de 15 a 25 horas semanales a tu equipo.</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Right Column: Form Container (distinct rounded-3xl container) -->
+			<div class="lg:col-span-7">
+				<div class="p-6 sm:p-10 rounded-3xl bg-canvas border border-hairline shadow-xs hover:border-text-main/30 transition-colors duration-200">
+					
+					<!-- Form Header -->
+					<div id="form-header" class="mb-6">
+						<h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink mb-1">
+							Solicitud de Diagnóstico & Instalación
+						</h3>
+						<p class="text-xs sm:text-sm text-steel">
+							Ingresa los datos de tu empresa para preparar el flujo previo a la llamada.
+						</p>
+					</div>
+
+					<!-- In-Place Success Card (Hidden by default) -->
+					<div id="form-success-card" class="hidden p-6 sm:p-8 rounded-2xl bg-surface border border-hairline text-center space-y-4">
+						<div class="w-12 h-12 rounded-full bg-brand-emerald/10 text-brand-emerald border border-brand-emerald/30 mx-auto flex items-center justify-center">
+							<i class="ph-bold ph-check text-2xl"></i>
+						</div>
+						<h4 class="text-xl font-bold text-ink tracking-tight">
+							¡Solicitud Registrada con Éxito!
+						</h4>
+						<div class="inline-block px-3 py-1 rounded-md bg-canvas border border-hairline text-xs font-mono font-semibold text-charcoal">
+							Folio: <span id="success-folio" class="text-brand-emerald font-bold">#GP-4091</span>
+						</div>
+						<p class="text-sm text-charcoal max-w-md mx-auto leading-relaxed">
+							Hemos asignado tu caso al especialista técnico de tu sector. Recibirás respuesta en tu WhatsApp en menos de 15 minutos hábiles.
+						</p>
+						<div class="pt-2">
+							<a
+								id="success-wa-accelerator"
+								href="#"
+								target="_blank"
+								rel="noopener noreferrer"
+								data-track="conversion_success_wa_accelerator"
+								class="inline-flex items-center justify-center px-6 py-3 text-sm font-semibold rounded-xl bg-ink text-canvas border border-ink hover:border-text-main/30 active:scale-95 transition-transform duration-150 cursor-pointer no-underline"
+							>
+								Acelerar y Continuar en WhatsApp Ahora
+							</a>
+						</div>
+						<p class="text-xs text-steel">
+							O bien, espera nuestro mensaje; nos comunicaremos contigo a la brevedad.
+						</p>
+					</div>
+
+					<!-- Standard Form -->
+					<form id="sales-capture-form" class="space-y-4">
+						<!-- Name & Phone -->
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+							<div>
+								<label for="lead-name" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-1.5">
+									Nombre y Cargo *
+								</label>
+								<input
+									type="text"
+									id="lead-name"
+									name="name"
+									required
+									placeholder="Ej. Dr. Roberto Mora / Director"
+									class="w-full px-3.5 py-2.5 text-sm rounded-xl bg-surface border border-hairline text-ink placeholder:text-steel/60 focus:border-text-main/60 focus:bg-canvas focus:outline-none transition-colors"
+								/>
+							</div>
+
+							<div>
+								<label for="lead-phone" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-1.5">
+									WhatsApp Comercial *
+								</label>
+								<input
+									type="tel"
+									id="lead-phone"
+									name="phone"
+									required
+									placeholder="Ej. +52 961 123 4567"
+									class="w-full px-3.5 py-2.5 text-sm rounded-xl bg-surface border border-hairline text-ink placeholder:text-steel/60 focus:border-text-main/60 focus:bg-canvas focus:outline-none transition-colors"
+								/>
+							</div>
+						</div>
+
+						<!-- Email & Industry -->
+						<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+							<div>
+								<label for="lead-email" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-1.5">
+									Correo Corporativo *
+								</label>
+								<input
+									type="email"
+									id="lead-email"
+									name="email"
+									required
+									placeholder="director@tunegocio.com"
+									class="w-full px-3.5 py-2.5 text-sm rounded-xl bg-surface border border-hairline text-ink placeholder:text-steel/60 focus:border-text-main/60 focus:bg-canvas focus:outline-none transition-colors"
+								/>
+							</div>
+
+							<div>
+								<label for="lead-industry" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-1.5">
+									Industria / Rubro *
+								</label>
+								<select
+									id="lead-industry"
+									name="industry"
+									required
+									class="w-full px-3.5 py-2.5 text-sm rounded-xl bg-surface border border-hairline text-ink focus:border-text-main/60 focus:bg-canvas focus:outline-none transition-colors"
+								>
+									<option value="" disabled selected>Selecciona tu rubro</option>
+									<option value="Clínica / Salud Privada">Clínica / Salud Privada</option>
+									<option value="Belleza / Spa / Estética">Belleza / Spa / Estética</option>
+									<option value="Servicios Profesionales / B2B">Servicios Profesionales / B2B</option>
+									<option value="Gastronomía / Hospitalidad">Gastronomía / Hospitalidad</option>
+									<option value="Bienes Raíces / Inmobiliaria">Bienes Raíces / Inmobiliaria</option>
+									<option value="Reformas / Hogar">Reformas / Hogar</option>
+									<option value="Otro Rubro Local">Otro Rubro Local</option>
+								</select>
+							</div>
+						</div>
+
+						<!-- Meta Ads Budget Range -->
+						<div>
+							<label for="lead-adspend" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-1.5">
+								Presupuesto mensual actual en Meta Ads (opcional)
+							</label>
+							<select
+								id="lead-adspend"
+								name="adspend"
+								class="w-full px-3.5 py-2.5 text-sm rounded-xl bg-surface border border-hairline text-ink focus:border-text-main/60 focus:bg-canvas focus:outline-none transition-colors"
+							>
+								<option value="Aún no invertimos / Empezando">Aún no invertimos / Empezando</option>
+								<option value="Menos de $500 USD / mes">Menos de $500 USD / mes</option>
+								<option value="$500 a $2,000 USD / mes">$500 a $2,000 USD / mes</option>
+								<option value="Más de $2,000 USD / mes">Más de $2,000 USD / mes</option>
+							</select>
+						</div>
+
+						<!-- Current Operational Bottleneck -->
+						<div>
+							<label for="lead-message" class="block text-xs font-semibold text-charcoal uppercase tracking-wider mb-1.5">
+								¿Qué es lo que más tiempo le roba a tu equipo al responder mensajes?
+							</label>
+							<textarea
+								id="lead-message"
+								name="message"
+								rows="3"
+								placeholder="Ej. Pasamos horas cotizando y dando precios a gente que nunca compra; queremos que lleguen precalificados y con horario tentativo."
+								class="w-full px-3.5 py-2.5 text-sm rounded-xl bg-surface border border-hairline text-ink placeholder:text-steel/60 focus:border-text-main/60 focus:bg-canvas focus:outline-none transition-colors resize-none"
+							></textarea>
+						</div>
+
+						<!-- Error Feedback (if any) -->
+						<div id="form-error-feedback" class="hidden p-3 rounded-xl text-xs font-medium bg-brand-ruby/10 text-brand-ruby border border-brand-ruby/30"></div>
+
+						<!-- Submit Button (Varied hierarchy: rounded-xl, no glued arrow) -->
+						<button
+							type="submit"
+							id="submit-btn"
+							data-track="conversion_form_submit"
+							class="w-full py-4 px-6 text-sm sm:text-base font-semibold rounded-xl bg-ink text-canvas border border-ink hover:border-text-main/30 active:scale-95 transition-transform duration-150 cursor-pointer text-center shadow-xs flex items-center justify-center gap-2"
+						>
+							<span id="btn-text">Solicitar Diagnóstico e Instalación</span>
+						</button>
+
+						<p class="text-xs text-steel text-center pt-2">
+							<i class="ph ph-shield-check text-xs mr-1 inline-block"></i> Cero spam. Recibirás respuesta técnica directa de un especialista de Garpe.
+						</p>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+
+<script>
+	const form = document.getElementById("sales-capture-form") as HTMLFormElement | null;
+	const formHeader = document.getElementById("form-header") as HTMLDivElement | null;
+	const successCard = document.getElementById("form-success-card") as HTMLDivElement | null;
+	const successFolio = document.getElementById("success-folio") as HTMLSpanElement | null;
+	const acceleratorBtn = document.getElementById("success-wa-accelerator") as HTMLAnchorElement | null;
+	const errorFeedback = document.getElementById("form-error-feedback") as HTMLDivElement | null;
+	const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement | null;
+	const btnText = document.getElementById("btn-text") as HTMLSpanElement | null;
+
+	if (form && successCard && submitBtn && btnText) {
+		form.addEventListener("submit", async (e) => {
+			e.preventDefault();
+
+			submitBtn.disabled = true;
+			btnText.textContent = "Procesando solicitud...";
+			if (errorFeedback) errorFeedback.classList.add("hidden");
+
+			const formData = new FormData(form);
+			const name = String(formData.get("name") || "").trim();
+			const phone = String(formData.get("phone") || "").trim();
+			const email = String(formData.get("email") || "").trim();
+			const industry = String(formData.get("industry") || "").trim();
+			const adspend = String(formData.get("adspend") || "").trim();
+			const userMessage = String(formData.get("message") || "").trim();
+
+			// Generate random 4-digit folio
+			const randomNum = Math.floor(1000 + Math.random() * 9000);
+			const folioCode = `#GP-${randomNum}`;
+
+			const fullMessage = `Solicitud Sistema de Captura [Folio ${folioCode}]:\n- Industria: ${industry}\n- Inversión Ads: ${adspend}\n- Obstáculo: ${userMessage || "N/A"}`;
+			formData.set("message", fullMessage);
+
+			try {
+				const response = await fetch("/api/contact", {
+					method: "POST",
+					body: formData,
+				});
+
+				if (!response.ok) throw new Error("Error en servidor");
+
+				// Show in-place success card without hijacking browser
+				if (formHeader) formHeader.classList.add("hidden");
+				form.classList.add("hidden");
+				successCard.classList.remove("hidden");
+
+				if (successFolio) successFolio.textContent = folioCode;
+				if (acceleratorBtn) {
+					const waMsg = encodeURIComponent(`Hola Grupo Garpe, soy ${name}. Acabo de solicitar la consultoría de instalación con el Folio ${folioCode} para mi negocio en el rubro de ${industry}.`);
+					acceleratorBtn.href = `https://wa.me/529612401220?text=${waMsg}`;
+				}
+			} catch (err) {
+				// Fallback to in-place card with direct WhatsApp link
+				if (formHeader) formHeader.classList.add("hidden");
+				form.classList.add("hidden");
+				successCard.classList.remove("hidden");
+
+				if (successFolio) successFolio.textContent = folioCode;
+				if (acceleratorBtn) {
+					const waMsg = encodeURIComponent(`Hola Grupo Garpe, soy ${name}. Quiero agendar consultoría para mi negocio (${industry}). Folio: ${folioCode}.`);
+					acceleratorBtn.href = `https://wa.me/529612401220?text=${waMsg}`;
+				}
+			} finally {
+				submitBtn.disabled = false;
+				btnText.textContent = "Solicitar Diagnóstico e Instalación";
+			}
+		});
+	}
+</script>

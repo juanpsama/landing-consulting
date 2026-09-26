@@ -1,0 +1,155 @@
+---
+// src/components/sales/SalesPersuasion.astro
+---
+
+<section id="persuasion" class="py-20 sm:py-28 bg-surface border-y border-hairline relative">
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		
+		<!-- Section Header (Clean H2 without generic pill eyebrow) -->
+		<div class="max-w-3xl mx-auto text-center mb-16">
+			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight mb-5">
+				Responder "¿Cuánto cuesta?" y "¿Tienes citas?" a 40 personas al día está quebrando tu rentabilidad
+			</h2>
+			<p class="text-base sm:text-lg text-charcoal font-normal leading-relaxed">
+				Tener el WhatsApp saturado no significa estar vendiendo. La mayoría de negocios confunden el desgaste de responder mensajes manuales con tracción comercial real.
+			</p>
+		</div>
+
+		<!-- 3 Friction Cards (Parallel problems, NOT sequential 01/02/03. Differentiated card styling with subtle alert borders) -->
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+			<!-- Pain 1: Curiosos -->
+			<div class="p-6 sm:p-7 rounded-xl bg-canvas border border-hairline flex flex-col justify-between shadow-2xs hover:border-text-main/30 transition-colors duration-200">
+				<div>
+					<div class="w-10 h-10 rounded-lg bg-brand-ruby/10 flex items-center justify-center mb-4">
+						<i class="ph ph-chat-teardrop-slash text-xl text-brand-ruby"></i>
+					</div>
+					<h3 class="text-lg sm:text-xl font-bold text-ink tracking-tight mb-2.5">
+						La trampa del curioso sin intención
+					</h3>
+					<p class="text-xs sm:text-sm text-charcoal leading-relaxed">
+						Llegan desde Meta Ads preguntando por inercia. Tu equipo invierte 15 minutos en explicar el servicio, enviar fotos y desglosar tarifas. ¿El resultado? Un "gracias, lo checo con mi esposo" y desaparecen.
+					</p>
+				</div>
+				<div class="mt-6 pt-4 border-t border-hairline text-xs font-semibold text-brand-ruby">
+					Fuga: 75% del tiempo de tu equipo tirado a la basura.
+				</div>
+			</div>
+
+			<!-- Pain 2: Colapso operativo -->
+			<div class="p-6 sm:p-7 rounded-xl bg-canvas border border-hairline flex flex-col justify-between shadow-2xs hover:border-text-main/30 transition-colors duration-200">
+				<div>
+					<div class="w-10 h-10 rounded-lg bg-brand-ruby/10 flex items-center justify-center mb-4">
+						<i class="ph ph-bell-slash text-xl text-brand-ruby"></i>
+					</div>
+					<h3 class="text-lg sm:text-xl font-bold text-ink tracking-tight mb-2.5">
+						El colapso de la operación diaria
+					</h3>
+					<p class="text-xs sm:text-sm text-charcoal leading-relaxed">
+						Mientras tu recepcionista responde cotizaciones manuales en el celular, descuida la atención presencial, olvida hacer seguimiento a citas agendadas y genera fricción en la experiencia del cliente que ya pagó.
+					</p>
+				</div>
+				<div class="mt-6 pt-4 border-t border-hairline text-xs font-semibold text-brand-ruby">
+					Fuga: Desgaste del personal y cancelaciones en mostrador.
+				</div>
+			</div>
+
+			<!-- Pain 3: Fuga de clientes de alto ticket -->
+			<div class="p-6 sm:p-7 rounded-xl bg-canvas border border-hairline flex flex-col justify-between shadow-2xs hover:border-text-main/30 transition-colors duration-200">
+				<div>
+					<div class="w-10 h-10 rounded-lg bg-brand-ruby/10 flex items-center justify-center mb-4">
+						<i class="ph ph-user-minus text-xl text-brand-ruby"></i>
+					</div>
+					<h3 class="text-lg sm:text-xl font-bold text-ink tracking-tight mb-2.5">
+						Pérdida de clientes con presupuesto real
+					</h3>
+					<p class="text-xs sm:text-sm text-charcoal leading-relaxed">
+						El cliente con poder adquisitivo no tiene paciencia para esperar 3 horas a que alguien le conteste con precios a medias. Si no encuentra claridad de tarifa, requisitos y agenda al instante, se va con la competencia.
+					</p>
+				</div>
+				<div class="mt-6 pt-4 border-t border-hairline text-xs font-semibold text-brand-ruby">
+					Fuga: Los clientes más rentables compran en otro lugar.
+				</div>
+			</div>
+		</div>
+
+		<!-- Side by Side Contrast Matrix (Operational Reality) -->
+		<div class="bg-canvas rounded-2xl border border-hairline p-6 sm:p-10 shadow-xs">
+			<div class="text-center max-w-xl mx-auto mb-8">
+				<h3 class="text-xl sm:text-2xl font-bold tracking-tight text-ink mb-2">
+					Comparativa de Carga Operativa en Recepción
+				</h3>
+				<p class="text-xs sm:text-sm text-steel">
+					La diferencia entre un negocio saturado por mensajes manuales y uno equipado con filtro previo.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 divide-y md:divide-y-0 md:divide-x divide-hairline">
+				<!-- Old Way -->
+				<div class="pt-6 md:pt-0 md:pr-8">
+					<div class="flex items-center gap-2 mb-4">
+						<i class="ph-bold ph-x-circle text-brand-ruby text-lg"></i>
+						<h4 class="text-sm font-bold text-ink tracking-tight uppercase">El Desgaste Manual (Anuncio directo a chat)</h4>
+					</div>
+					<ul class="space-y-3.5 text-xs sm:text-sm text-charcoal">
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-x text-brand-ruby text-sm mt-0.5 shrink-0"></i>
+							<span>40 a 60 mensajes al día que solo preguntan "¿cuánto vale?" y jamás compran.</span>
+						</li>
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-x text-brand-ruby text-sm mt-0.5 shrink-0"></i>
+							<span>Tu equipo redacta mensajes idénticos a mano a deshoras para no perder clientes.</span>
+						</li>
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-x text-brand-ruby text-sm mt-0.5 shrink-0"></i>
+							<span>Negociaciones desgastantes de regateo con prospectos no calificados.</span>
+						</li>
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-x text-brand-ruby text-sm mt-0.5 shrink-0"></i>
+							<span>Agendas vacías al final de semana a pesar de haber gastado cientos de dólares en Meta Ads.</span>
+						</li>
+					</ul>
+				</div>
+
+				<!-- Garpe Capture System -->
+				<div class="pt-6 md:pt-0 md:pl-8">
+					<div class="flex items-center gap-2 mb-4">
+						<i class="ph-bold ph-check-circle text-brand-emerald text-lg"></i>
+						<h4 class="text-sm font-bold text-ink tracking-tight uppercase">Con Filtro Garpe en Web</h4>
+					</div>
+					<ul class="space-y-3.5 text-xs sm:text-sm text-charcoal">
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-check text-brand-emerald text-sm mt-0.5 shrink-0"></i>
+							<span>Precios base, condiciones y disponibilidad explicados antes de abrir WhatsApp.</span>
+						</li>
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-check text-brand-emerald text-sm mt-0.5 shrink-0"></i>
+							<span>El prospecto llega a tu celular con el paquete seleccionado y fecha tentativa.</span>
+						</li>
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-check text-brand-emerald text-sm mt-0.5 shrink-0"></i>
+							<span>Cero regateo: quien te escribe ya aceptó el rango de precios de tu servicio.</span>
+						</li>
+						<li class="flex items-start gap-2.5">
+							<i class="ph-bold ph-check text-brand-emerald text-sm mt-0.5 shrink-0"></i>
+							<span>Tu recepcionista solo tiene una tarea: confirmar la cita y apartar la fecha.</span>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Embedded Agitation Action Bar (rounded-xl, no glued arrow) -->
+			<div class="mt-8 pt-6 border-t border-hairline flex flex-col sm:flex-row items-center justify-between gap-4">
+				<span class="text-xs text-steel text-center sm:text-left">
+					¿Cuánto tiempo pierde tu equipo respondiendo preguntas que tu página web podría resolver en segundos?
+				</span>
+				<a
+					href="#services"
+					class="inline-flex items-center justify-center px-5 py-2.5 text-xs sm:text-sm font-semibold rounded-xl bg-ink text-canvas border border-ink hover:border-text-main/30 active:scale-95 transition-transform duration-150 cursor-pointer no-underline whitespace-nowrap"
+				>
+					Ver Cómo Funciona el Filtro
+				</a>
+			</div>
+		</div>
+
+	</div>
+</section>

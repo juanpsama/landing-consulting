@@ -40,7 +40,7 @@ export const ui = {
     // Team member page
     'member.greeting': '¡Hola! Soy {name}',
     'member.subtitle': 'Guarda mi contacto directo para hablar sobre el motor tecnológico de tu negocio.',
-    'member.modal_button': '📥 Guardar en mis contactos',
+    'member.modal_button': 'Guardar en mis contactos',
     'member.modal_close': 'Cerrar e ir a mi perfil completo',
     'member.slogan': 'Deja de hacer todo a mano!... te ayudamos a automatizar y a adoptar la tecnologia en tu negocio.',
     // 404 page
@@ -96,7 +96,7 @@ export const ui = {
     // Team member page
     'member.greeting': 'Hi! I\'m {name}',
     'member.subtitle': 'Save my direct contact to talk about the technological engine of your business.',
-    'member.modal_button': '📥 Save to Contacts',
+    'member.modal_button': 'Save to Contacts',
     'member.modal_close': 'Close and view full profile',
     'member.slogan': 'Leave the manual work behind!... We help you automate and adopt technology in your business.',
     // 404 page

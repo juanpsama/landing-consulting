@@ -1,0 +1,24 @@
+---
+// src/components/sales/SalesFloatingCTA.astro
+interface Props {
+	whatsappNumber?: string;
+}
+
+const { whatsappNumber = "529612401220" } = Astro.props;
+const defaultWaUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent("Hola Garpe, vi la página de Sistemas de Captura y quiero una consulta rápida por WhatsApp.")}`;
+---
+
+<!-- Floating WhatsApp CTA with Semantic z-toast token -->
+<aside class="fixed bottom-5 right-5 z-toast" aria-label="Contacto directo por WhatsApp">
+	<a
+		href={defaultWaUrl}
+		target="_blank"
+		rel="noopener noreferrer"
+		data-track="floating_whatsapp_click"
+		class="inline-flex items-center gap-2.5 px-4 py-3 rounded-full bg-ink text-canvas border border-ink hover:border-text-main/30 active:scale-95 transition-transform duration-150 cursor-pointer no-underline shadow-md"
+	>
+		<!-- WhatsApp Phosphor icon -->
+		<i class="ph-fill ph-whatsapp-logo text-xl text-brand-green"></i>
+		<span class="text-xs sm:text-sm font-semibold tracking-tight">Hablar en WhatsApp</span>
+	</a>
+</aside>

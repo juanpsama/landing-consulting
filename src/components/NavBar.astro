@@ -11,11 +11,12 @@ const homeUrl = `${base}/${lang}/`;
 
 <nav
   id="navbar"
-  class="nav-hidden fixed top-0 left-0 right-0 z-50 h-16 bg-canvas border-b border-hairline flex items-center px-6"
+  class="nav-hidden fixed top-0 left-0 right-0 z-sticky h-16 bg-canvas border-b border-hairline flex items-center px-6"
 >
-  <a href={homeUrl} class="text-ink font-semibold text-lg no-underline mr-10"
-    >Home</a
-  >
+  <a href={homeUrl} class="flex items-center gap-2.5 text-ink font-semibold text-lg no-underline mr-10" aria-label="Grupo Garpe - Inicio">
+    <img src="/favicon.svg" alt="Grupo Garpe Logo" class="w-8 h-8 rounded-lg object-contain shadow-2xs shrink-0" />
+    <span>Grupo GARPE</span>
+  </a>
   <div class="hidden sm:flex items-center gap-8">
     <a
       href={homeUrl + "#services"}
