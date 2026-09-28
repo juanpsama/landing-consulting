@@ -18,26 +18,31 @@ const GTM_ID = "GTM-NTN5CL8T";
 const whatsappNumber = "529612401220";
 
 const siteTitle = "Sistemas de Captura de Clientes por WhatsApp | Grupo Garpe";
-const siteDescription = "Infraestructura de captura de clientes para tráfico de Meta Ads. Filtra curiosos, elimina el 90% de la carga operativa manual y recibe prospectos calificados directo a tu WhatsApp con garantía a resultados.";
-const canonicalURL = "https://grupogarpe.com/sistemas-de-ventas";
+const siteDescription =
+	"Capta clientes con Meta Ads. Filtra curiosos, elimina el 90% del trabajo manual y recibe prospectos calificados en WhatsApp. Garantía de resultados.";
+const canonicalURL = "https://grupogarpe.com/sistemas-de-ventas/";
+const thumbnailURL = new URL("/garpe-landings-thumbnail.png", canonicalURL)
+	.href;
 
 const jsonLdSchema = {
 	"@context": "https://schema.org",
 	"@type": "Service",
-	"name": "Sistemas de Captura de Clientes por WhatsApp",
-	"provider": {
+	name: "Sistemas de Captura de Clientes por WhatsApp",
+	image: thumbnailURL,
+	provider: {
 		"@type": "Organization",
-		"name": "Grupo Garpe",
-		"url": "https://grupogarpe.com",
-		"logo": "https://grupogarpe.com/favicon.svg"
+		name: "Grupo Garpe",
+		url: "https://grupogarpe.com",
+		logo: "https://grupogarpe.com/favicon.svg",
 	},
-	"serviceType": "Infraestructura de Adquisición Digital B2B",
-	"description": siteDescription,
-	"offers": {
+	serviceType: "Infraestructura de Adquisición Digital B2B",
+	description: siteDescription,
+	offers: {
 		"@type": "Offer",
-		"priceCurrency": "USD",
-		"description": "Garantía de Adquisición de 30 Días con Outcome-Based Pricing"
-	}
+		priceCurrency: "USD",
+		description:
+			"Garantía de Adquisición de 30 Días con Outcome-Based Pricing",
+	},
 };
 ---
 
@@ -58,10 +63,19 @@ const jsonLdSchema = {
 		<meta property="og:url" content={canonicalURL} />
 		<meta property="og:title" content={siteTitle} />
 		<meta property="og:description" content={siteDescription} />
+		<meta property="og:image" content={thumbnailURL} />
+		<meta property="og:image:secure_url" content={thumbnailURL} />
+		<meta property="og:image:type" content="image/png" />
+		<meta property="og:image:width" content="2400" />
+		<meta property="og:image:height" content="1400" />
+		<meta property="og:image:alt" content={siteTitle} />
 		<meta property="og:locale" content="es_MX" />
 		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:url" content={canonicalURL} />
 		<meta name="twitter:title" content={siteTitle} />
 		<meta name="twitter:description" content={siteDescription} />
+		<meta name="twitter:image" content={thumbnailURL} />
+		<meta name="twitter:image:alt" content={siteTitle} />
 
 		<!-- Favicon & Fonts -->
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -74,10 +88,15 @@ const jsonLdSchema = {
 		/>
 
 		<!-- Structured Data -->
-		<script type="application/ld+json" set:html={JSON.stringify(jsonLdSchema)} />
+		<script
+			type="application/ld+json"
+			set:html={JSON.stringify(jsonLdSchema)}
+		/>
 	</head>
 
-	<body class="bg-canvas text-ink font-['Instrument_Sans',sans-serif] antialiased selection:bg-brand-green selection:text-ink">
+	<body
+		class="bg-canvas text-ink font-['Instrument_Sans',sans-serif] antialiased selection:bg-brand-green selection:text-ink"
+	>
 		<GoogleTagManager id={GTM_ID} part="body" />
 
 		<!-- Fixed High-Conversion Sales Header (Semantic z-sticky) -->
@@ -119,7 +138,7 @@ const jsonLdSchema = {
 					window.dataLayer.push({
 						event: "dl_clic_trackeado",
 						accion_boton: trackValue,
-						timestamp: new Date().toISOString()
+						timestamp: new Date().toISOString(),
 					});
 				}
 			});

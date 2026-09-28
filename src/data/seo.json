@@ -3,5 +3,6 @@
 	"domain": "grupogarpe.com",
 	"phone": "+52 961 240 1220",
 	"email": "contacto@grupogarpe.com",
-	"socials": ["https://garpe.dev"]
+	"socials": ["https://garpe.dev"],
+	"thumbnail": "/garpe-thumbnail.jpg"
 }

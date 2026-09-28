@@ -41,6 +41,8 @@ export function generateOrganizationSchema(seoData: any, localizedUi: any, curre
         "@type": ["Organization", "ITService"],
         "name": seoData.business_name,
         "url": `https://${seoData.domain}`,
+        "logo": `https://${seoData.domain}/favicon.svg`,
+        "image": `https://${seoData.domain}${seoData.thumbnail || '/garpe-thumbnail.jpg'}`,
         "description": localizedUi['schema.description'], // Este sí viene de UI porque es global
         "slogan": localizedUi['schema.slogan'],
         "makesOffer": offersArray, // 🚀 Inyectamos los servicios super-vitaminados
