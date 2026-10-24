@@ -1,5 +1,9 @@
 import { defaultLang, ui } from './ui';
 
-export function useTranslations(lang: string) {
-  return ui[(lang in ui ? lang : defaultLang) as keyof typeof ui];
+export type SupportedLocale = keyof typeof ui;
+
+export function useTranslations(lang?: string | null) {
+  const safeLang: SupportedLocale =
+    lang && lang in ui ? (lang as SupportedLocale) : defaultLang;
+  return ui[safeLang];
 }

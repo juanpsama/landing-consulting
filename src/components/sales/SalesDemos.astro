@@ -4,11 +4,9 @@ interface DemoItem {
 	id: string;
 	title: string;
 	niche: string;
-	badge: string;
 	resolvedFriction: string[];
 	prefilledMsg: string;
 	operationalSavings: string;
-	subdomain: string;
 	fullUrl: string;
 }
 
@@ -17,7 +15,6 @@ const demos: DemoItem[] = [
 		id: "salud",
 		title: "Clínicas & Especialidades Médicas Privadas",
 		niche: "Salud & Medicina",
-		badge: "Cero regateo médico",
 		resolvedFriction: [
 			"Precios base por consulta y procedimiento resueltos en web",
 			"Validación de cobertura o aseguradora previa",
@@ -25,14 +22,12 @@ const demos: DemoItem[] = [
 		],
 		prefilledMsg: "Hola clínica, vi la oferta de valoración en Instagram. Ya revisé costos. Quiero confirmar cita de traumatología para el viernes a las 10:00 AM.",
 		operationalSavings: "Ahorra 18 hrs/semana en recepción",
-		subdomain: "salud.grupogarpe.com",
 		fullUrl: "https://salud.grupogarpe.com"
 	},
 	{
 		id: "belleza",
 		title: "Spas, Belleza & Centros de Estética Avanzada",
 		niche: "Belleza & Estética",
-		badge: "Paquetes de alto ticket",
 		resolvedFriction: [
 			"Tarifario de aparatología y sesiones publicado",
 			"Resultados clínicos antes/después transparentes",
@@ -40,14 +35,12 @@ const demos: DemoItem[] = [
 		],
 		prefilledMsg: "Hola, revisé su paquete de remodelación corporal. Conozco el precio de las 6 sesiones y quiero agendar mi primera cita este sábado a las 4:00 PM.",
 		operationalSavings: "Ahorra 14 hrs/semana en precios",
-		subdomain: "belleza.grupogarpe.com",
 		fullUrl: "https://belleza.grupogarpe.com"
 	},
 	{
 		id: "consultoria",
 		title: "Servicios Profesionales, Legal & Finanzas",
 		niche: "B2B & Corporativo",
-		badge: "Clientes calificados por facturación",
 		resolvedFriction: [
 			"Cuestionario diagnóstico de alcance antes de WhatsApp",
 			"Filtro de facturación mínima del cliente",
@@ -55,14 +48,12 @@ const demos: DemoItem[] = [
 		],
 		prefilledMsg: "Hola Garpe Legal, completé el diagnóstico corporativo en su sitio. Somos una empresa de 35 empleados y requerimos auditoría fiscal este mes.",
 		operationalSavings: "Elimina llamadas no calificadas",
-		subdomain: "consultoria.grupogarpe.com",
 		fullUrl: "https://consultoria.grupogarpe.com"
 	},
 	{
 		id: "gastronomia",
 		title: "Restaurantes, Creadores Culinarios & Eventos",
 		niche: "Gastronomía & Hospitalidad",
-		badge: "Reservas sin comisiones",
 		resolvedFriction: [
 			"Menú interactivo con precios actualizados al instante",
 			"Número de comensales y restricciones dietéticas pre-cargadas",
@@ -70,14 +61,12 @@ const demos: DemoItem[] = [
 		],
 		prefilledMsg: "Hola, reservo mesa para 6 personas este viernes a las 9:00 PM para cumpleaños. Elegimos el menú de degustación.",
 		operationalSavings: "Cero pérdida de reservas en horas pico",
-		subdomain: "gastronomia.grupogarpe.com",
 		fullUrl: "https://gastronomia.grupogarpe.com"
 	},
 	{
 		id: "inmobiliaria",
 		title: "Bienes Raíces & Desarrolladoras",
 		niche: "Inmobiliaria & Inversión",
-		badge: "Compradores con presupuesto real",
 		resolvedFriction: [
 			"Precios de salida y planes de financiamiento claros",
 			"Descarga de ficha técnica vinculada a WhatsApp",
@@ -85,14 +74,12 @@ const demos: DemoItem[] = [
 		],
 		prefilledMsg: "Hola, descargué el brochure del desarrollo en Polanco. Cuento con enganche disponible y quiero coordinar visita para este sábado a las 12:00 PM.",
 		operationalSavings: "Asesores solo ven compradores reales",
-		subdomain: "inmobiliaria.grupogarpe.com",
 		fullUrl: "https://inmobiliaria.grupogarpe.com"
 	},
 	{
 		id: "hogar",
 		title: "Reformas, Arquitectura & Servicios del Hogar",
 		niche: "Construcción & Hogar",
-		badge: "Especificaciones previas listas",
 		resolvedFriction: [
 			"Estimador de metros cuadrados y rango de inversión previo",
 			"Tipo de espacio a remodelar seleccionado en pantalla",
@@ -100,7 +87,6 @@ const demos: DemoItem[] = [
 		],
 		prefilledMsg: "Hola, coticé en su web una remodelación integral de cocina de 24m2. Cuento con presupuesto aprobado de $6,000 USD y busco inicio en 15 días.",
 		operationalSavings: "Evita visitas técnicas en vano",
-		subdomain: "hogar.grupogarpe.com",
 		fullUrl: "https://hogar.grupogarpe.com"
 	}
 ];
@@ -109,7 +95,7 @@ const demos: DemoItem[] = [
 <section id="demos" class="py-20 sm:py-28 bg-surface border-y border-hairline relative">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		
-		<!-- Section Header (Plain human language without "Silos" and without pill eyebrow) -->
+		<!-- Section Header -->
 		<div class="max-w-3xl mb-16">
 			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight mb-5">
 				Casos reales por sector: así llega el mensaje a tu WhatsApp según tu rubro
@@ -189,7 +175,7 @@ const demos: DemoItem[] = [
 			))}
 		</div>
 
-		<!-- Reassurance Banner (rounded-2xl with rounded-xl button, no arrow) -->
+		<!-- Reassurance Banner -->
 		<div class="p-6 rounded-2xl bg-canvas border border-hairline flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xs">
 			<div class="flex items-center gap-3">
 				<i class="ph ph-gear text-2xl text-ink shrink-0"></i>

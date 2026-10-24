@@ -26,7 +26,9 @@ function detectLang(): keyof typeof ui {
 
 	// 3. Sin prefijo -> adivina con el header Accept-Language del navegador
 	const acceptLanguage = Astro.request.headers.get("accept-language");
-	console.log("Accept-Language header:", acceptLanguage);
+	if (import.meta.env.DEV && acceptLanguage) {
+		console.log("Accept-Language header:", acceptLanguage);
+	}
 	if (acceptLanguage) {
 		const preferred = acceptLanguage
 			.split(",")

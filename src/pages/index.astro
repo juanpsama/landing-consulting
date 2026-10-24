@@ -1,10 +1,10 @@
 ---
-// src/pages/index.astroexport const prerender = true;
+// src/pages/index.astro
+export const prerender = true;
 import Layout from "../layouts/Layout.astro";
 import HeroSection from "../components/HeroSection.astro";
-// import ServicesSection from '../components/ServicesSection.astro';
-import ServicesSection from "../components/ServicesSection_0001.astro";
-import { ui, languages } from "../i18n/ui";
+import ServicesSection from "../components/ServicesSection.astro";
+import { ui } from "../i18n/ui";
 import ContactSection from "../components/ContactSection.astro";
 
 const lang = (Astro.currentLocale ?? "es") as keyof typeof ui;

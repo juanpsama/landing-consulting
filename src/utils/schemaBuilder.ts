@@ -1,18 +1,22 @@
 // src/utils/schemaBuilder.ts
 import membersData from '../data/members.json';
-import servicesData from '../data/services_0001.json';
-import { defaultLang } from '../i18n/ui';
+import servicesData from '../data/services.json';
+import type { SeoData, ServicesData } from '../types/data';
 
-export function generateOrganizationSchema(seoData: any, localizedUi: any, currentLang: string) {
+export function generateOrganizationSchema(
+    seoData: SeoData,
+    localizedUi: Record<string, string>,
+    currentLang: string
+) {
+    const typedServices = servicesData as ServicesData;
 
-    // 1. Array de Empleados (Mantenemos la lógica anterior)
+    // 1. Array de Empleados
     const employeeArray = Object.entries(membersData).map(([slug, data]) => {
-        const urlPrefix = currentLang === defaultLang ? '' : `${currentLang}/`;
         return {
             "@type": "Person",
             "name": [data.name, data.lastName, data.mothersLastName].filter(Boolean).join(' '),
             "jobTitle": localizedUi[`role.${slug}`] || data.role,
-            "url": `https://${seoData.domain}/${urlPrefix}${slug}`,
+            "url": `https://${seoData.domain}/${currentLang}/team/${slug}`,
             "worksFor": {
                 "@type": "Organization",
                 "name": seoData.business_name
@@ -21,8 +25,7 @@ export function generateOrganizationSchema(seoData: any, localizedUi: any, curre
     });
 
     // 2. Extraemos los servicios del idioma actual
-    // Usamos as keyof typeof servicesData para que TypeScript no se queje
-    const currentServices = servicesData[currentLang as keyof typeof servicesData].services;
+    const currentServices = typedServices[currentLang]?.services ?? [];
 
     // 3. Array de Servicios (Ofertas)
     const offersArray = currentServices.map((service) => ({
@@ -30,7 +33,6 @@ export function generateOrganizationSchema(seoData: any, localizedUi: any, curre
         "itemOffered": {
             "@type": "Service",
             "name": service.title,
-            // 🧠 LA MAGIA: Si existe schema_description lo usa, si no, usa el description visual
             "description": service.schema_description || service.description
         }
     }));
@@ -43,9 +45,9 @@ export function generateOrganizationSchema(seoData: any, localizedUi: any, curre
         "url": `https://${seoData.domain}`,
         "logo": `https://${seoData.domain}/favicon.svg`,
         "image": `https://${seoData.domain}${seoData.thumbnail || '/garpe-thumbnail.jpg'}`,
-        "description": localizedUi['schema.description'], // Este sí viene de UI porque es global
+        "description": localizedUi['schema.description'],
         "slogan": localizedUi['schema.slogan'],
-        "makesOffer": offersArray, // 🚀 Inyectamos los servicios super-vitaminados
+        "makesOffer": offersArray,
         "employee": employeeArray,
         "sameAs": seoData.socials || []
     };

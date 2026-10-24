@@ -4,12 +4,13 @@ import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
 import Footer from "../components/Footer.astro";
 import GoogleTagManager from "../components/reusable/GoogleTagManager.astro";
-import { ui, defaultLang, showDefaultLang } from "../i18n/ui";
+import { ui, defaultLang } from "../i18n/ui";
+import { getRelativeLocaleUrl } from "astro:i18n";
 import WhatsappButton from "../components/WhatsappButton.astro";
 import { generateOrganizationSchema } from "../utils/schemaBuilder";
 import seoData from "../data/seo.json";
 export interface Props {
-	lang: string;
+	lang?: string;
 	title?: string;
 	description?: string;
 	image?: string;
@@ -40,7 +41,6 @@ const imageHeight = isPng ? "1400" : "1536";
 
 const getAlternateUrl = (targetLang: string) => {
 	const currentLang = Astro.currentLocale || defaultLang;
-
 	let path = Astro.url.pathname;
 
 	const base =
@@ -50,19 +50,13 @@ const getAlternateUrl = (targetLang: string) => {
 		path = path.slice(base.length);
 	}
 
-	const segments = path.split("/").filter(Boolean);
+	const regex = new RegExp(`^/${currentLang}(/|$)`);
+	const cleanPath = path.replace(regex, "/");
 
-	if (segments[0] === currentLang) {
-		segments.shift();
-	}
+	const localizedPath = getRelativeLocaleUrl(targetLang, cleanPath);
+	const fullPath = base ? `${base}${localizedPath}` : localizedPath;
 
-	if (targetLang !== defaultLang || showDefaultLang) {
-		segments.unshift(targetLang);
-	}
-
-	const newPath = `${base}/${segments.join("/")}`;
-
-	return new URL(newPath, domain).href;
+	return new URL(fullPath, domain).href;
 };
 
 // 3. Generamos las URLs correctas para cada idioma
@@ -74,7 +68,7 @@ const GTM_ID = "GTM-NTN5CL8T";
 const jsonLdSchema = generateOrganizationSchema(seoData, t, finalLang);
 ---
 
-<html lang={lang}>
+<html lang={finalLang}>
 	<head>
 		<GoogleTagManager id={GTM_ID} part="head" />
 		<meta charset="utf-8" />
@@ -132,21 +126,20 @@ const jsonLdSchema = generateOrganizationSchema(seoData, t, finalLang);
 
 		<script is:inline>
 			document.addEventListener("click", function (event) {
-				// Busca si a lo que le dimos clic (o su contenedor) tiene data-track
 				const trackElement = event.target.closest("[data-track]");
 
 				if (trackElement) {
 					const trackValue = trackElement.getAttribute("data-track");
 
-					// Forzamos el envío del dato al dataLayer de Google
 					window.dataLayer = window.dataLayer || [];
 					window.dataLayer.push({
 						event: "dl_clic_trackeado",
 						accion_boton: trackValue,
 					});
 
-					// Imprimimos en consola para que tú confirmes que funciona en local/prod
-					console.log("[GTM] Dato empujado a GTM:", trackValue);
+					if (window.location.hostname === "localhost") {
+						console.log("[GTM] Dato empujado a GTM:", trackValue);
+					}
 				}
 			});
 		</script>

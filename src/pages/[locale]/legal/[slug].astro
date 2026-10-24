@@ -1,6 +1,6 @@
 ---
 // src/pages/[locale]/legal/[slug].astro
-import { languages, ui } from "../../../i18n/ui";
+import { ui } from "../../../i18n/ui";
 import Layout from "../../../layouts/Layout.astro";
 import { getEntry, getCollection, render } from "astro:content";
 import Prose from "../../../components/Prose.astro";
@@ -15,13 +15,13 @@ export async function getStaticPaths() {
 
 		return {
 			params: { locale, slug },
+			props: { legalDoc: legal },
 		};
 	});
 }
 
 const { locale, slug } = Astro.params;
-
-const legalDoc = await getEntry("legal", `${locale}/${slug}`);
+const legalDoc = Astro.props.legalDoc ?? (await getEntry("legal", `${locale}/${slug}`));
 
 if (!legalDoc) {
 	return Astro.redirect("/404");

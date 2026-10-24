@@ -5,14 +5,6 @@ import teamMembers from "../../../data/members.json";
 import Layout from "../../../layouts/Layout.astro";
 import { ui, languages } from "../../../i18n/ui";
 
-interface TeamMember {
-	name: string;
-	role: string;
-	phone: string;
-	email: string;
-	avatarUrl: string | null;
-}
-
 export function getStaticPaths() {
 	const locales = Object.keys(languages);
 	const slugs = Object.keys(teamMembers);
@@ -20,12 +12,13 @@ export function getStaticPaths() {
 	return locales.flatMap((locale) =>
 		slugs.map((slug) => ({
 			params: { locale, slug },
+			props: { member: teamMembers[slug as keyof typeof teamMembers] },
 		})),
 	);
 }
 
 const { locale, slug } = Astro.params as { locale: string; slug: string };
-const member = teamMembers[slug as keyof typeof teamMembers];
+const member = Astro.props.member ?? teamMembers[slug as keyof typeof teamMembers];
 
 if (!member) {
 	return Astro.redirect("/404");
