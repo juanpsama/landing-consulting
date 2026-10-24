@@ -92,11 +92,11 @@ const demos: DemoItem[] = [
 ];
 ---
 
-<section id="demos" class="py-20 sm:py-28 bg-surface border-y border-hairline relative">
+<section id="demos" class="py-20 sm:py-28 bg-surface border-y border-hairline relative overflow-x-clip md:overflow-x-visible">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		
 		<!-- Section Header -->
-		<div class="max-w-3xl mb-16">
+		<div class="max-w-3xl mb-12 sm:mb-16">
 			<h2 class="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-ink leading-tight mb-5">
 				Casos reales por sector: así llega el mensaje a tu WhatsApp según tu rubro
 			</h2>
@@ -105,10 +105,22 @@ const demos: DemoItem[] = [
 			</p>
 		</div>
 
-		<!-- Grid of 6 Demos with Distinct Simulated Message Cards -->
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-			{demos.map((demo) => (
-				<div class="bg-canvas rounded-2xl border border-hairline p-6 flex flex-col justify-between shadow-2xs hover:border-text-main/30 transition-colors duration-200">
+		<!-- Carousel (Mobile) / Grid (Tablet & Desktop) of 6 Demos -->
+		<div
+			id="demos-carousel"
+			role="region"
+			aria-roledescription="carousel"
+			aria-label="Casos de uso por sector"
+			class="relative flex overflow-x-auto snap-x snap-mandatory scroll-smooth -mx-4 px-4 sm:-mx-6 sm:px-6 md:mx-0 md:px-0 gap-4 sm:gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 mb-4 md:mb-16 py-2 -my-2 md:py-0 md:my-0 overscroll-x-contain scroll-pl-4 sm:scroll-pl-6 md:scroll-pl-0 md:snap-none md:overflow-visible no-scrollbar"
+		>
+			{demos.map((demo, index) => (
+				<div
+					id={`demo-slide-${demo.id}`}
+					role="group"
+					aria-roledescription="slide"
+					aria-label={`Caso ${index + 1} de ${demos.length}: ${demo.title}`}
+					class="w-[85vw] md:w-auto shrink-0 md:shrink snap-start md:snap-align-none bg-canvas rounded-2xl border border-hairline p-6 flex flex-col justify-between shadow-2xs hover:border-text-main/30 transition-colors duration-200"
+				>
 					<div>
 						<!-- Header Badges -->
 						<div class="flex items-center justify-between gap-2 mb-3.5">
@@ -175,6 +187,36 @@ const demos: DemoItem[] = [
 			))}
 		</div>
 
+		<!-- Mobile Carousel Navigation Indicators (Dots) -->
+		<div
+			id="demos-indicators"
+			class="flex md:hidden items-center justify-center gap-0.5 sm:gap-1 mb-12"
+			role="tablist"
+			aria-label="Selector de casos de uso"
+		>
+			{demos.map((demo, index) => (
+				<button
+					type="button"
+					id={`demo-tab-${demo.id}`}
+					class="demos-indicator-btn group flex items-center justify-center min-w-[44px] min-h-[44px] w-11 h-11 p-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-ink rounded-full cursor-pointer touch-manipulation"
+					data-index={index}
+					role="tab"
+					aria-controls={`demo-slide-${demo.id}`}
+					aria-selected={index === 0 ? "true" : "false"}
+					aria-label={`Ver caso ${index + 1} de ${demos.length}: ${demo.title}`}
+					tabindex={index === 0 ? 0 : -1}
+				>
+					<span
+						class={`demos-indicator-dot h-2 rounded-full transition-all duration-300 pointer-events-none ${
+							index === 0
+								? "w-6 bg-ink"
+								: "w-2 bg-steel/30 group-hover:bg-steel/50"
+						}`}
+					/>
+				</button>
+			))}
+		</div>
+
 		<!-- Reassurance Banner -->
 		<div class="p-6 rounded-2xl bg-canvas border border-hairline flex flex-col sm:flex-row items-center justify-between gap-4 shadow-2xs">
 			<div class="flex items-center gap-3">
@@ -193,3 +235,206 @@ const demos: DemoItem[] = [
 
 	</div>
 </section>
+
+<style>
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+</style>
+
+<script>
+	function initDemosCarousel() {
+		const carousel = document.getElementById("demos-carousel");
+		const indicators = document.getElementById("demos-indicators");
+		if (!carousel || !indicators) return;
+		if (carousel.dataset.carouselInit === "true") return;
+		carousel.dataset.carouselInit = "true";
+
+		const cards = Array.from(carousel.children) as HTMLElement[];
+		const buttons = Array.from(indicators.querySelectorAll<HTMLButtonElement>(".demos-indicator-btn"));
+		const dots = Array.from(indicators.querySelectorAll<HTMLElement>(".demos-indicator-dot"));
+
+		if (cards.length === 0 || buttons.length === 0) return;
+
+		let activeIndex = 0;
+		let isProgrammaticScroll = false;
+		let programmaticSafetyTimer: number | undefined;
+
+		function clearProgrammaticScroll() {
+			isProgrammaticScroll = false;
+			clearTimeout(programmaticSafetyTimer);
+		}
+
+		function setActive(index: number) {
+			if (index === activeIndex) return;
+			activeIndex = index;
+
+			buttons.forEach((btn, i) => {
+				const isCurrent = i === index;
+				btn.setAttribute("aria-selected", isCurrent ? "true" : "false");
+				btn.tabIndex = isCurrent ? 0 : -1;
+			});
+
+			dots.forEach((dot, i) => {
+				if (i === index) {
+					dot.classList.remove("w-2", "bg-steel/30", "group-hover:bg-steel/50");
+					dot.classList.add("w-6", "bg-ink");
+				} else {
+					dot.classList.remove("w-6", "bg-ink");
+					dot.classList.add("w-2", "bg-steel/30", "group-hover:bg-steel/50");
+				}
+			});
+		}
+
+		function updateActiveDotOnScroll() {
+			if (window.innerWidth >= 768) return;
+
+			const carouselRect = carousel.getBoundingClientRect();
+			const carouselCenter = carouselRect.left + carouselRect.width / 2;
+
+			let closestIndex = 0;
+			let minDistance = Infinity;
+
+			cards.forEach((card, i) => {
+				const cardRect = card.getBoundingClientRect();
+				const cardCenter = cardRect.left + cardRect.width / 2;
+				const distance = Math.abs(cardCenter - carouselCenter);
+				if (distance < minDistance) {
+					minDistance = distance;
+					closestIndex = i;
+				}
+			});
+
+			setActive(closestIndex);
+		}
+
+		let ticking = false;
+		let scrollEndTimer: number | undefined;
+
+		function handleScrollEnd() {
+			clearProgrammaticScroll();
+			clearTimeout(scrollEndTimer);
+			updateActiveDotOnScroll();
+		}
+
+		carousel.addEventListener(
+			"scroll",
+			() => {
+				if (!isProgrammaticScroll) {
+					if (!ticking) {
+						window.requestAnimationFrame(() => {
+							updateActiveDotOnScroll();
+							ticking = false;
+						});
+						ticking = true;
+					}
+				}
+				clearTimeout(scrollEndTimer);
+				scrollEndTimer = window.setTimeout(handleScrollEnd, 120);
+			},
+			{ passive: true }
+		);
+
+		// Native scrollend event (Chrome 114+, Firefox 109+, Safari 17.4+)
+		carousel.addEventListener("scrollend", handleScrollEnd, { passive: true });
+
+		// Reset programmatic lock immediately on any manual user interaction
+		carousel.addEventListener("pointerdown", clearProgrammaticScroll, { passive: true });
+		carousel.addEventListener("touchstart", clearProgrammaticScroll, { passive: true });
+		carousel.addEventListener("wheel", clearProgrammaticScroll, { passive: true });
+
+		const handleResize = () => {
+			if (window.innerWidth >= 768) return;
+			if (!ticking) {
+				window.requestAnimationFrame(() => {
+					updateActiveDotOnScroll();
+					ticking = false;
+				});
+				ticking = true;
+			}
+		};
+
+		let resizeObserver: ResizeObserver | null = null;
+		if (typeof ResizeObserver !== "undefined") {
+			resizeObserver = new ResizeObserver(handleResize);
+			resizeObserver.observe(carousel);
+		} else {
+			window.addEventListener("resize", handleResize, { passive: true });
+		}
+
+		document.addEventListener(
+			"astro:before-swap",
+			() => {
+				if (resizeObserver) {
+					resizeObserver.disconnect();
+					resizeObserver = null;
+				} else {
+					window.removeEventListener("resize", handleResize);
+				}
+			},
+			{ once: true }
+		);
+
+		buttons.forEach((btn, index) => {
+			btn.addEventListener("click", () => {
+				const targetCard = cards[index];
+				if (!targetCard) return;
+
+				const paddingLeft = parseFloat(window.getComputedStyle(carousel).paddingLeft) || 0;
+				const maxScroll = Math.max(0, carousel.scrollWidth - carousel.clientWidth);
+				const targetLeft = Math.min(maxScroll, Math.max(0, targetCard.offsetLeft - paddingLeft));
+
+				setActive(index);
+
+				// If already at target position, no scroll event will be emitted by the browser
+				if (Math.abs(carousel.scrollLeft - targetLeft) < 1) {
+					clearProgrammaticScroll();
+					return;
+				}
+
+				isProgrammaticScroll = true;
+				clearTimeout(programmaticSafetyTimer);
+				programmaticSafetyTimer = window.setTimeout(clearProgrammaticScroll, 800);
+
+				carousel.scrollTo({
+					left: targetLeft,
+					behavior: "smooth",
+				});
+			});
+		});
+
+		// Initial synchronization in case page loaded with non-zero scroll restoration
+		if (carousel.scrollLeft > 0) {
+			window.requestAnimationFrame(updateActiveDotOnScroll);
+		}
+
+		indicators.addEventListener("keydown", (e: KeyboardEvent) => {
+			if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+				e.preventDefault();
+				const nextIndex = (activeIndex + 1) % buttons.length;
+				buttons[nextIndex]?.focus();
+				buttons[nextIndex]?.click();
+			} else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+				e.preventDefault();
+				const prevIndex = (activeIndex - 1 + buttons.length) % buttons.length;
+				buttons[prevIndex]?.focus();
+				buttons[prevIndex]?.click();
+			} else if (e.key === "Home") {
+				e.preventDefault();
+				buttons[0]?.focus();
+				buttons[0]?.click();
+			} else if (e.key === "End") {
+				e.preventDefault();
+				buttons[buttons.length - 1]?.focus();
+				buttons[buttons.length - 1]?.click();
+			}
+		});
+	}
+
+	initDemosCarousel();
+	document.addEventListener("astro:page-load", initDemosCarousel);
+</script>
