@@ -2,27 +2,6 @@
 // src/components/ServicesSection.astro
 import ServiceCard from "./ServiceCard.astro";
 import servicesData from "../data/services.json";
-import monitorIcon from "../assets/icons/monitor.svg?raw";
-import globeIcon from "../assets/icons/globe.svg?raw";
-import linkIcon from "../assets/icons/link.svg?raw";
-import refreshIcon from "../assets/icons/refresh.svg?raw";
-import databaseIcon from "../assets/icons/database.svg?raw";
-import lightbulbIcon from "../assets/icons/lightbulb.svg?raw";
-import cloudIcon from "../assets/icons/cloud.svg?raw";
-import chartIcon from "../assets/icons/chart.svg?raw";
-import bookIcon from "../assets/icons/book.svg?raw";
-
-const iconMap: Record<string, string> = {
-	monitor: monitorIcon,
-	globe: globeIcon,
-	link: linkIcon,
-	refresh: refreshIcon,
-	database: databaseIcon,
-	lightbulb: lightbulbIcon,
-	cloud: cloudIcon,
-	chart: chartIcon,
-	book: bookIcon,
-};
 
 const lang = (Astro.currentLocale ?? "es") as keyof typeof servicesData;
 const data = servicesData[lang];
@@ -64,7 +43,7 @@ const accentVars = [
 						<ServiceCard
 							title={service.title}
 							description={service.description}
-							icon={iconMap[service.icon]}
+							icon={service.icon}
 							accentVar={accentVar}
 							variant={"light"}
 						/>
@@ -92,8 +71,9 @@ const accentVars = [
 						<div class="flex items-start gap-4 p-4 rounded-xl hover:bg-surface transition-colors duration-200">
 							<div
 								class="w-10 h-10 shrink-0 flex items-center justify-center text-steel bg-canvas rounded-lg shadow-sm"
-								set:html={iconMap[service.icon]}
-							/>
+							>
+								<i class={`ph ${service.icon} text-2xl`}></i>
+							</div>
 							<div>
 								<h4 class="text-base font-semibold text-ink leading-tight mb-1">
 									{service.title}
